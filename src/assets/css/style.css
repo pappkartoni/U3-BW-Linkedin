@@ -10,7 +10,7 @@ body {
 }
 
 main {
-  padding-top: 53px;
+  padding-top: 78px;
 }
 
 section {
@@ -245,9 +245,6 @@ section h2 {
   border-color: var(--main-blue-color) !important ;
   color: var(--main-blue-color) !important;
   font-weight: 600 !important;
-}
-.main-section {
-  border-radius: var(--corner-radius-medium);
 }
 .card {
   border-radius: var(--corner-radius-medium) !important;

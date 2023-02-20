@@ -1,4 +1,4 @@
-import { Button, Card, Container } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import "../assets/css/style.css";
 import profileBg from "../assets/profile2.jpg";
 import { useEffect } from "react";
@@ -16,8 +16,7 @@ const ProfileComponent = () => {
   }, []);
 
   return (
-    <Container>
-      <section className="main-section">
+      <section>
         <div className="top-card">
           <Card>
             <Card.Img
@@ -82,7 +81,6 @@ const ProfileComponent = () => {
           </Card>
         </div>
       </section>
-    </Container>
   );
 };
 export default ProfileComponent;

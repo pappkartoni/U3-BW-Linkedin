@@ -10,6 +10,7 @@ const options1 = {
 export const FETCH_PROFILE = "GET_PROFILE";
 export const FETCH_PROFILE_LOADING = "FETCH_PROFILE_LOADING";
 export const FETCH_PROFILE_ERROR = "FETCH_PROFILE_ERROR";
+export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
 
 export const fetchProfiles = () => {
   return async (dispatch, getState) => {
