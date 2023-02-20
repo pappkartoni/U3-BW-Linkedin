@@ -3,10 +3,10 @@ import { Button, Container } from "react-bootstrap";
 
 const ResourcesComponent = () => {
   return (
-    <>
+    <section>
       <Container className="block-example border border-dark">
         <div>
-          <h3>Resources</h3>
+          <h2>Resources</h2>
           <p>
             <i className="bi bi-eye-fill"></i>
             <span>Private to you</span>
@@ -42,7 +42,7 @@ const ResourcesComponent = () => {
           </p>
         </div>
       </Container>
-    </>
+    </section>
   );
 };
 

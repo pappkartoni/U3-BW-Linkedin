@@ -2,10 +2,10 @@ import { Button, Container } from "react-bootstrap";
 
 const ActivityComponent = () => {
   return (
-    <>
+    <section>
       <Container className="block-example border border-dark">
         <div>
-          <h3>Activity</h3>
+          <h2>Activity</h2>
           <Button>Start a post (FETCH POST function?)</Button>
           <p>n followers (LINK?)</p>
         </div>
@@ -23,7 +23,7 @@ const ActivityComponent = () => {
           </p>
         </div>
       </Container>
-    </>
+    </section>
   );
 };
 

@@ -2,10 +2,10 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const AnalyticsComponent = () => {
   return (
-    <>
+    <section>
       <Container className="block-example border border-dark">
         <div>
-          <h3>Analytics</h3>
+          <h2>Analytics</h2>
           <p>
             <i className="bi bi-eye-fill"></i>
             <span>Private to you</span>
@@ -36,7 +36,7 @@ const AnalyticsComponent = () => {
           </Row>
         </Container>
       </Container>
-    </>
+    </section>
   );
 };
 

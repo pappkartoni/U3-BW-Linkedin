@@ -18,9 +18,9 @@ const SuggestedComponent = () => {
         showTitleForm={showTitleForm}
       />
 
-      <Container className="block-example border border-dark">
+      <Container>
         <div>
-          <h3 className="suggested-title">Suggested for you</h3>
+          <h2 className="suggested-title">Suggested for you</h2>
           <p className="suggested-title-para">
             <i className="bi bi-eye-fill"></i>
             <span>Private to you</span>
