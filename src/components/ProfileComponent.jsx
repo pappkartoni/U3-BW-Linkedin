@@ -63,7 +63,7 @@ const ProfileComponent = () => {
                 <a href="#contact-info" className="d-inline-block">
                   87 connections
                 </a>
-                <div className="mt-2">
+                <div className="d-flex mt-2">
                   <Button variant="primary" className="rounded-pill py-1 ">
                     Open to
                   </Button>
