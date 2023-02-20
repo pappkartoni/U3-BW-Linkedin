@@ -78,6 +78,7 @@ h4 {
 .navbutton a {
   height: 100%;
   color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
 }
 
 .navbutton:hover a {
@@ -232,6 +233,16 @@ section h2 {
   width: 48px;
   height: 48px;
   margin-right: 8px;
+}
+
+.offcanvas-backdrop {
+  margin-top: 53px;
+}
+
+.offcanvas {
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  margin-top: 53px;
 }
 
 /* __________________________________Profile Component Styles */

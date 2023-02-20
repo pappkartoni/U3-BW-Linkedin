@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Navbar, Container, Form, Button } from "react-bootstrap"
+import { Navbar, Container, Form, Button, Offcanvas } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import NavbarButton from "./NavbarButton"
 
@@ -7,6 +7,7 @@ import NavbarButton from "./NavbarButton"
 const Navi = (props) => {
 
     const [isVisible, setIsVisible] = useState(false)
+    const [isVisibleOffCanvas, setIsVisibleOffCanvas] = useState(false)
 
     const setScrollBehaviour = () => {
         const offset = 210
@@ -17,6 +18,9 @@ const Navi = (props) => {
             setIsVisible(false)
         }
     }
+
+    const handleClose = () => setIsVisibleOffCanvas(false)
+    const handleShow = () => setIsVisibleOffCanvas(true)
 
     useEffect(() => {
         window.addEventListener("scroll", setScrollBehaviour);
@@ -59,7 +63,7 @@ const Navi = (props) => {
                         </Link>
                     </li>
                     <li className="navbutton">
-                        <Link to="/" className="d-flex flex-column align-items-center justify-content-center">
+                        <Link onClick={handleShow} className="d-flex flex-column align-items-center justify-content-center" style={{height: "100%"}}>
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="24" height="24" focusable="false">
                                     <path d="M3 3h4v4H3zm7 4h4V3h-4zm7-4v4h4V3zM3 14h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4zM3 21h4v-4H3zm7 0h4v-4h-4zm7 0h4v-4h-4z"></path>
@@ -99,6 +103,14 @@ const Navi = (props) => {
                 </div>
             </Container>
         </header>
+        <Offcanvas show={isVisibleOffCanvas} onHide={handleClose} placement="end">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Navi</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Some text as placeholder. Two lists of some kind, maybe in a section
+        </Offcanvas.Body>
+      </Offcanvas>
         </>
     )
 }
