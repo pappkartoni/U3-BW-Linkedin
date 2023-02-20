@@ -1,4 +1,8 @@
 import "./App.css";
+import SuggestedComponent from "./components/SuggestedComponent";
+import AnalyticsComponent from "./components/AnalyticsComponent";
+import ResourcesComponent from "./components/ResourcesComponent";
+import ActivityComponent from "./components/ActivityComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
 import { BrowserRouter } from "react-router-dom";
@@ -17,6 +21,10 @@ function App() {
           <Row>
             <Col md={8}>
               <ProfileComponent />
+              <SuggestedComponent />
+              <AnalyticsComponent />
+              <ResourcesComponent />
+              <ActivityComponent />
             </Col>
             <Col md={4}>
               <Sidebar />
