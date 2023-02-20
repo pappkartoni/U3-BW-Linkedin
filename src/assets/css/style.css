@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500;600;700;800;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+
+/* font-family: 'Source Code Pro', monospace;
+font-family: 'Source Sans Pro', sans-serif;
+font-family: 'Source Serif Pro', serif; */
+
+/* __________________________________Profile Component Styles */
+.btn-primary {
+  background-color: var(--main-blue-color) !important;
+  border-color: var(--main-blue-color) !important ;
+  font-weight: 600 !important;
+}
+.btn-primary:hover {
+  background-color: var(--main-blue-hover-color) !important;
+}
+.btn-outline-primary {
+  border-color: var(--main-blue-color) !important ;
+  color: var(--main-blue-color) !important;
+  font-weight: 600 !important;
+}
+.main-section {
+  border-radius: var(--corner-radius-medium);
+}
+.card {
+  border-radius: var(--corner-radius-medium) !important;
+}
+.card-img,
+.card-img-top {
+  border-top-right-radius: var(--corner-radius-medium) !important;
+  border-top-left-radius: var(--corner-radius-medium) !important;
+}
+.profile-bg {
+  max-height: 160px;
+}
+.bg-pencil {
+  background-color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  position: absolute;
+  right: 3%;
+  top: 6%;
+}
+.profile-img-block {
+  max-width: 152px;
+  max-height: 152px;
+  margin-top: -7.5em;
+  z-index: 1;
+}
+.profile-img-block > img {
+  border-radius: 50%;
+}
+.card-title.h5 {
+  font-size: 28px;
+}
+.text-black-light {
+  color: var(--text-black-light);
+}
+.before-dot {
+  margin-inline: 5px;
+  color: var(--text-black-light);
+}
+a {
+  color: var(--main-blue-color) !important;
+  font-weight: 600;
+}
