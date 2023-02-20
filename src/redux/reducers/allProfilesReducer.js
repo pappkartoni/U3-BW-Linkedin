@@ -5,14 +5,16 @@ const initialState = {
 }
 
 const allProfilesReducer = (state = initialState, action) => {
-    switch (action.payload) {
+    switch (action.type) {
         case GET_ALL_PROFILES:
+            console.log("get all", action.payload)
             return {
                 ...state,
-                profiles: [...state.profiles, action.payload]
+                profiles: [...state.profiles, ...action.payload]
             }
 
         default:
+            console.log("default")
             return state
     }
 }

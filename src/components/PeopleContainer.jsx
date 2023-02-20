@@ -1,53 +1,64 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import GroupPersonTile from "./GroupPersonTile";
+import { getAllProfiles } from "../redux/actions";
 
 const PeopleContainer = () => {
   const [expanded, setExpanded] = useState(false);
+  const profiles = useSelector((state) => state.allProfiles.profiles);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProfiles());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const toggleExpand = () => {
     setExpanded(!expanded);
   };
 
-  useEffect(() => {
-    //fetch here maybe
-  }, []);
+
 
   return (
     <section>
       <h2>People you may know</h2>
       {/* replace with person data */}
-      <GroupPersonTile
-        title="Python Developers Community (moderated"
-        subtitle={1458701}
-        forperson={true}
-        image="https://media.licdn.com/dms/image/C4D07AQHwzHzy4qrgaw/group-logo_image-shrink_48x48/0/1631004564272?e=1677506400&v=beta&t=bTr0tDyqg_XroZk9R8Rs-zH-PfOpCItAam2vYk8dhpQ"
-      />
-      <GroupPersonTile
-        title="User Experience Design (UX)"
-        subtitle={598667}
-        forperson={true}
-        image="https://media.licdn.com/dms/image/C4D07AQEw5Yxsti5jnw/group-logo_image-shrink_48x48/0/1648239133494?e=1677492000&v=beta&t=r9bEoFJmimY4TkUOi2hZ4NXzcOVM7MYUEIib-HlOgGU"
-      />
+      {profiles.length > 0 &&
+      <>
+        <GroupPersonTile
+          title={profiles[profiles.length - 1].name + " " + profiles[profiles.length - 1].surname}
+          subtitle={profiles[profiles.length - 1].title}
+          forperson={true}
+          image={profiles[profiles.length - 1].image}
+          />
+        <GroupPersonTile
+          title={profiles[profiles.length - 2].name + " " + profiles[profiles.length - 2].surname}
+          subtitle={profiles[profiles.length - 2].title}
+          forperson={true}
+          image={profiles[profiles.length - 2].image}
+          />
+      </>}
 
-      {expanded && (
+      {expanded && profiles.length > 0 && (
         <>
-          <GroupPersonTile
-            title="Machine Learning Community"
-            subtitle={1052679}
+        <GroupPersonTile
+            title={profiles[profiles.length - 3].name + " " + profiles[profiles.length - 3].surname}
+            subtitle={profiles[profiles.length - 3].title}
             forperson={true}
-            image="https://media.licdn.com/dms/image/C4D07AQHQyoqpbvwhLA/group-logo_image-shrink_72x72/0/1538129557731?e=1677492000&v=beta&t=vCXbwflYYa-upMY5OxQiK8-wDc8GAUswQwgpoKrH7Dw"
+            image={profiles[profiles.length - 3].image}
           />
           <GroupPersonTile
-            title="Big Data, Data Science, AI, IoT, Cyber Security & Blockchain"
-            subtitle={660022}
+            title={profiles[profiles.length - 4].name + " " + profiles[profiles.length - 4].surname}
+            subtitle={profiles[profiles.length - 4].title}
             forperson={true}
-            image="https://media.licdn.com/dms/image/C5107AQEn7Kn4FAIw3A/group-logo_image-shrink_48x48/0/1631009536156?e=1677492000&v=beta&t=L6eDlqfNtOlW3YjAnPSR7wZg47pdYSF_OSvMNWOs9WA"
-          />
+            image={profiles[profiles.length - 4].image}
+          />        
           <GroupPersonTile
-            title="Java Developers Community (moderated)"
-            subtitle={693971}
+            title={profiles[profiles.length - 5].name + " " + profiles[profiles.length - 5].surname}
+            subtitle={profiles[profiles.length - 5].title}
             forperson={true}
-            image="https://media.licdn.com/dms/image/D4E07AQE5wuxipYzIdA/group-logo_image-shrink_48x48/0/1664533330534?e=1677492000&v=beta&t=xzAF-c0fpMz9Xw8PJa5f9oTMJGBwzW1pFTr-s3RrDoI"
+            image={profiles[profiles.length - 5].image}
           />
         </>
       )}

@@ -53,6 +53,21 @@ export const fetchProfiles = () => {
 
 export const getAllProfiles = () => {
   return async (dispatch, getState) => {
-    
+    try {
+      const res = await fetch("https://striveschool-api.herokuapp.com/api/profile/", options1)
+
+      if (res.ok) {
+        const data = await res.json()
+        console.log("profiles are", data)
+        dispatch({
+          type: GET_ALL_PROFILES,
+          payload: data
+        })
+      } else {
+        throw new Error(res.status)
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
