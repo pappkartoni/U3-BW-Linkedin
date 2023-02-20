@@ -5,6 +5,7 @@ import localStorage from "redux-persist/lib/storage"; // default value: localSto
 import fetchProfileReducer from "../reducers/fetchProfileReducer";
 import allProfilesReducer from "../reducers/allProfilesReducer"
 
+
 const persistConfig = {
   storage: localStorage,
   key: "root", // this brings the whole redux store into persistency
@@ -17,6 +18,7 @@ const persistConfig = {
 const combinedReducer = combineReducers({
   getProfile: fetchProfileReducer,
   allProfiles: allProfilesReducer
+
 });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer);

@@ -285,3 +285,11 @@ section h2 {
   margin-inline: 5px;
   color: var(--text-black-light);
 }
+a {
+  color: var(--main-blue-color) !important;
+  font-weight: 600;
+}
+.border-btn:hover {
+  background-color: rgba(112, 181, 249, 0.2);
+  box-shadow: 0 0 0 2px var(--main-blue-color) inset;
+}
