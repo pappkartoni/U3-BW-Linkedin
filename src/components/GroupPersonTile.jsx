@@ -8,7 +8,7 @@ const GroupPersonTile = (props) => {
       </div>
       <div>
         <h3>{props.title}</h3>
-        <h4>{props.subtitle.toLocaleString()} members</h4>
+        <h4>{props.subtitle.toLocaleString()} {!props.forperson && "members"}</h4>
         <Button variant="outline-secondary">
           {props.forperson ? (
             <>

@@ -10,6 +10,7 @@ const options1 = {
 export const FETCH_PROFILE = "GET_PROFILE";
 export const FETCH_PROFILE_LOADING = "FETCH_PROFILE_LOADING";
 export const FETCH_PROFILE_ERROR = "FETCH_PROFILE_ERROR";
+export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
 
 export const fetchOwnProfile = () => {
   return async (dispatch, getState) => {
@@ -48,6 +49,27 @@ export const fetchOwnProfile = () => {
     }
   };
 };
+
+export const getAllProfiles = () => {
+  return async (dispatch, getState) => {
+    try {
+      const res = await fetch("https://striveschool-api.herokuapp.com/api/profile/", options1)
+
+      if (res.ok) {
+        const data = await res.json()
+        console.log("profiles are", data)
+        dispatch({
+          type: GET_ALL_PROFILES,
+          payload: data
+        })
+      } else {
+        throw new Error(res.status)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 
 export const changeTitle = (title) => {
   return async (dispatch) => {
