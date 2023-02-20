@@ -10,7 +10,7 @@ const initialState = {
   isError: false,
 };
 
-const fetchProfileReducer = (state = initialState, action) => {
+const fetchOwnProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PROFILE:
       return {
@@ -32,4 +32,4 @@ const fetchProfileReducer = (state = initialState, action) => {
   }
 };
 
-export default fetchProfileReducer;
+export default fetchOwnProfileReducer;

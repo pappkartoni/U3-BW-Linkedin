@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import localStorage from "redux-persist/lib/storage"; // default value: localStorage
 // import { encryptTransform } from "redux-persist-transform-encrypt";
-import fetchProfileReducer from "../reducers/fetchProfileReducer";
+import fetchOwnProfileReducer from "../reducers/fetchProfileReducer";
 
 const persistConfig = {
   storage: localStorage,
@@ -14,7 +14,7 @@ const persistConfig = {
   // ],
 };
 const combinedReducer = combineReducers({
-  getProfile: fetchProfileReducer,
+  getProfile: fetchOwnProfileReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer);

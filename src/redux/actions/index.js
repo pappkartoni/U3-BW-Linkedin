@@ -11,7 +11,7 @@ export const FETCH_PROFILE = "GET_PROFILE";
 export const FETCH_PROFILE_LOADING = "FETCH_PROFILE_LOADING";
 export const FETCH_PROFILE_ERROR = "FETCH_PROFILE_ERROR";
 
-export const fetchProfiles = () => {
+export const fetchOwnProfile = () => {
   return async (dispatch, getState) => {
     try {
       let response = await fetch(profileUrl, options1);
