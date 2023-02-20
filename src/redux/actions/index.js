@@ -49,3 +49,10 @@ export const fetchProfiles = () => {
     }
   };
 };
+
+
+export const getAllProfiles = () => {
+  return async (dispatch, getState) => {
+    
+  }
+}
