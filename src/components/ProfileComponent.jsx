@@ -63,16 +63,22 @@ const ProfileComponent = () => {
                 87 connections
               </a>
               <div className="mt-2">
-                <Button variant="primary" className="rounded-pill py-1 ">
+                <Button
+                  variant="primary"
+                  className="rounded-pill py-1 d-inline-block "
+                >
                   Open to
                 </Button>
                 <Button
                   variant="outline-primary"
-                  className="rounded-pill py-1 mx-2"
+                  className="rounded-pill py-1 mx-2 d-inline-block border-btn"
                 >
                   Add profile section
                 </Button>
-                <Button variant="outline-dark " className="rounded-pill py-1">
+                <Button
+                  variant="outline-secondary "
+                  className="rounded-pill py-1 d-inline-block"
+                >
                   More
                 </Button>
               </div>
