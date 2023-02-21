@@ -2,8 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import ExperienceTile from "./ExperienceTile";
 import MyExperienceModal from "./MyExperienceModal";
 import { BsFillPencilFill, BsPlus } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExperienceEdit from "./ExperienceEdit";
+import { getAllExperiences } from "../redux/actions";
 
 const ExperiencesContainer = () => {
   const dispatch = useDispatch();
@@ -13,23 +14,30 @@ const ExperiencesContainer = () => {
   const [show2, setShow2] = useState(false);
   const handleClose2 = () => setShow2(false);
   const handleShow2 = () => setShow2(true);
-  const experiences = [
-    {
-      _id: "5d925e677360c41e0046d1f5", // server generated
-      role: "CTO",
-      company: "Strive School",
-      startDate: "2019-06-16",
-      endDate: "2019-06-16", // could be null
-      description: "Doing stuff",
-      area: "Berlin",
-      username: "admin", // server generated
-      createdAt: "2019-09-30T19:58:31.019Z", // server generated
-      updatedAt: "2019-09-30T19:58:31.019Z", // server generated
-      __v: 0, // server generated
-      image:
-        "https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188434?e=1684972800&v=beta&t=YUs_d7vC1ildfbWq1pVcQg9coz_7be4zzoPvUKyam4w", // server generated on upload
-    },
-  ];
+
+  const experiences = useSelector((state) => state.exp.experiences);
+  console.log("experiences", experiences);
+  useEffect(() => {
+    dispatch(getAllExperiences("63f33a3d8381fc0013fffad6"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  //   const experiences = [
+  //     {
+  //       _id: "5d925e677360c41e0046d1f5", // server generated
+  //       role: "CTO",
+  //       company: "Strive School",
+  //       startDate: "2019-06-16",
+  //       endDate: "2019-06-16", // could be null
+  //       description: "Doing stuff",
+  //       area: "Berlin",
+  //       username: "admin", // server generated
+  //       createdAt: "2019-09-30T19:58:31.019Z", // server generated
+  //       updatedAt: "2019-09-30T19:58:31.019Z", // server generated
+  //       __v: 0, // server generated
+  //       image:
+  //         "https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188434?e=1684972800&v=beta&t=YUs_d7vC1ildfbWq1pVcQg9coz_7be4zzoPvUKyam4w", // server generated on upload
+  //     },
+  //   ];
 
   return (
     <section>
@@ -46,6 +54,7 @@ const ExperiencesContainer = () => {
       </div>
       <MyExperienceModal show={show} handleClose={handleClose} />
       <ExperienceEdit show={show2} handleClose={handleClose2} />
+      {/* <ExperienceTile key={experiences._id} exp={experiences} /> */}
       {experiences.length > 0 &&
         experiences.map((exp) => <ExperienceTile key={exp._id} exp={exp} />)}
     </section>
