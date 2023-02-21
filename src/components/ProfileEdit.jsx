@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 import { Button, Form, Modal } from "react-bootstrap";
 import { updateOwnProfile } from "../redux/actions";
 
-//const updateProfileUrl = "https://striveschool-api.herokuapp.com/api/profile/";
-
 const ProfileEdit = (props) => {
   const [content, setContent] = useState({
     name: "",
@@ -20,30 +18,8 @@ const ProfileEdit = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-/*   const updateOwnProfile = async () => {
-    try {
-      let response = await fetch(updateProfileUrl, {
-        method: "PUT",
-        body: JSON.stringify(content),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
-        },
-      });
-      if (response.ok) {
-        const MyData = await response.json();
-        console.log("updatedData", MyData);
-      } else {
-        console.log("Error fetching Data!");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }; */
   const handleUpdateProfile = () => {
     console.log("updatedProfileContent", content);
-    // updateOwnProfile();
     dispatch(updateOwnProfile(content));
   };
   return (
