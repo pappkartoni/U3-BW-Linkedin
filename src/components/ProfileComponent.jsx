@@ -1,19 +1,51 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Form, Modal } from "react-bootstrap";
 import "../assets/css/style.css";
 import profileBg from "../assets/profile2.jpg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOwnProfile } from "../redux/actions";
 import { BsFillPencilFill } from "react-icons/bs";
+import ProfileEdit from "./ProfileEdit";
 
 const ProfileComponent = () => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const [showImage, setShowImage] = useState(null);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     dispatch(fetchOwnProfile());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const uploadImage = async (e) => {
+    e.preventDefault();
+    //this is the state that handles the uploading of the image, the FormData method is used to handle image upload
+    //and append the image to the form
+    const data = new FormData();
+    data.append("profile", showImage);
+    try {
+      let response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/63f33a3d8381fc0013fffad6/picture",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        console.log("Image Uploaded Successfully");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="main-section">
@@ -35,14 +67,20 @@ const ProfileComponent = () => {
                   className="w-100"
                   src={profileData.image}
                   alt="profileImage"
+                  onClick={handleShow}
                 />
               </div>
               <div>
+                {/* <Button onClick={handleShow}> */}
                 <BsFillPencilFill />
+                {/* </Button> */}
               </div>
             </div>
 
             <div className="mt-3">
+              {/* {profileData && (
+                <> */}
+              <ProfileEdit profileData={profileData} />
               <Card.Title>
                 {profileData.name} {profileData.surname}
               </Card.Title>
@@ -82,9 +120,32 @@ const ProfileComponent = () => {
                   More
                 </Button>
               </div>
+              {/* </>
+              )} */}
             </div>
           </Card.Body>
         </Card>
+      </div>
+      <div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Upload Image</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form onSubmit={uploadImage}>
+              <input
+                type="file"
+                onChange={(e) => {
+                  console.log(e);
+                  setShowImage(e.target.files[0]);
+                }}
+              />
+              <Button variant="primary" onClick={handleClose} type="submit">
+                Post Image
+              </Button>
+            </form>
+          </Modal.Body>
+        </Modal>
       </div>
     </section>
   );
