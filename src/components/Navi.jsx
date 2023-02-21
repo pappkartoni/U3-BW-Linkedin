@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import { Navbar, Container, Form, Button } from "react-bootstrap"
+import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import NavbarButton from "./NavbarButton"
 
 
 const Navi = (props) => {
-
+    const user = useSelector(state => state.getProfile.fetchProfile)
     const [isVisible, setIsVisible] = useState(false)
 
     const setScrollBehaviour = () => {
@@ -48,7 +49,7 @@ const Navi = (props) => {
                     <li className="navbutton">
                         <Link to="/" className="d-flex flex-column align-items-center justify-content-center">
                             <div>
-                                <img className="navprofile" src="https://media.licdn.com/dms/image/D5603AQF8mKs4rr5NdQ/profile-displayphoto-shrink_100_100/0/1676882123159?e=1682553600&v=beta&t=q7wJS2wBaxl1Z8py6djxQh_Gnjt9ln4dSNQ5KNGkegI" alt="fetched profile pic here" />
+                                <img className="navprofile" src={user.image} alt="fetched profile pic here" />
                             </div>
                             <span>
                                 Me 
@@ -83,13 +84,13 @@ const Navi = (props) => {
         </Navbar>
         <header className={isVisible ? "visible fixed-top" : "fixed-top"}>
             <Container className="subnavi">
-                <img src="https://media.licdn.com/dms/image/D5603AQF8mKs4rr5NdQ/profile-displayphoto-shrink_100_100/0/1676882123159?e=1682553600&v=beta&t=q7wJS2wBaxl1Z8py6djxQh_Gnjt9ln4dSNQ5KNGkegI" alt="fetched profile pic here" />
+                <img src={user.image} alt="fetched profile pic here" />
                 <div className="d-flex flex-column mr-auto">
                     <h5>
-                        Florian Dreyer
+                        {user.name} {user.surname}
                     </h5>
                     <span>
-                        Trainee at EPICODE
+                        {user.title}
                     </span>
                 </div>
                 <div className="subnavbuttons">
