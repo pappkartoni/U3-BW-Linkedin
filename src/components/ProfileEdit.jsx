@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Form, Modal } from "react-bootstrap";
-import { BsFillPencilFill } from "react-icons/bs";
 
 const updateProfileUrl = "https://striveschool-api.herokuapp.com/api/profile/";
 
-const ProfileEdit = ({ profileData }) => {
+const ProfileEdit = (props) => {
   const [content, setContent] = useState({
     name: "",
     surname: "",
@@ -14,13 +13,10 @@ const ProfileEdit = ({ profileData }) => {
     bio: "",
   });
   console.log("content", content);
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    setContent(profileData);
+    setContent(props.profileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const updateOwnProfile = async () => {
@@ -51,10 +47,13 @@ const ProfileEdit = ({ profileData }) => {
   };
   return (
     <>
-      <Button>
-        <BsFillPencilFill onClick={handleShow} />
-      </Button>
-      <Modal size="lg" show={show} onHide={handleClose}>
+      <Modal
+        size="lg"
+        show={props.show}
+        onHide={props.handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Edit Profile</Modal.Title>
         </Modal.Header>
@@ -66,7 +65,7 @@ const ProfileEdit = ({ profileData }) => {
               <Form.Control
                 type="text"
                 placeholder="First name"
-                // required
+                required
                 value={content.name}
                 onChange={(e) => {
                   setContent({ ...content, name: e.target.value });
@@ -78,7 +77,7 @@ const ProfileEdit = ({ profileData }) => {
               <Form.Control
                 type="text"
                 placeholder="Last name"
-                // required
+                required
                 value={content.surname}
                 onChange={(e) => {
                   setContent({ ...content, surname: e.target.value });
@@ -90,7 +89,7 @@ const ProfileEdit = ({ profileData }) => {
               <Form.Control
                 type="text"
                 placeholder="Your headline"
-                // required
+                required
                 value={content.title}
                 onChange={(e) => {
                   setContent({ ...content, title: e.target.value });
@@ -129,7 +128,10 @@ const ProfileEdit = ({ profileData }) => {
             type="submit"
             variant="primary"
             className="py-2"
-            onClick={() => handleUpdateProfile()}
+            onClick={() => {
+              props.handleClose();
+              handleUpdateProfile();
+            }}
           >
             Save Changes
           </Button>
