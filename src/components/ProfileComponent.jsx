@@ -1,4 +1,4 @@
-import { Button, Card, Form, Modal } from "react-bootstrap";
+import { Button, Card, Modal } from "react-bootstrap";
 import "../assets/css/style.css";
 import profileBg from "../assets/profile2.jpg";
 import { useEffect, useState } from "react";
@@ -10,10 +10,14 @@ import ProfileEdit from "./ProfileEdit";
 const ProfileComponent = () => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
+
   const [showImage, setShowImage] = useState(null);
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
 
   useEffect(() => {
     dispatch(fetchOwnProfile());
@@ -67,67 +71,68 @@ const ProfileComponent = () => {
                   className="w-100"
                   src={profileData.image}
                   alt="profileImage"
-                  onClick={handleShow}
+                  onClick={handleShow2}
                 />
               </div>
-              <div>
-                {/* <Button onClick={handleShow}> */}
-                <BsFillPencilFill />
-                {/* </Button> */}
+              <div className="icon-hover d-flex justify-content-center align-items-center">
+                <BsFillPencilFill fill="rgba(0,0,0,0.6)" onClick={handleShow} />
               </div>
             </div>
-
+            <ProfileEdit
+              profileData={profileData}
+              show={show}
+              handleClose={handleClose}
+            />
             <div className="mt-3">
-              {/* {profileData && (
-                <> */}
-              <ProfileEdit profileData={profileData} />
-              <Card.Title>
-                {profileData.name} {profileData.surname}
-              </Card.Title>
-              <Card.Text className="mb-0">
-                Student at Epicode | Full Stack Developer | Web Designer
-              </Card.Text>
-              <div className=" d-flex align-items-center">
-                <Card.Text className="text-black-light d-inline-block mb-0">
-                  {profileData.area}
-                  {", North Rhine-Westphalia, Germany"}
-                </Card.Text>
-                <span className="before-dot">{"."}</span>
-                <a href="#contact-info" className="d-inline-block ">
-                  Contact info
-                </a>
-              </div>
-              <a href="#contact-info" className="d-inline-block">
-                87 connections
-              </a>
-              <div className="mt-2">
-                <Button
-                  variant="primary"
-                  className="rounded-pill py-1 d-inline-block "
-                >
-                  Open to
-                </Button>
-                <Button
-                  variant="outline-primary"
-                  className="rounded-pill py-1 mx-2 d-inline-block border-btn"
-                >
-                  Add profile section
-                </Button>
-                <Button
-                  variant="outline-secondary "
-                  className="rounded-pill py-1 d-inline-block"
-                >
-                  More
-                </Button>
-              </div>
-              {/* </>
-              )} */}
+              {profileData && (
+                <>
+                  <Card.Title>
+                    {profileData.name} {profileData.surname}
+                  </Card.Title>
+                  <Card.Text className="mb-0">
+                    Student at Epicode | Full Stack Developer | Web Designer
+                  </Card.Text>
+                  <div className=" d-flex align-items-center">
+                    <Card.Text className="text-black-light d-inline-block mb-0">
+                      {profileData.area}
+                      {", North Rhine-Westphalia, Germany"}
+                    </Card.Text>
+                    <span className="before-dot">{"."}</span>
+                    <a href="#contact-info" className="d-inline-block ">
+                      Contact info
+                    </a>
+                  </div>
+                  <a href="#contact-info" className="d-inline-block">
+                    87 connections
+                  </a>
+                  <div className="mt-2">
+                    <Button
+                      variant="primary"
+                      className="rounded-pill py-1 d-inline-block "
+                    >
+                      Open to
+                    </Button>
+                    <Button
+                      variant="outline-primary"
+                      className="rounded-pill py-1 mx-2 d-inline-block border-btn"
+                    >
+                      Add profile section
+                    </Button>
+                    <Button
+                      variant="outline-secondary "
+                      className="rounded-pill py-1 d-inline-block"
+                    >
+                      More
+                    </Button>
+                  </div>
+                </>
+              )}
             </div>
           </Card.Body>
         </Card>
       </div>
       <div>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show2} onHide={handleClose2}>
           <Modal.Header closeButton>
             <Modal.Title>Upload Image</Modal.Title>
           </Modal.Header>
@@ -140,7 +145,7 @@ const ProfileComponent = () => {
                   setShowImage(e.target.files[0]);
                 }}
               />
-              <Button variant="primary" onClick={handleClose} type="submit">
+              <Button variant="primary" onClick={handleClose2} type="submit">
                 Post Image
               </Button>
             </form>

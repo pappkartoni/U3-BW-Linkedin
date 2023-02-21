@@ -28,7 +28,7 @@ a {
 h2 {
   font-size: 20px;
   padding-top: 24px;
-  padding-inline: 24px
+  padding-inline: 24px;
 }
 
 h3 {
@@ -273,6 +273,16 @@ section h2 {
 
 .experience h4 {
   margin-bottom: 0;
+}
+.icon-hover {
+  width: 40px;
+  height: 40px;
+}
+.icon-hover:hover {
+  background-color: #ebebeb;
+  border-radius: 50%;
+
+  cursor: pointer;
 }
 
 .user-dropdown {
