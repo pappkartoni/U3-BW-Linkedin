@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Form, Modal } from "react-bootstrap";
+import { updateOwnProfile } from "../redux/actions";
 
-const updateProfileUrl = "https://striveschool-api.herokuapp.com/api/profile/";
+//const updateProfileUrl = "https://striveschool-api.herokuapp.com/api/profile/";
 
 const ProfileEdit = (props) => {
   const [content, setContent] = useState({
@@ -12,14 +13,14 @@ const ProfileEdit = (props) => {
     area: "",
     bio: "",
   });
-  console.log("content", content);
 
   const dispatch = useDispatch();
   useEffect(() => {
     setContent(props.profileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const updateOwnProfile = async () => {
+
+/*   const updateOwnProfile = async () => {
     try {
       let response = await fetch(updateProfileUrl, {
         method: "PUT",
@@ -39,11 +40,11 @@ const ProfileEdit = (props) => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }; */
   const handleUpdateProfile = () => {
     console.log("updatedProfileContent", content);
-    updateOwnProfile();
-    // dispatch(updateOwnProfile(content));
+    // updateOwnProfile();
+    dispatch(updateOwnProfile(content));
   };
   return (
     <>

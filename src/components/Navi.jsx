@@ -53,7 +53,7 @@ const Navi = (props) => {
                     <li className="navbutton">
                         <Link onClick={toggleDropdown} className="d-flex flex-column align-items-center justify-content-center">
                             <div>
-                                <img className="navprofile" src={user.image} alt="fetched profile pic here" />
+                                <img className="navprofile" src={user?.image} alt="fetched profile pic here" />
                             </div>
                             <span>
                                 Me 
@@ -119,13 +119,13 @@ const Navi = (props) => {
         </Navbar>
         <header className={isVisible ? "visible fixed-top" : "fixed-top"}>
             <Container className="subnavi">
-                <img src={user.image} alt="fetched profile pic here" />
+                <img src={user?.image} alt="fetched profile pic here" />
                 <div className="d-flex flex-column mr-auto">
                     <h5>
-                        {user.name} {user.surname}
+                        {user?.name} {user?.surname}
                     </h5>
                     <span>
-                        {user.title}
+                        {user?.title}
                     </span>
                 </div>
                 <div className="subnavbuttons">
