@@ -4,6 +4,7 @@ import localStorage from "redux-persist/lib/storage"; // default value: localSto
 // import { encryptTransform } from "redux-persist-transform-encrypt";
 import fetchProfileReducer from "../reducers/fetchProfileReducer";
 import allProfilesReducer from "../reducers/allProfilesReducer"
+import experienceReducer from "../reducers/experienceReducer";
 
 
 const persistConfig = {
@@ -17,7 +18,8 @@ const persistConfig = {
 };
 const combinedReducer = combineReducers({
   getProfile: fetchProfileReducer,
-  allProfiles: allProfilesReducer
+  allProfiles: allProfilesReducer,
+  exp: experienceReducer
 
 });
 
