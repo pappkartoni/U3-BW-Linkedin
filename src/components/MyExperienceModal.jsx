@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { createExperience, getAllExperiences, updateExperience } from "../redux/actions";
 
 const MyExperienceModal = (props) => {
+  const dispatch = useDispatch()
+
+  const user = useSelector(state => state.getProfile.fetchProfile)
+  const expToEdit = useSelector(state => state.exp.experienceToEdit)
+
   const [addExperience, setAddExperience] = useState({
     role: "",
     company: "",
@@ -12,16 +19,20 @@ const MyExperienceModal = (props) => {
   });
 
   useEffect(() => {
-    // HERE DISPATCH FETCH EXPERIENCES
-  }, []);
-
-  const submitExperience = async (e) => {
-    e.preventDefault();
-    try {
-      // HERE POST EXPERIENCE
-    } catch (error) {
-      console.log("Error!");
+    if (expToEdit !== null) {
+      setAddExperience(expToEdit)
     }
+  }, [expToEdit]);
+
+  const submitExperience = async () => {
+
+    if (expToEdit) {
+      dispatch(updateExperience(user._id, expToEdit._id, addExperience))
+    } else {
+      dispatch(createExperience(user._id, addExperience))
+    }
+
+    dispatch(getAllExperiences(user._id))
   };
 
   //   const deleteExperience = async () => {
@@ -42,7 +53,7 @@ const MyExperienceModal = (props) => {
           keyboard={false}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Add experience</Modal.Title>
+            <Modal.Title>{expToEdit ? "Edit experience" : "Add experience"}</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
@@ -51,7 +62,7 @@ const MyExperienceModal = (props) => {
                 <Form.Label>Role* </Form.Label>
                 <Form.Control
                   type="text"
-                  value={addExperience.role}
+                  value={addExperience?.role}
                   onChange={(e) =>
                     setAddExperience({ ...addExperience, role: e.target.value })
                   }
@@ -62,7 +73,7 @@ const MyExperienceModal = (props) => {
                 <Form.Label>Company*</Form.Label>
                 <Form.Control
                   type="text"
-                  value={addExperience.company}
+                  value={addExperience?.company}
                   onChange={(e) =>
                     setAddExperience({
                       ...addExperience,
@@ -76,7 +87,7 @@ const MyExperienceModal = (props) => {
                 <Form.Label>Start Date*</Form.Label>
                 <Form.Control
                   type="date"
-                  value={addExperience.startDate}
+                  value={addExperience?.startDate}
                   onChange={(e) =>
                     setAddExperience({
                       ...addExperience,
@@ -90,7 +101,7 @@ const MyExperienceModal = (props) => {
                 <Form.Label>End Date</Form.Label>
                 <Form.Control
                   type="date"
-                  value={addExperience.endDate}
+                  value={addExperience?.endDate}
                   onChange={(e) =>
                     setAddExperience({
                       ...addExperience,
@@ -106,7 +117,7 @@ const MyExperienceModal = (props) => {
                   as="textarea"
                   rows={3}
                   type="text"
-                  value={addExperience.description}
+                  value={addExperience?.description}
                   onChange={(e) =>
                     setAddExperience({
                       ...addExperience,
@@ -120,7 +131,7 @@ const MyExperienceModal = (props) => {
                 <Form.Label>Area*</Form.Label>
                 <Form.Control
                   type="text"
-                  value={addExperience.area}
+                  value={addExperience?.area}
                   onChange={(e) =>
                     setAddExperience({ ...addExperience, area: e.target.value })
                   }
@@ -139,7 +150,7 @@ const MyExperienceModal = (props) => {
                 // HERE DISPATCH FETCH EXPERIENCES
               }}
             >
-              Save
+              {expToEdit ? "Save" : "Create"}
             </Button>
           </Modal.Footer>
         </Modal>
