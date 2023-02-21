@@ -10,7 +10,13 @@ const options1 = {
 export const FETCH_PROFILE = "GET_PROFILE";
 export const FETCH_PROFILE_LOADING = "FETCH_PROFILE_LOADING";
 export const FETCH_PROFILE_ERROR = "FETCH_PROFILE_ERROR";
+
 export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
+
+export const GET_ALL_EXPERIENCES = "GET_ALL_EXPERIENCES"
+export const CREATE_EXPERIENCE = "CREATE_EXPERIENCE"
+export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE"
+export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE"
 
 export const fetchOwnProfile = () => {
   return async (dispatch, getState) => {
