@@ -23,6 +23,7 @@ const ProfileComponent = () => {
     dispatch(fetchOwnProfile());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const uploadImage = async (e) => {
     e.preventDefault();
     //this is the state that handles the uploading of the image, the FormData method is used to handle image upload
@@ -69,7 +70,7 @@ const ProfileComponent = () => {
               <div className="profile-img-block">
                 <img
                   className="w-100"
-                  src={profileData.image}
+                  src={profileData?.image}
                   alt="profileImage"
                   onClick={handleShow2}
                 />
@@ -90,7 +91,7 @@ const ProfileComponent = () => {
                     {profileData.name} {profileData.surname}
                   </Card.Title>
                   <Card.Text className="mb-0">
-                    Student at Epicode | Full Stack Developer | Web Designer
+                    {profileData.title}
                   </Card.Text>
                   <div className=" d-flex align-items-center">
                     <Card.Text className="text-black-light d-inline-block mb-0">

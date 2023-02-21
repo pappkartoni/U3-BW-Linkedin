@@ -26,7 +26,7 @@ export const fetchOwnProfile = () => {
             let response = await fetch(profileUrl, options1);
             if (response.ok) {
                 const profileData = await response.json();
-                console.log("profileData", profileData);
+
                 dispatch({
                     type: FETCH_PROFILE,
                     payload: profileData,
@@ -68,7 +68,7 @@ export const getAllProfiles = () => {
 
       if (res.ok) {
         const data = await res.json();
-        console.log("profiles are", data);
+
         dispatch({
           type: GET_ALL_PROFILES,
           payload: data,
@@ -117,10 +117,10 @@ export const updateOwnProfile = (content) => {
       });
       if (response.ok) {
         const MyData = await response.json();
-        // dispatch({
-        //   type: UPDATE_PROFILE,
-        //   payload: MyData,
-        // });
+        dispatch({
+          type: UPDATE_PROFILE,
+          payload: MyData,
+        });
         console.log("updatedDataaction", MyData);
       } else {
         console.log("Error fetching Data!");
