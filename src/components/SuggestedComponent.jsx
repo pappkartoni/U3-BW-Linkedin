@@ -30,14 +30,14 @@ const SuggestedComponent = () => {
           <h4 className="suggested-title-level-title">
             Intermediate(function?)
           </h4>
-          <p>
+          <div>
             <div>
               <div className="progress-bar">
                 <div></div>
               </div>
               <span>5/7 (function?)</span>
             </div>
-          </p>
+          </div>
           <p>
             Complete i steps to achieve <span>All Star (function?)</span>
           </p>

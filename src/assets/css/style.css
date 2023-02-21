@@ -234,6 +234,33 @@ section h2 {
   margin-right: 8px;
 }
 
+.experience {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+
+.experience img {
+  width: 48px;
+  height: 48px;
+}
+
+.experience span {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.experience p {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.experience h3 {
+  margin-bottom: 3px;
+}
+
+.experience h4 {
+  margin-bottom: 0;
+}
+
 /* __________________________________Profile Component Styles */
 .btn-primary {
   background-color: var(--main-blue-color) !important;
