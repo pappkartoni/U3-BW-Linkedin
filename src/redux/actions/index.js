@@ -1,6 +1,8 @@
 const profileUrl = "https://striveschool-api.herokuapp.com/api/profile/me";
+const updateProfileUrl = "https://striveschool-api.herokuapp.com/api/profile/";
 const options1 = {
   method: "GET",
+
   headers: {
     Authorization:
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
@@ -10,7 +12,8 @@ const options1 = {
 export const FETCH_PROFILE = "GET_PROFILE";
 export const FETCH_PROFILE_LOADING = "FETCH_PROFILE_LOADING";
 export const FETCH_PROFILE_ERROR = "FETCH_PROFILE_ERROR";
-export const GET_ALL_PROFILES = "GET_ALL_PROFILES"
+export const GET_ALL_PROFILES = "GET_ALL_PROFILES";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
 export const fetchOwnProfile = () => {
   return async (dispatch, getState) => {
@@ -53,23 +56,26 @@ export const fetchOwnProfile = () => {
 export const getAllProfiles = () => {
   return async (dispatch, getState) => {
     try {
-      const res = await fetch("https://striveschool-api.herokuapp.com/api/profile/", options1)
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/",
+        options1
+      );
 
       if (res.ok) {
-        const data = await res.json()
-        console.log("profiles are", data)
+        const data = await res.json();
+        console.log("profiles are", data);
         dispatch({
           type: GET_ALL_PROFILES,
-          payload: data
-        })
+          payload: data,
+        });
       } else {
-        throw new Error(res.status)
+        throw new Error(res.status);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-}
+  };
+};
 
 export const changeTitle = (title) => {
   return async (dispatch) => {
@@ -89,5 +95,33 @@ export const changeTitle = (title) => {
     );
     const data = await res.json();
     console.log(data);
+  };
+};
+export const updateOwnProfile = (content) => {
+  return async (dispatch, getState) => {
+    dispatch({ type: UPDATE_PROFILE });
+    try {
+      let response = await fetch(updateProfileUrl, {
+        method: "PUT",
+        body: JSON.stringify(content),
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        const MyData = await response.json();
+        // dispatch({
+        //   type: UPDATE_PROFILE,
+        //   payload: MyData,
+        // });
+        console.log("updatedDataaction", MyData);
+      } else {
+        console.log("Error fetching Data!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
