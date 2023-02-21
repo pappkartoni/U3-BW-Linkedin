@@ -9,6 +9,8 @@ const Navi = (props) => {
     const user = useSelector(state => state.getProfile.fetchProfile)
     const [isVisible, setIsVisible] = useState(false)
 
+    const [dropdownIsVisible, setDropdownIsVisible] = useState(false)
+
     const setScrollBehaviour = () => {
         const offset = 210
 
@@ -18,6 +20,8 @@ const Navi = (props) => {
             setIsVisible(false)
         }
     }
+
+    const toggleDropdown = () => setDropdownIsVisible(!dropdownIsVisible)
 
     useEffect(() => {
         window.addEventListener("scroll", setScrollBehaviour);
@@ -47,7 +51,7 @@ const Navi = (props) => {
                     <NavbarButton text="Notifications" d="M22 19h-8.28a2 2 0 11-3.44 0H2v-1a4.52 4.52 0 011.17-2.83l1-1.17h15.7l1 1.17A4.42 4.42 0 0122 18zM18.21 7.44A6.27 6.27 0 0012 2a6.27 6.27 0 00-6.21 5.44L5 13h14z" />
                     
                     <li className="navbutton">
-                        <Link to="/" className="d-flex flex-column align-items-center justify-content-center">
+                        <Link onClick={toggleDropdown} className="d-flex flex-column align-items-center justify-content-center">
                             <div>
                                 <img className="navprofile" src={user.image} alt="fetched profile pic here" />
                             </div>
@@ -58,6 +62,37 @@ const Navi = (props) => {
                                 </svg>
                             </span>
                         </Link>
+                        {dropdownIsVisible && <section className="user-dropdown">
+                            <div className="d-flex">
+                                <img src={user.image} alt={user.name} />
+                                <div className="d-flex flex-column mb-3">
+                                    <h5>
+                                        {user.name} {user.surname}
+                                    </h5>
+                                    <span>
+                                        {user.title}
+                                    </span>
+                                </div>
+                            </div>
+                            <Link className="w-100 btn btn-outline-primary justify-content-center">View Profile</Link>
+                            <div className="dropdown-section">
+                                <h3>Account</h3>
+                                <Link to="/">Try Premium for free</Link>
+                                <Link to="/">Settings & Privacy</Link>
+                                <Link to="/">Help</Link>
+                                <Link to="/">Language</Link>
+                            </div>
+                            <div className="dropdown-section">
+                                <h3>Manage</h3>
+                                <Link to="/">Post & Activity</Link>
+                                <Link to="/">Job Posting Account</Link>
+                            </div>
+                            <div className="pt-2">
+                                <Link to="/">
+                                    Sign Out
+                                </Link>
+                            </div>
+                        </section>}
                     </li>
                     <li className="navbutton">
                         <Link to="/" className="d-flex flex-column align-items-center justify-content-center">
