@@ -1,14 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import ExperienceTile from "./ExperienceTile";
 import MyExperienceModal from "./MyExperienceModal";
-import { BsPlus } from "react-icons/bs";
+import { BsFillPencilFill, BsPlus } from "react-icons/bs";
 import { useState } from "react";
+import ExperienceEdit from "./ExperienceEdit";
 
 const ExperiencesContainer = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
   const experiences = [
     {
       _id: "5d925e677360c41e0046d1f5", // server generated
@@ -29,13 +33,19 @@ const ExperiencesContainer = () => {
 
   return (
     <section>
-      <div className="d-flex align-items-center justify-content-between experience ">
-        <h2 className="pt-0 px-0">Experience</h2>
-        <div className="icon-hover">
-          <BsPlus size="40" fill="rgba(0,0,0,0.6)" onClick={handleShow} />
+      <div className="d-flex align-items-center justify-content-between experience pr-2 ">
+        <h2 className="pt-0 px-0 mb-0">Experience</h2>
+        <div className="d-flex align-items-center">
+          <div className="icon-hover d-flex justify-content-center align-items-center">
+            <BsPlus size="38" fill="rgba(0,0,0,0.6)" onClick={handleShow} />
+          </div>
+          <div className="icon-hover d-flex justify-content-center align-items-center">
+            <BsFillPencilFill fill="rgba(0,0,0,0.6)" onClick={handleShow2} />
+          </div>
         </div>
       </div>
       <MyExperienceModal show={show} handleClose={handleClose} />
+      <ExperienceEdit show={show2} handleClose={handleClose2} />
       {experiences.length > 0 &&
         experiences.map((exp) => <ExperienceTile key={exp._id} exp={exp} />)}
     </section>
