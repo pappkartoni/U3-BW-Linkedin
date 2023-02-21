@@ -11,6 +11,7 @@ import Navi from "./components/Navi";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import ProfileComponent from "./components/ProfileComponent";
+import ExperiencesContainer from "./components/ExperiencesContainer";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <AnalyticsComponent />
               <ResourcesComponent />
               <ActivityComponent />
+              <ExperiencesContainer />
             </Col>
             <Col md={4}>
               <Sidebar />

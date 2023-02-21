@@ -37,6 +37,7 @@ const SuggestedComponent = () => {
           <h4 className="suggested-title-level-title">Intermediate</h4>
           <p className="mb-0">
             <div className="d-flex justify-content-center align-items-center">
+
               <div className="progress-bar">
                 <div></div>
               </div>

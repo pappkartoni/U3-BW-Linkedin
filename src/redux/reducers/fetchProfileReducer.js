@@ -1,5 +1,6 @@
 import {
   FETCH_PROFILE,
+  UPDATE_PROFILE,
   FETCH_PROFILE_LOADING,
   FETCH_PROFILE_ERROR,
 } from "../actions";
@@ -13,6 +14,11 @@ const initialState = {
 const fetchOwnProfileReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PROFILE:
+      return {
+        ...state,
+        fetchProfile: action.payload,
+      };
+    case UPDATE_PROFILE:
       return {
         ...state,
         fetchProfile: action.payload,
