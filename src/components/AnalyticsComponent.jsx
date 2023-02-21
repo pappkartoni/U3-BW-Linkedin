@@ -1,35 +1,49 @@
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import "../assets/css/AnalyticsComponent.css";
 
 const AnalyticsComponent = () => {
   return (
     <section>
-      <Container className="block-example border border-dark">
+      <Container className="pb-3">
         <div>
-          <h2>Analytics</h2>
-          <p>
-            <i className="bi bi-eye-fill"></i>
+          <h3 className="analytics-title mt-4 mb-0">Analytics</h3>
+          <p className="analytics-title-para mb-1">
+            <i
+              className="bi bi-eye-fill"
+              style={{
+                color: "rgb(103, 103, 103)",
+              }}
+            ></i>
+            <span> </span>
             <span>Private to you</span>
           </p>
         </div>
         <Container>
           <Row>
-            <Col xs={4}>
-              <div>
-                <div>
-                  <i className="bi bi-people-fill"></i>
-                  <span>i profile views (function?)</span>
+            <Col xs={5}>
+              <div className="d-flex align-items-start">
+                <i
+                  className="bi bi-people-fill analytics-people-fill"
+                  size={"4rem"}
+                ></i>
+                <div className="d-flex">
+                  <div className="analytics-profile-views pl-2">
+                    <span>10 profile views</span>
+                    <p>Discover who's viewed your profile.</p>
+                  </div>
                 </div>
-                <p>Discover who's viewed your profile.</p>
               </div>
             </Col>
-            <Col xs={4}>
-              <div>
-                <div>
-                  <i className="bi bi-search"></i>
-                  <span>i search appearances</span>
+            <Col xs={5}>
+              <div className="d-flex">
+                <i className="bi bi-search"></i>
+                <div className="d-flex">
+                  <div className="analytics-search-appearances pl-2">
+                    <span>25 search appearances</span>
+                    <p>See how ofter you appear in search results.</p>
+                  </div>
                 </div>
-
-                <p>See how ofter you appear in search results.</p>
               </div>
             </Col>
             <Col xs={4}></Col>

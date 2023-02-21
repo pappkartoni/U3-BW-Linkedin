@@ -4,12 +4,15 @@ import MyExperienceModal from "./MyExperienceModal";
 import { BsFillPencilFill, BsPlus } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import ExperienceEdit from "./ExperienceEdit";
+
 import { getAllExperiences, getSingleExperience } from "../redux/actions";
+
 
 const ExperiencesContainer = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+
   const handleShow = (id = null) => {
 
     if (id) {

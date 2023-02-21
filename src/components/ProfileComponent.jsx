@@ -90,20 +90,21 @@ const ProfileComponent = () => {
                   <Card.Title>
                     {profileData.name} {profileData.surname}
                   </Card.Title>
-                  <Card.Text className="mb-0">
-                    {profileData.title}
-                  </Card.Text>
+                  <Card.Text className="mb-0">{profileData.title}</Card.Text>
                   <div className=" d-flex align-items-center">
                     <Card.Text className="text-black-light d-inline-block mb-0">
                       {profileData.area}
                       {", North Rhine-Westphalia, Germany"}
                     </Card.Text>
                     <span className="before-dot">{"."}</span>
-                    <a href="#contact-info" className="d-inline-block ">
+                    <a
+                      href="#contact-info"
+                      className="d-inline-block links-blue "
+                    >
                       Contact info
                     </a>
                   </div>
-                  <a href="#contact-info" className="d-inline-block">
+                  <a href="#contact-info" className="d-inline-block links-blue">
                     87 connections
                   </a>
                   <div className="mt-2">

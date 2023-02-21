@@ -291,7 +291,7 @@ section h2 {
   top: 61px;
   font-size: 14px;
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.08),
-  0px 4px 4px rgba(0, 0, 0, 0.3);
+    0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
 .user-dropdown img {
@@ -357,6 +357,10 @@ section h2 {
 }
 .text-black-light {
   color: var(--text-black-light);
+}
+.links-blue {
+  color: var(--main-blue-color);
+  font-weight: 600;
 }
 .before-dot {
   margin-inline: 5px;

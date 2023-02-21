@@ -20,18 +20,27 @@ const experienceReducer = (state = initialState, action) => {
                 experienceToEdit: action.payload
             }
 
-        case CREATE_EXPERIENCE:
-            return state
+    // case CREATE_EXPERIENCE:
+    //   return {
+    //     ...state,
+    //     experiences: action.payload,
+    //   };
 
-        case UPDATE_EXPERIENCE:
-            return state
+    // case UPDATE_EXPERIENCE:
+    //   return {
+    //     ...state,
+    //     experiences: action.payload,
+    //   };
 
-        case DELETE_EXPERIENCE:
-            return state
+    // case DELETE_EXPERIENCE:
+    //   return {
+    //     ...state,
+    //     experiences: action.payload,
+    //   };
 
-        default:
-            return state
-    }
-}
+    default:
+      return state;
+  }
+};
 
-export default experienceReducer
+export default experienceReducer;
