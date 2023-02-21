@@ -325,6 +325,7 @@ section h2 {
 }
 .card {
   border-radius: var(--corner-radius-medium) !important;
+  border-width: 0;
 }
 .card-img,
 .card-img-top {

@@ -103,7 +103,8 @@ const Navi = (props) => {
               {dropdownIsVisible && (
                 <section className="user-dropdown">
                   <div className="d-flex">
-                    <img src={user.image} alt={user.name} />
+                    {user.length !== <img src={user.image} alt={user.name} />}
+                    {/* <img src={user.image} alt={user.name} /> */}
                     <div className="d-flex flex-column mb-3">
                       <h5>
                         {user.name} {user.surname}

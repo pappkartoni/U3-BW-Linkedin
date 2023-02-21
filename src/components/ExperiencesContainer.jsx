@@ -7,27 +7,24 @@ import ExperienceEdit from "./ExperienceEdit";
 
 import { getAllExperiences, getSingleExperience } from "../redux/actions";
 
-
 const ExperiencesContainer = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const user = useSelector((state) => state.getProfile.fetchProfile);
 
   const handleShow = (id = null) => {
-
     if (id) {
-      console.log("with id", id)
-      dispatch(getSingleExperience(user._id, id))
+      console.log("with id", id);
+      dispatch(getSingleExperience(user?._id, id));
     } else {
-      console.log("without id")
-      dispatch({type: "GET_SINGLE_EXPERIENCE", payload: null})
+      console.log("without id");
+      dispatch({ type: "GET_SINGLE_EXPERIENCE", payload: null });
     }
     setShow(true);
-  }
+  };
 
-  const user = useSelector(state => state.getProfile.fetchProfile)
-
-  const experiences = useSelector(state => state.exp.experiences)  
+  const experiences = useSelector((state) => state.exp.experiences);
   /* [
     {
       _id: "5d925e677360c41e0046d1f5", // server generated
@@ -47,22 +44,37 @@ const ExperiencesContainer = () => {
   ]; */
 
   useEffect(() => {
-    dispatch(getAllExperiences(user._id))
-  },[])
+    dispatch(getAllExperiences(user._id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section>
-      <div className="d-flex align-items-center justify-content-between experience pr-2 ">
+      <div className="d-flex align-items-center justify-content-between experience pr-3 ">
         <h2 className="pt-0 px-0 mb-0">Experience</h2>
         <div className="d-flex align-items-center">
           <div className="icon-hover d-flex justify-content-center align-items-center">
-            <BsPlus size="38" fill="rgba(0,0,0,0.6)" onClick={() => handleShow(null)} />
+            <BsPlus
+              size="38"
+              fill="rgba(0,0,0,0.6)"
+              onClick={() => handleShow(null)}
+            />
           </div>
         </div>
       </div>
-      <MyExperienceModal show={show} handleClose={handleClose} userId={user._id}/>
+      <MyExperienceModal
+        show={show}
+        handleClose={handleClose}
+        userId={user?._id}
+      />
       {experiences.length > 0 &&
-        experiences.map((exp) => <ExperienceTile key={exp._id} exp={exp} handleShow={() => (handleShow(exp._id))}/>)}
+        experiences.map((exp) => (
+          <ExperienceTile
+            key={exp._id}
+            exp={exp}
+            handleShow={() => handleShow(exp._id)}
+          />
+        ))}
     </section>
   );
 };
