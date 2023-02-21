@@ -22,5 +22,6 @@ const ExperienceTile = (props) => {
             </div>
         </div>
     )
+}
 
-export default ExperienceTile;
+export default ExperienceTile
