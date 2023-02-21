@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500;600;700;800;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+
+.activity-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  /* text-align: left; */
+  margin-left: auto;
+  padding-left: 0;
+  color: rgba(0, 0, 0, 0.9);
+}

@@ -1,20 +1,26 @@
 import { Button, Container } from "react-bootstrap";
+import "../assets/css/ActivityComponent.css";
 
 const ActivityComponent = () => {
   return (
     <section>
-      <Container className="block-example border border-dark">
-        <div>
-          <h2>Activity</h2>
-          <Button>Start a post (FETCH POST function?)</Button>
-          <p>n followers (LINK?)</p>
+      <Container className="pb-3">
+        <div className="d-flex justify-content-between align-items-center">
+          <div>
+            <h3 className="activity-title mt-4 mb-0">Activity</h3>
+            <p>n followers</p>
+          </div>
+          <Button variant="outline-primary" className="border-btn">
+            Start a post
+          </Button>
         </div>
         <div>
           <p>
-            N posts lately | you haven't posted latley (FECTH GET function?)
+            N posts lately | you haven't posted latley (FETCH GET function?)
           </p>
           <p>Recent post you share or comment on will be displayed here</p>
         </div>
+
         <hr></hr>
         <div>
           <p>
