@@ -1,13 +1,15 @@
 .start-post-container {
   background-color: white;
-  padding: 20px;
-  margin-bottom: 50px;
+  padding-inline: 15px;
+  padding-block: 12px;
+  /* margin-bottom: 50px; */
 }
 
 .start-post-first-row {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
 .start-post-first-row > img {

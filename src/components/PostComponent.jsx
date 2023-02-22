@@ -21,7 +21,7 @@ const PostComponent = () => {
           {posts
             .slice()
             .reverse()
-            .slice(0,20)
+            .slice(0, 20)
             .map((post) => (
               <SinglePost key={post._id} post={post} />
             ))}

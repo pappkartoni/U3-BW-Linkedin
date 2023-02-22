@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createPost } from "../redux/actions";
+import { createPost, getAllPosts } from "../redux/actions";
 import "../assets/css/StartPostModal.css";
 
 const StartPostModal = ({ show, handleClose }) => {
@@ -15,8 +15,8 @@ const StartPostModal = ({ show, handleClose }) => {
 
   const submitPost = () => {
     dispatch(createPost({ text }, handleClose));
+    dispatch(getAllPosts());
   };
-
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -25,7 +25,7 @@ const StartPostModal = ({ show, handleClose }) => {
 
       <Modal.Body>
         <div className="d-flex start-post-modal-header">
-          <img src={image} />
+          <img src={image} alt="user profile" />
           <h5>{name}</h5>
         </div>
 

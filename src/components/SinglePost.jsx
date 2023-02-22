@@ -1,11 +1,14 @@
 import { Col, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../assets/css/style.css";
-import { format, parseISO } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 import { BiComment, BiLike, BiSend, BiShuffle } from "react-icons/bi";
 import { FiMoreHorizontal } from "react-icons/fi";
 
 const SinglePost = (props) => {
+  const daysAgo = formatDistanceToNow(new Date(props.post?.createdAt), {
+    addSuffix: true,
+  });
   return (
     <section className="pt-3 pr-3 pb-1 pl-3">
       <Row>
@@ -31,8 +34,9 @@ const SinglePost = (props) => {
                   {props.post?.user?.title}
                 </p>
                 <span className="posted-date text-muted">
-                  {props.post?.createdAt &&
-                    format(parseISO(props.post?.createdAt), "dd MMM yyyy")}{" "}
+                  {daysAgo}
+                  {/* {props.post?.createdAt &&
+                    format(parseISO(props.post?.createdAt), "dd MMM yyyy")}{" "} */}
                 </span>
               </div>
             </Col>

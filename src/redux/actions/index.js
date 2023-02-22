@@ -295,7 +295,7 @@ export const getAllPosts = () => {
       );
       if (res.ok) {
         const data = await res.json();
-        console.log("post", data);
+        // console.log("post", data);
         dispatch({
           type: GET_ALL_POSTS,
           payload: data,
@@ -324,7 +324,7 @@ export const createPost = (data, handleClose) => {
       );
       if (res.ok) {
         const data = await res.json();
-        console.log(data);
+        console.log("postdata", data);
         handleClose();
         // dispatch(getAllPosts());
         dispatch({
