@@ -35,14 +35,14 @@ const SuggestedComponent = () => {
         </div>
         <div>
           <h4 className="suggested-title-level-title">Intermediate</h4>
-          <p className="mb-0">
+          <div className="mb-0">
             <div className="d-flex justify-content-center align-items-center">
               <div className="progress-bar">
                 <div></div>
               </div>
               <span>5/7</span>
             </div>
-          </p>
+          </div>
           <p className="suggested-card-title mt-0 pt-0">
             Complete 2 steps to achieve <span>All Star(function?)</span>
           </p>

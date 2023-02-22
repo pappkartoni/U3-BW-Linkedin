@@ -3,7 +3,7 @@ import { format, parseISO } from "date-fns";
 
 const ExperienceTile = (props) => {
   return (
-    <div className="experience d-flex pr-3">
+    <div className="experience d-flex pr-3 border-light-bottom">
       <div style={{ maxWidth: "20%", width: "100%" }}>
         <img src={props.exp.image} alt={props.exp.company} />
       </div>
@@ -15,7 +15,6 @@ const ExperienceTile = (props) => {
           {props.exp.role}{" "}
           <span className="icon-hover d-flex justify-content-center align-items-center ">
             <BsFillPencilFill
-              size={18}
               fill="rgba(0,0,0,0.6)"
               onClick={props.handleShow}
             />

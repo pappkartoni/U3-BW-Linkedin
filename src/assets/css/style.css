@@ -308,7 +308,9 @@ section h2 {
   display: flex;
   flex-direction: column;
 }
-
+.border-light-bottom:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
 /* __________________________________Profile Component Styles */
 .btn-primary {
   background-color: var(--main-blue-color) !important;
@@ -356,8 +358,13 @@ section h2 {
 .card-title.h5 {
   font-size: 28px;
 }
+.card-text-title {
+  font-size: 18px !important;
+  color: rgba(0, 0, 0, 0.9);
+}
 .text-black-light {
   color: var(--text-black-light);
+  font-size: 0.9rem !important;
 }
 .links-blue {
   color: var(--main-blue-color);
@@ -370,4 +377,46 @@ section h2 {
 .border-btn:hover {
   background-color: rgba(112, 181, 249, 0.2);
   box-shadow: 0 0 0 2px var(--main-blue-color) inset;
+}
+/* _______________________________________Home Page */
+.z-index-card-body {
+  z-index: 2;
+}
+.profile-img-block-home {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-top: -35px;
+}
+.home-profile-img {
+  border-radius: 50%;
+}
+.card-title.h3 {
+  font-size: 16px;
+}
+.title-font {
+  font-size: 14px !important;
+  color: rgba(0, 0, 0, 0.6);
+}
+.small-text {
+  font-size: 13px;
+
+  color: rgba(0, 0, 0, 0.6);
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+.hover-block {
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.hover-block:hover {
+  background-color: #ebebeb;
+}
+.premium-text {
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: underline;
+}
+.hover-block:hover .premium-text {
+  color: var(--main-blue-color);
 }

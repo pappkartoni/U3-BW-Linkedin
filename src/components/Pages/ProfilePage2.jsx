@@ -11,7 +11,7 @@ const ProfilePage2 = () => {
   return (
     <Container>
       <Row>
-        <Col md={8}>
+        <Col md={9}>
           <ProfileComponent />
           <SuggestedComponent />
           <AnalyticsComponent />
@@ -19,7 +19,7 @@ const ProfilePage2 = () => {
           <ActivityComponent />
           <ExperiencesContainer />
         </Col>
-        <Col md={4}>
+        <Col md={3}>
           <Sidebar />
         </Col>
       </Row>
