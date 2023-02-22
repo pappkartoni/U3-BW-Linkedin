@@ -327,7 +327,7 @@ export const createPost = (data, handleClose) => {
         const data = await res.json();
         console.log(data);
         handleClose();
-        dispatch(getAllPosts());
+        // dispatch(getAllPosts());
         dispatch({
           type: CREATE_POST,
           payload: data,

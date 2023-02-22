@@ -29,3 +29,11 @@
 .start-post-first-row > div:hover {
   background-color: rgb(243, 242, 239);
 }
+
+.start-post-second-row {
+  margin-top: 30px;
+}
+
+.start-post-second-row > i {
+  font-size: 48px;
+}

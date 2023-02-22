@@ -17,9 +17,12 @@ const PostComponent = () => {
       <StartPostComponent />
       {posts.length > 0 && (
         <>
-          {posts.map((post) => (
-            <SinglePost post={post} />
-          ))}
+          {posts
+            .slice()
+            .reverse()
+            .map((post) => (
+              <SinglePost key={post._id} post={post} />
+            ))}
         </>
       )}
     </Container>
