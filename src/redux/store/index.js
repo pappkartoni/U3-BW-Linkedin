@@ -21,7 +21,7 @@ const combinedReducer = combineReducers({
   getProfile: fetchProfileReducer,
   allProfiles: allProfilesReducer,
   exp: experienceReducer,
-  post: postReducer,
+  posts: postReducer,
   bioReducer,
 });
 
