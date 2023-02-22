@@ -6,10 +6,10 @@ const HomePage = () => {
     <>
       <Container className=" hero-section">
         <Row>
-          <Col md={3} style={{ padding: "0" }}>
+          <Col md={2} style={{ padding: "0" }}>
             <h6>User profile</h6>
           </Col>
-          <Col md={6} style={{ padding: "0" }}>
+          <Col md={7} style={{ padding: "0" }}>
             <h6>Post and feeds</h6>
           </Col>
           <Col md={3} style={{ padding: "0" }}>
