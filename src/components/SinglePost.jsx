@@ -1,18 +1,28 @@
-import { Col, ListGroup, Row } from "react-bootstrap";
+import { Col, Dropdown, DropdownButton, ListGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../assets/css/style.css";
 import { formatDistanceToNow } from "date-fns";
 import { BiComment, BiLike, BiSend, BiShuffle } from "react-icons/bi";
 import { FiMoreHorizontal } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePost } from "../redux/actions";
 
 const SinglePost = (props) => {
+  const profileDataID = useSelector(
+    (state) => state.getProfile.fetchProfile._id
+  );
+  const dispatch = useDispatch();
   const daysAgo = formatDistanceToNow(new Date(props.post?.createdAt), {
     addSuffix: true,
   });
+  const handleDelete = () => {
+    dispatch(deletePost(props.post?._id));
+  };
   return (
-    <section className="pt-3 pr-3 pb-1 pl-3">
+    <section className="pt-3 pr-3 pb-1 pl-3" style={{ overflow: "visible" }}>
       <Row>
-        <Col md={10}>
+        <Col md={9}>
           <div className="d-flex align-items-center">
             <Col md={2} className="px-0">
               <div className="post-profile-img">
@@ -42,9 +52,28 @@ const SinglePost = (props) => {
             </Col>
           </div>
         </Col>
-        <Col md={2}>
-          <div className="text-right icon-hover d-flex justify-content-center align-items-center ">
-            <FiMoreHorizontal size={22} />
+        <Col md={3} className="pr-0 ml-auto">
+          <div className="d-flex align-items-center justify-content-end  pr-1">
+            <div className="icon-hover d-flex justify-content-center align-items-center">
+              <DropdownButton
+                align="end"
+                title={<FiMoreHorizontal size={22} />}
+                id="dropdown-menu-align-end"
+                className="bg-transparent-dropdown"
+              >
+                <Dropdown.Item eventKey="1">Save Post</Dropdown.Item>
+                <Dropdown.Item eventKey="2">Copy link to post</Dropdown.Item>
+                <Dropdown.Item eventKey="3">Embed this post</Dropdown.Item>
+              </DropdownButton>
+            </div>
+            {props.post?.user?._id === profileDataID && (
+              <div
+                className="icon-hover d-flex justify-content-center align-items-center"
+                onClick={handleDelete}
+              >
+                <MdDelete size={20} fill="rgba(0,0,0,0.5)" />
+              </div>
+            )}
           </div>
         </Col>
       </Row>

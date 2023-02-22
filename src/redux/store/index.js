@@ -32,6 +32,8 @@ const store = configureStore({
   // we're telling Redux which reducer function to use!
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
+      // immutableCheck: false,  //turn off the checks immutableCheck
+      immutableCheck: { warnAfter: 128 }, // checks immutableCheck increase the timeouts:
       serializableCheck: false,
       // this shuts off the checking of non-serializable values in actions
     });

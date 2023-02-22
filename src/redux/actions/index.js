@@ -324,7 +324,7 @@ export const createPost = (data, handleClose) => {
       );
       if (res.ok) {
         const data = await res.json();
-        console.log("postdata", data);
+        // console.log("postdata", data);
         handleClose();
         // dispatch(getAllPosts());
         dispatch({

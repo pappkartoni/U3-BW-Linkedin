@@ -47,25 +47,6 @@ const StartPostComponent = () => {
             <span className="ml-1 align-middle">Write article</span>
           </ListGroup.Item>
         </ListGroup>
-        {/* <div className="start-post-second-row d-flex">
-          <div className="d-flex">
-            <i className="bi bi-image" fill="red"></i>
-            <p>Photo</p>
-          </div>
-          <div className="d-flex">
-            <i className="bi bi-play-btn-fill"></i>
-            <p>Video</p>
-          </div>
-          <div className="d-flex">
-            <i className="bi bi-calendar-date"></i>
-            <p>Event</p>
-          </div>
-          <div className="d-flex">
-            <i className="bi bi-newspaper"></i>
-            <p>Write article</p>
-          </div>
-        </div> */}
-
         <StartPostModal show={show} handleClose={handleClose} />
       </div>
     </section>

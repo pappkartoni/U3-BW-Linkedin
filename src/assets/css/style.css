@@ -473,7 +473,7 @@ section h2 {
   height: 100%;
 }
 .post-profile-name {
-  max-width: 75%;
+  /* max-width: 75%; */
   width: 100%;
 }
 .post-profile-title {
@@ -483,4 +483,21 @@ section h2 {
 .posted-date {
   font-size: 12px;
   line-height: 10px;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+.bg-transparent-dropdown .btn-primary {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: rgba(0, 0, 0, 0.9);
+}
+.show > .btn-primary.dropdown-toggle {
+  color: rgba(0, 0, 0, 0.9);
+}
+.bg-transparent-dropdown .btn-primary:focus {
+  box-shadow: none !important;
+}
+.bg-transparent-dropdown .btn-primary:not(:disabled):not(.disabled):active {
+  color: rgba(0, 0, 0, 0.9);
 }
