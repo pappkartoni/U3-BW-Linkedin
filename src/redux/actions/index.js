@@ -307,7 +307,7 @@ export const getAllPosts = () => {
   };
 };
 
-export const createPost = (data) => {
+export const createPost = (data, handleClose) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
@@ -324,6 +324,9 @@ export const createPost = (data) => {
       );
       if (res.ok) {
         const data = await res.json();
+        console.log(data);
+        handleClose();
+        // dispatch(getAllPosts());
         dispatch({
           type: CREATE_POST,
           payload: data,
