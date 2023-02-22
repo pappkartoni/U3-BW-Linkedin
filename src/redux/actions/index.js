@@ -15,12 +15,11 @@ export const FETCH_PROFILE_ERROR = "FETCH_PROFILE_ERROR";
 export const GET_ALL_PROFILES = "GET_ALL_PROFILES";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
-export const GET_ALL_EXPERIENCES = "GET_ALL_EXPERIENCES"
-export const CREATE_EXPERIENCE = "CREATE_EXPERIENCE"
-export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE"
-export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE"
-export const GET_SINGLE_EXPERIENCE = "GET_SINGLE_EXPERIENCE"
-
+export const GET_ALL_EXPERIENCES = "GET_ALL_EXPERIENCES";
+export const CREATE_EXPERIENCE = "CREATE_EXPERIENCE";
+export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
+export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
+export const GET_SINGLE_EXPERIENCE = "GET_SINGLE_EXPERIENCE";
 
 export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const CREATE_POST = "CREATE_POST";
@@ -228,27 +227,33 @@ export const updateExperience = (userId, expId, data) => {
 };
 
 export const getSingleExperience = (userId, expId) => {
-    console.log(userId, expId)
-    return async (dispatch) => {
-        try {
-            const res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`, {
-                method: "GET",
-                headers: {Authorization:  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s"}
-            })
-
-            if (res.ok) {
-                const data = await res.json() //is this actually an object?
-
-                dispatch({
-                    type: GET_SINGLE_EXPERIENCE,
-                    payload: data
-                })
-            }
-        } catch (error) {
-            console.log(error)
+  console.log(userId, expId);
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+          },
         }
+      );
+
+      if (res.ok) {
+        const data = await res.json(); //is this actually an object?
+
+        dispatch({
+          type: GET_SINGLE_EXPERIENCE,
+          payload: data,
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
-}
+  };
+};
 
 export const deleteExperience = (userId, expId) => {
   return async (dispatch) => {
@@ -292,6 +297,7 @@ export const getAllPosts = () => {
       );
       if (res.ok) {
         const data = await res.json();
+        console.log("post", data);
         dispatch({
           type: GET_ALL_POSTS,
           payload: data,

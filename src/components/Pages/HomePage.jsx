@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { fetchOwnProfile } from "../../redux/actions";
 import { useEffect } from "react";
 import PostFeedLeftRecent from "../PostFeedLeftRecent";
+import PostComponent from "../PostComponent";
 
 const HomePage = () => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
@@ -15,21 +16,18 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
-      <Container className=" hero-section">
-        <Row>
-          <Col md={2} style={{ padding: "0" }}>
-            <h6>User profile</h6>
-          </Col>
-          <Col md={7} style={{ padding: "0" }}>
-            <h6>Post and feeds</h6>
-          </Col>
-          <Col md={3} style={{ padding: "0" }}>
-            <Sidebar />
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Row>
+      <Col xs={12} sm={3} md={3} lg={3}>
+        <PostFeedProfileLeftCom profileData={profileData} />
+        <PostFeedLeftRecent />
+      </Col>
+      <Col xs={12} sm={6} md={6} lg={6}>
+        <PostComponent />
+      </Col>
+      <Col xs={12} sm={3} className="d-xs-none " md={3} lg={3}>
+        <Sidebar />
+      </Col>
+    </Row>
   );
 };
 
