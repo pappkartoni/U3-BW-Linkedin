@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { createExperience, getAllExperiences, updateExperience } from "../redux/actions";
+import { format } from "date-fns/";
+import { parseISO } from "date-fns";
 
 const MyExperienceModal = (props) => {
   const dispatch = useDispatch()
@@ -19,8 +21,18 @@ const MyExperienceModal = (props) => {
   });
 
   useEffect(() => {
+    console.log("update exptoedit", expToEdit)
     if (expToEdit !== null) {
       setAddExperience(expToEdit)
+    } else {
+      setAddExperience({
+        role: "",
+        company: "",
+        startDate: "",
+        endDate: "",
+        description: "",
+        area: "",
+      })
     }
   }, [expToEdit]);
 
@@ -33,6 +45,7 @@ const MyExperienceModal = (props) => {
     }
 
     dispatch(getAllExperiences(user._id))
+    props.handleClose()
   };
 
   //   const deleteExperience = async () => {
@@ -43,8 +56,6 @@ const MyExperienceModal = (props) => {
   //     }
   //   };
   return (
-    <>
-      <>
         <Modal
           size="lg"
           show={props.show}
@@ -87,7 +98,7 @@ const MyExperienceModal = (props) => {
                 <Form.Label>Start Date*</Form.Label>
                 <Form.Control
                   type="date"
-                  value={addExperience?.startDate}
+                  value={addExperience.startDate !== "" ? format(parseISO(addExperience.startDate), "yyyy-MM-dd") : ""}
                   onChange={(e) =>
                     setAddExperience({
                       ...addExperience,
@@ -101,7 +112,7 @@ const MyExperienceModal = (props) => {
                 <Form.Label>End Date</Form.Label>
                 <Form.Control
                   type="date"
-                  value={addExperience?.endDate}
+                  value={addExperience.endDate !== "" ? format(parseISO(addExperience.endDate), "yyyy-MM-dd") : ""}
                   onChange={(e) =>
                     setAddExperience({
                       ...addExperience,
@@ -154,8 +165,6 @@ const MyExperienceModal = (props) => {
             </Button>
           </Modal.Footer>
         </Modal>
-      </>
-    </>
   );
 };
 export default MyExperienceModal;
