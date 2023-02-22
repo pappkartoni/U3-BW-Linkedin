@@ -28,7 +28,7 @@ const ResourcesComponent = () => {
                   <div className="creator-mode d-flex">
                     <span>Creator Mode</span>
                     <Button className="creator-btn" variant="secondary">
-                      ON/OFF (function?)
+                      ON
                     </Button>
                   </div>
                   <p>
@@ -52,8 +52,7 @@ const ResourcesComponent = () => {
 
         <div>
           <p className="show-resources-btn">
-            Show all n resources <i className="bi bi-arrow-right"></i>{" "}
-            (function?)
+            Show all 5 resources <i className="bi bi-arrow-right"></i>
           </p>
         </div>
       </Container>
