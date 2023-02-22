@@ -17,14 +17,14 @@ const HomePage = () => {
 
   return (
     <Row>
-      <Col md={2}>
+      <Col xs={12} sm={3} md={3} lg={3}>
         <PostFeedProfileLeftCom profileData={profileData} />
         <PostFeedLeftRecent />
       </Col>
-      <Col md={7} style={{ padding: "0" }}>
+      <Col xs={12} sm={6} md={6} lg={6}>
         <PostComponent />
       </Col>
-      <Col md={3} style={{ padding: "0" }}>
+      <Col xs={12} sm={3} className="d-xs-none " md={3} lg={3}>
         <Sidebar />
       </Col>
     </Row>
