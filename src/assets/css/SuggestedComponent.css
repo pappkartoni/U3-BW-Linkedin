@@ -25,8 +25,9 @@
 .suggested-title-level-title {
   text-align: left;
   color: rgba(0, 0, 0, 0.9);
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0;
 }
 
 .progress-bar {
@@ -40,6 +41,10 @@
   height: 100%;
   width: 70%;
   background-color: rgb(86, 104, 122);
+}
+
+.progress-bar-grade {
+  padding-left: 0.4em;
 }
 
 .suggested-internal-section {
@@ -78,12 +83,12 @@
 .summary-work-box {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .suggested-work-box span {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 550;
 }
 
 /* .card-title.h5 {
@@ -97,7 +102,7 @@
 }
 
 p.card-text {
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 
 .add-position-btn {
@@ -117,9 +122,9 @@ p.card-text {
 }
 
 .summary-work-box span {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 550;
 }
 
-/* .summary-work-box-text {
-} */
+.summary-work-box-text {
+}
