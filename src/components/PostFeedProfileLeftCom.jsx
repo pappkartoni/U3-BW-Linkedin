@@ -69,7 +69,7 @@ const PostFeedProfileLeftCom = ({ profileData }) => {
           </Card.Body>
           <hr className="mt-0 mb-0" />
           <Card.Body className="hover-block small-text py-2 px-2 pb-3">
-            <BsFillBookmarkFill />
+            <BsFillBookmarkFill className="hover-icon-blue" />
             <span className="premium-text font-weight-600 text-decoration-none ml-2 align-middle">
               My Items
             </span>

@@ -420,3 +420,9 @@ section h2 {
 .hover-block:hover .premium-text {
   color: var(--main-blue-color);
 }
+.hover-block:hover .hover-icon-blue {
+  color: var(--main-blue-color);
+}
+.list-group-item {
+  border: 0;
+}

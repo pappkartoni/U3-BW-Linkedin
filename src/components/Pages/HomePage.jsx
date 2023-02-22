@@ -4,6 +4,7 @@ import Sidebar from "../Sidebar";
 import { Col, Row } from "react-bootstrap";
 import { fetchOwnProfile } from "../../redux/actions";
 import { useEffect } from "react";
+import PostFeedLeftRecent from "../PostFeedLeftRecent";
 
 const HomePage = () => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
@@ -17,6 +18,7 @@ const HomePage = () => {
     <Row>
       <Col md={3}>
         <PostFeedProfileLeftCom profileData={profileData} />
+        <PostFeedLeftRecent />
       </Col>
       <Col md={6} style={{ padding: "0" }}>
         <h6>Post and feeds</h6>
