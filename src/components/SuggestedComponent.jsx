@@ -2,14 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import ChangeTitleForm from "./ChangeTitleForm";
+import ChangeBioForm from "./ChangeBioForm";
 import "../assets/css/SuggestedComponent.css";
 
 const SuggestedComponent = () => {
   const [showTitleForm, setShowTitleForm] = useState(false);
-
   const handleCloseTitleForm = () => setShowTitleForm(false);
   const handleShowTitleForm = () => setShowTitleForm(true);
   const openChangeTitleForm = () => {};
+
+  const [showBioForm, setShowBioForm] = useState(false);
+  const handleCloseBioForm = () => setShowBioForm(false);
+  const handleShowBioForm = () => setShowBioForm(true);
+  const openChangeBioForm = () => {};
 
   return (
     <section>
@@ -17,6 +22,12 @@ const SuggestedComponent = () => {
         handleCloseTitleForm={handleCloseTitleForm}
         handleShowTitleForm={handleShowTitleForm}
         showTitleForm={showTitleForm}
+      />
+
+      <ChangeBioForm
+        handleCloseBioForm={handleCloseBioForm}
+        handleShowBioForm={handleShowBioForm}
+        showBioForm={showBioForm}
       />
 
       <Container className="pb-3">
@@ -35,15 +46,14 @@ const SuggestedComponent = () => {
         </div>
         <div>
           <h4 className="suggested-title-level-title">Intermediate</h4>
-          <p className="mb-0">
+          <div className="mb-0">
             <div className="d-flex justify-content-center align-items-center">
-
               <div className="progress-bar">
                 <div></div>
               </div>
-              <span>5/7</span>
+              <span class="progress-bar-grade">5/7</span>
             </div>
-          </p>
+          </div>
           <p className="suggested-card-title mt-0 pt-0">
             Complete 2 steps to achieve <span>All Star(function?)</span>
           </p>
@@ -63,7 +73,7 @@ const SuggestedComponent = () => {
                     {/* add x to top right corner */}
                     <Card.Text className="suggested-work-box-text">
                       Members who include at least one position recieve up to
-                      3.5 times as many profile views
+                      3.5 times as many profile views.
                     </Card.Text>
                     <Button
                       className="add-position-btn"
@@ -87,14 +97,15 @@ const SuggestedComponent = () => {
                       <span> </span>
                       <span>
                         Write a summary to highlight your personality or work
-                        experience
+                        experience.
                       </span>
                     </Card.Title>
-                    <Card.Text classname="summary-work-box-text">
+                    <Card.Text className="summary-work-box-text">
                       Members who include a summary recieve up to 3.9 times as
-                      many profile views
+                      many profile views.
                     </Card.Text>
                     <Button
+                      onClick={handleShowBioForm}
                       className="add-summary-btn"
                       variant="outline-secondary"
                       size="sm"

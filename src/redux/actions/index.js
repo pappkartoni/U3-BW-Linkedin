@@ -22,6 +22,11 @@ export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE"
 export const GET_SINGLE_EXPERIENCE = "GET_SINGLE_EXPERIENCE"
 
 
+export const GET_ALL_POSTS = "GET_ALL_POSTS";
+export const CREATE_POST = "CREATE_POST";
+export const UPDATE_POST = "UPDATE_POST";
+export const DELETE_POST = "DELETE_POST";
+
 export const fetchOwnProfile = () => {
   return async (dispatch, getState) => {
     try {
@@ -92,7 +97,7 @@ export const changeTitle = (title) => {
         method: "PUT",
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EwYjgzODFmYzAwMTNmZmZhZDQiLCJpYXQiOjE2NzY4ODQ0OTEsImV4cCI6MTY3ODA5NDA5MX0.yA75f4gTC4Tg50Avv9Woxkh1_7a-_zCz7_wMRBHm-Ts",
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -270,5 +275,126 @@ export const deleteExperience = (userId, expId) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const getAllPosts = () => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_ALL_POSTS,
+          payload: data,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const createPost = (data) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: CREATE_POST,
+          payload: data,
+        });
+      }
+    } catch (error) {}
+  };
+};
+
+export const updatePost = (postId, data) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(data),
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: UPDATE_POST,
+          payload: data,
+        });
+      }
+    } catch (error) {}
+  };
+};
+
+export const deletePost = (postId) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+          },
+        }
+      );
+      if (res.ok) {
+        dispatch({
+          type: DELETE_POST,
+          payload: postId,
+        });
+      }
+    } catch (error) {}
+  };
+};
+
+export const changeBio = (bio) => {
+  return async (dispatch) => {
+    const res = await fetch(
+      "https://striveschool-api.herokuapp.com/api/profile/",
+      {
+        method: "PUT",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          bio,
+        }),
+      }
+    );
+    const data = await res.json();
+    console.log(data);
   };
 };

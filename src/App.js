@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Navi />
       <main>
-        <Container>
+        <Container className="pl-0 pr-0">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage2 />} />

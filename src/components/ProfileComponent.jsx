@@ -87,10 +87,12 @@ const ProfileComponent = () => {
             <div className="mt-3">
               {profileData && (
                 <>
-                  <Card.Title>
+                  <Card.Title className="mb-0">
                     {profileData.name} {profileData.surname}
                   </Card.Title>
-                  <Card.Text className="mb-0">{profileData.title}</Card.Text>
+                  <Card.Text className="mb-0 card-text-title">
+                    {profileData.title}
+                  </Card.Text>
                   <div className=" d-flex align-items-center">
                     <Card.Text className="text-black-light d-inline-block mb-0">
                       {profileData.area}

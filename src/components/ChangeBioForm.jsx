@@ -1,37 +1,37 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { changeTitle } from "../redux/actions";
+import { changeBio } from "../redux/actions";
 
-const ChangeTitleForm = ({
-  handleShowTitleForm,
-  handleCloseTitleForm,
-  showTitleForm,
+const ChangeBioForm = ({
+  handleShowBioForm,
+  handleCloseBioForm,
+  showBioForm,
 }) => {
-  const [title, setTitle] = useState("");
+  const [bio, setBio] = useState("");
 
   const dispatch = useDispatch();
 
-  const changeTitleHandler = (e) => {
+  const changeBioHandler = (e) => {
     e.preventDefault();
-    dispatch(changeTitle(title));
+    dispatch(changeBio(bio));
   };
 
   return (
-    <Modal show={showTitleForm} onHide={handleCloseTitleForm}>
+    <Modal show={showBioForm} onHide={handleCloseBioForm}>
       <Modal.Header closeButton>
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={changeTitleHandler}>
+        <Form onSubmit={changeBioHandler}>
           <Form.Group className="mb-3">
-            <Form.Label>Enter Job Title</Form.Label>
+            <Form.Label>Enter Summary</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter Job Title"
-              value={title}
+              placeholder="Enter Summary"
+              value={bio}
               onChange={(e) => {
-                setTitle(e.target.value);
+                setBio(e.target.value);
               }}
             />
           </Form.Group>
@@ -43,4 +43,5 @@ const ChangeTitleForm = ({
     </Modal>
   );
 };
-export default ChangeTitleForm;
+
+export default ChangeBioForm;
