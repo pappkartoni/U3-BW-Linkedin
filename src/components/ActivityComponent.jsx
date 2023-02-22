@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import "../assets/css/ActivityComponent.css";
+import StartPostModal from "./StartPostModal";
 
 const ActivityComponent = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <section>
       <Container className="pb-3">
@@ -10,7 +17,11 @@ const ActivityComponent = () => {
             <h3 className="activity-title mt-4 mb-0">Activity</h3>
             <p>n followers</p>
           </div>
-          <Button variant="outline-primary" className="border-btn">
+          <Button
+            onClick={handleShow}
+            variant="outline-primary"
+            className="border-btn"
+          >
             Start a post
           </Button>
         </div>
@@ -29,6 +40,7 @@ const ActivityComponent = () => {
           </p>
         </div>
       </Container>
+      <StartPostModal show={show} handleClose={handleClose} />
     </section>
   );
 };
