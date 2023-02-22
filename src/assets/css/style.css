@@ -426,3 +426,24 @@ section h2 {
 .list-group-item {
   border: 0;
 }
+/* ________________________________________singlepost */
+.post-profile-img {
+  width: 50px;
+  height: 50px;
+}
+.post-profile-img img {
+  border-radius: 50%;
+  height: 100%;
+}
+.post-profile-name {
+  max-width: 75%;
+  width: 100%;
+}
+.post-profile-title {
+  font-size: 14px;
+  /* line-height: 14px; */
+}
+.posted-date {
+  font-size: 12px;
+  line-height: 10px;
+}
