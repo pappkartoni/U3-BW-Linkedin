@@ -22,7 +22,7 @@ const HomePage = () => {
         <PostFeedProfileLeftCom profileData={profileData} />
         <PostFeedLeftRecent />
       </Col>
-      <Col xs={12} sm={6} md={6} lg={6}>
+      <Col xs={12} sm={6} md={6} lg={6} className="px-0">
         <PostComponent />
       </Col>
       <Col xs={12} sm={3} className="d-xs-none " md={3} lg={3}>
