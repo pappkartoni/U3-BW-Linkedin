@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import ExperienceTile from "./ExperienceTile";
 import MyExperienceModal from "./MyExperienceModal";
-import { BsFillPencilFill, BsPlus } from "react-icons/bs";
+import { BsPlus } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import ExperienceEdit from "./ExperienceEdit";
-
 import { getAllExperiences, getSingleExperience } from "../redux/actions";
 
 const ExperiencesContainer = () => {
@@ -12,6 +10,7 @@ const ExperiencesContainer = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const user = useSelector((state) => state.getProfile.fetchProfile);
+  const experiences = useSelector((state) => state.exp.experiences);
 
   const handleShow = (id = null) => {
     if (id) {
@@ -23,25 +22,6 @@ const ExperiencesContainer = () => {
     }
     setShow(true);
   };
-
-  const experiences = useSelector((state) => state.exp.experiences);
-  /* [
-    {
-      _id: "5d925e677360c41e0046d1f5", // server generated
-      role: "CTO",
-      company: "Strive School",
-      startDate: "2019-06-16",
-      endDate: "2019-06-16", // could be null
-      description: "Doing stuff",
-      area: "Berlin",
-      username: "admin", // server generated
-      createdAt: "2019-09-30T19:58:31.019Z", // server generated
-      updatedAt: "2019-09-30T19:58:31.019Z", // server generated
-      __v: 0, // server generated
-      image:
-        "https://media.licdn.com/dms/image/C4E0BAQHYgix-Ynux1A/company-logo_100_100/0/1646830188434?e=1684972800&v=beta&t=YUs_d7vC1ildfbWq1pVcQg9coz_7be4zzoPvUKyam4w", // server generated on upload
-    },
-  ]; */
 
   useEffect(() => {
     dispatch(getAllExperiences(user._id));

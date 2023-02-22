@@ -1,4 +1,4 @@
-import { CREATE_EXPERIENCE, GET_ALL_EXPERIENCES, UPDATE_EXPERIENCE, DELETE_EXPERIENCE, GET_SINGLE_EXPERIENCE  } from "../actions";
+import { GET_ALL_EXPERIENCES, DELETE_EXPERIENCE, GET_SINGLE_EXPERIENCE  } from "../actions";
 
 const initialState = {
     experiences: [],
@@ -14,11 +14,15 @@ const experienceReducer = (state = initialState, action) => {
             }
         
         case GET_SINGLE_EXPERIENCE: 
-            console.log("we edit", action.payload)
             return {
                 ...state,
                 experienceToEdit: action.payload
             }
+        case DELETE_EXPERIENCE:
+            return {
+                ...state,
+                experiences: state.experiences.filter(el => el._id !== action.payload),
+            };
 
     // case CREATE_EXPERIENCE:
     //   return {
@@ -32,11 +36,6 @@ const experienceReducer = (state = initialState, action) => {
     //     experiences: action.payload,
     //   };
 
-    // case DELETE_EXPERIENCE:
-    //   return {
-    //     ...state,
-    //     experiences: action.payload,
-    //   };
 
     default:
       return state;
