@@ -10,6 +10,7 @@ const PostComponent = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPosts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -18,7 +19,7 @@ const PostComponent = () => {
       {posts.length > 0 && (
         <>
           {posts
-            .slice()
+            .slice(0, 20)
             .reverse()
             .map((post) => (
               <SinglePost key={post._id} post={post} />

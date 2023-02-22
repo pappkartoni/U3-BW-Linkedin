@@ -1,7 +1,15 @@
-import { BsFillPencilFill, BsPlus } from "react-icons/bs";
+import { BsFillPencilFill, BsXLg } from "react-icons/bs";
 import { format, parseISO } from "date-fns";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteExperience } from "../redux/actions";
 
 const ExperienceTile = (props) => {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.getProfile.fetchProfile)
+
+  const handleDelete = () => {
+    dispatch(deleteExperience(user._id, props.exp._id))
+  }
   return (
     <div className="experience d-flex pr-3 border-light-bottom">
       <div style={{ maxWidth: "20%", width: "100%" }}>
@@ -13,19 +21,27 @@ const ExperienceTile = (props) => {
       >
         <h3 className="d-flex justify-content-between align-items-center">
           {props.exp.role}{" "}
-          <span className="icon-hover d-flex justify-content-center align-items-center ">
-            <BsFillPencilFill
-              fill="rgba(0,0,0,0.6)"
-              onClick={props.handleShow}
-            />
-          </span>
+          <div className="d-flex">
+            <span className="icon-hover d-flex justify-content-center align-items-center ">
+              <BsFillPencilFill
+                fill="rgba(0,0,0,0.6)"
+                onClick={props.handleShow}
+              />
+            </span>
+            <span className="icon-hover d-flex justify-content-center align-items-center ">
+              <BsXLg
+                fill="rgba(255,0,0,0.6)"
+                onClick={handleDelete}
+              />
+            </span>
+          </div>
         </h3>
         <h4>{props.exp.company}</h4>
         <span>
           {props.exp.startDate &&
-            format(parseISO(props.exp.startDate), "MMMM yyyy")}{" "}
+            format(parseISO(props.exp.startDate), "MMM yyyy")}{" "}
           {props.exp.endDate &&
-            format(parseISO(props.exp.endDate), " - MMMM yyyy")}
+            format(parseISO(props.exp.endDate), " - MMM yyyy")}
         </span>
         <span>{props.exp.area}</span>
         <p>{props.exp.description}</p>

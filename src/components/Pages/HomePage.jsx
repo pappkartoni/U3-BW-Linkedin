@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import PostFeedProfileLeftCom from "../PostFeedProfileLeftCom";
-import Sidebar from "../Sidebar";
 import { Col, Row } from "react-bootstrap";
 import { fetchOwnProfile } from "../../redux/actions";
 import { useEffect } from "react";
 import PostFeedLeftRecent from "../PostFeedLeftRecent";
 import PostComponent from "../PostComponent";
+import FollowContainer from "../FollowContainer";
+import SideBarFooter from "../SidebarFooter";
 
 const HomePage = () => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
@@ -17,15 +18,16 @@ const HomePage = () => {
 
   return (
     <Row>
-      <Col md={2}>
+      <Col xs={12} sm={3} md={3} lg={3}>
         <PostFeedProfileLeftCom profileData={profileData} />
         <PostFeedLeftRecent />
       </Col>
-      <Col md={7} style={{ padding: "0" }}>
+      <Col xs={12} sm={6} md={6} lg={6} className="px-0">
         <PostComponent />
       </Col>
-      <Col md={3} style={{ padding: "0" }}>
-        <Sidebar />
+      <Col xs={12} sm={3} className="d-xs-none " md={3} lg={3}>
+        <FollowContainer />
+        <SideBarFooter />
       </Col>
     </Row>
   );

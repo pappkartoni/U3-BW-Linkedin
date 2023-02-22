@@ -3,7 +3,7 @@ import { HiHashtag } from "react-icons/hi";
 
 const PostFeedLeftRecent = () => {
   return (
-    <section>
+    <section className="stick-top">
       <Card>
         <Card.Body className="small-text font-weight-600 pb-0 px-0 pt-2">
           <span className="ml-3 text-dark">Recents</span>

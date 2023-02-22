@@ -259,7 +259,7 @@ export const deleteExperience = (userId, expId) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
         {
           method: "DELETE",
           headers: {
@@ -270,11 +270,9 @@ export const deleteExperience = (userId, expId) => {
       );
 
       if (res.ok) {
-        const data = await res.json(); //is this actually an object? what does delete return?
-
         dispatch({
           type: DELETE_EXPERIENCE,
-          payload: data,
+          payload: expId,
         });
       }
     } catch (error) {
@@ -297,6 +295,7 @@ export const getAllPosts = () => {
       );
       if (res.ok) {
         const data = await res.json();
+        console.log("post", data);
         dispatch({
           type: GET_ALL_POSTS,
           payload: data,
