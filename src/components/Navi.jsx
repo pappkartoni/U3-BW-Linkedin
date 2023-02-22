@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Navbar, Container, Form, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import NavbarButton from "./NavbarButton";
 
 const Navi = (props) => {
   const user = useSelector((state) => state.getProfile.fetchProfile);
   const [isVisible, setIsVisible] = useState(false);
+  const location = useLocation()
 
   const [dropdownIsVisible, setDropdownIsVisible] = useState(false);
 
@@ -180,7 +181,7 @@ const Navi = (props) => {
           </ul>
         </Container>
       </Navbar>
-      <header className={isVisible ? "visible fixed-top" : "fixed-top"}>
+      {location.pathname === "/profile" && <header className={isVisible ? "visible fixed-top" : "fixed-top"}>
         <Container className="subnavi">
           <img src={user?.image} alt="fetched profile pic here" />
           <div className="d-flex flex-column mr-auto">
@@ -199,7 +200,7 @@ const Navi = (props) => {
             <Button variant="primary">Open to</Button>
           </div>
         </Container>
-      </header>
+      </header>}
     </>
   );
 };

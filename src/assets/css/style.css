@@ -426,3 +426,40 @@ section h2 {
 .list-group-item {
   border: 0;
 }
+
+.stick-top {
+  position: sticky;
+  top: 58px;
+}
+
+.side-footer {
+  padding: 12px;
+}
+
+.side-footer .d-flex {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.side-footer .d-flex a {
+  margin: 4px 8px;
+}
+
+.side-footer .copyright {
+  color: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  margin-top: 8px;
+}
+
+.info-btn {
+  padding: 1px 4px;
+  color: white;
+  background-color: rgba(0,0,0,0.6);
+  margin-left: auto;
+  font-size: 10px;
+  font-style: italic;
+  line-height: 10px;
+  border-radius: 2px;
+  font-weight: 600;
+  cursor: pointer;
+}

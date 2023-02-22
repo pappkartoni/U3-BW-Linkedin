@@ -7,6 +7,7 @@ import SinglePost from "./SinglePost";
 const PostComponent = () => {
   const posts = useSelector((state) => state.posts.postList);
   const dispatch = useDispatch();
+  console.log("post data test", typeof posts[1].updatedAt)
   useEffect(() => {
     dispatch(getAllPosts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
