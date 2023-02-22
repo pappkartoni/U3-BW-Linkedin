@@ -9,14 +9,15 @@ const PostComponent = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPosts());
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Container>
       {posts.length > 0 && (
         <>
           {posts.map((post) => (
-            <SinglePost post={post} />
+            <SinglePost key={post._id} post={post} />
           ))}
         </>
       )}
