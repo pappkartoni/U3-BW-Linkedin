@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { Navbar, Container, Form, Button } from "react-bootstrap";
+import { Navbar, Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import NavbarButton from "./NavbarButton";
+import SearchBar from "./SearchBar";
 
 const Navi = (props) => {
   const user = useSelector((state) => state.getProfile.fetchProfile);
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
-
   const [dropdownIsVisible, setDropdownIsVisible] = useState(false);
 
   const setScrollBehaviour = () => {
@@ -27,7 +27,6 @@ const Navi = (props) => {
     window.addEventListener("scroll", setScrollBehaviour);
     return () => window.removeEventListener("scroll", setScrollBehaviour);
   }, []);
-
   return (
     <>
       <Navbar fixed="top">
@@ -48,9 +47,16 @@ const Navi = (props) => {
               </svg>
             </Link>
           </Navbar.Brand>
-          <Form className="mr-auto">
-            <Form.Control type="text" placeholder="Search" />
-          </Form>
+          <SearchBar />
+          {/* <Form className="mr-auto">
+            <Form.Control 
+          type="text"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }} placeholder="Search" />
+          </Form> */}
+
           <ul className="navbuttons">
             <NavbarButton
               text="Home"

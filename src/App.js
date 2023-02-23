@@ -7,6 +7,7 @@ import Navi from "./components/Navi";
 import Footer from "./components/Footer";
 import HomePage from "./components/Pages/HomePage.jsx";
 import ProfilePage2 from "./components/Pages/ProfilePage2";
+import SearchedUserCurrentProfilePage from "./components/Pages/SearchedUserCurrentProfilePage";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage2 />} />
+            <Route
+              path="/search/result/:userId"
+              element={<SearchedUserCurrentProfilePage />}
+            />
           </Routes>
         </Container>
         <Footer />
