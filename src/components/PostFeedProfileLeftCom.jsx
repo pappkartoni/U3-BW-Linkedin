@@ -19,7 +19,7 @@ const PostFeedProfileLeftCom = ({ profileData }) => {
           <Card.Body className="text-center py-0 z-index-card-body px-3">
             <div className="profile-img-block-home text-center mx-auto">
               <img
-                className="w-100 home-profile-img"
+                className="w-100 home-profile-img h-100"
                 src={profileData?.image}
                 alt="profileImage"
               />
@@ -29,7 +29,7 @@ const PostFeedProfileLeftCom = ({ profileData }) => {
               {profileData && (
                 <>
                   <Card.Title className="h3 mb-1">
-                    <Link to="/profile" style={{color: "rgba(0,0,0,0.9)"}}>
+                    <Link to="/profile" style={{ color: "rgba(0,0,0,0.9)" }}>
                       {profileData.name} {profileData.surname}
                     </Link>
                   </Card.Title>

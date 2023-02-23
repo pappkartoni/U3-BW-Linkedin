@@ -3,11 +3,12 @@ import { Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, getAllPosts } from "../redux/actions";
 import "../assets/css/StartPostModal.css";
+import globalImage from "../assets/img/developer1.jfif";
 
 const StartPostModal = ({ show, handleClose }) => {
-  const image = useSelector((state) => state.getProfile.fetchProfile.image);
+  const image = useSelector((state) => state.getProfile.fetchProfile);
 
-  const name = useSelector((state) => state.getProfile.fetchProfile.name);
+  const name = useSelector((state) => state.getProfile.fetchProfile);
 
   const dispatch = useDispatch();
 
@@ -26,8 +27,13 @@ const StartPostModal = ({ show, handleClose }) => {
 
       <Modal.Body>
         <div className="d-flex start-post-modal-header">
-          <img src={image} alt="user profile" />
-          <h5>{name}</h5>
+          {image ? (
+            <img src={image.image} alt="user profile" />
+          ) : (
+            <img src={globalImage} alt="user profile" />
+          )}
+          {name ? <h5>{name.name}</h5> : <h5>Hardika</h5>}
+          {/* <h5>{name}</h5> */}
         </div>
 
         <textarea

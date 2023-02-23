@@ -73,15 +73,22 @@ const SinglePost = (props) => {
                 <Dropdown.Item eventKey="1">Save Post</Dropdown.Item>
                 <Dropdown.Item eventKey="2">Copy link to post</Dropdown.Item>
                 <Dropdown.Item eventKey="3">Embed this post</Dropdown.Item>
-                <Dropdown.Item eventKey="4">Edit this post</Dropdown.Item>
+                {props.post?.user?._id === profileDataID && (
+                  <Dropdown.Item eventKey="4" onClick={handleShow}>
+                    Edit this post
+                  </Dropdown.Item>
+                )}
+                {/* <Dropdown.Item eventKey="4" onClick={handleShow}>
+                  Edit this post
+                </Dropdown.Item> */}
               </DropdownButton>
             </div>
-            <BsFillPencilFill
+            {/* <BsFillPencilFill
               // size={10}
               className="icon-hover"
               fill="rgba(0,0,0,0.6)"
               onClick={handleShow}
-            />
+            /> */}
             {props.post?.user?._id === profileDataID && (
               <div
                 className="icon-hover d-flex justify-content-center align-items-center"

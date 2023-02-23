@@ -105,7 +105,11 @@ const Navi = (props) => {
                 <section className="user-dropdown">
                   <div className="d-flex">
                     {/* {user.length !== <img src={user.image} alt={user.name} />} */}
-                    <img src={user.image} alt={user.name} />
+                    <img
+                      src={user.image}
+                      alt={user.name}
+                      className="w-100 h-100"
+                    />
                     <div className="d-flex flex-column mb-3">
                       <h5>
                         {user.name} {user.surname}

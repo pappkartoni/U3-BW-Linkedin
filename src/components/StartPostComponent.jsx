@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import StartPostModal from "./StartPostModal";
 import { useState } from "react";
 import { ListGroup } from "react-bootstrap";
+import globalImage from "../assets/img/developer1.jfif";
 import {
   RiGalleryFill,
   RiCalendarEventFill,
@@ -11,7 +12,7 @@ import {
 import { FaVideo } from "react-icons/fa";
 
 const StartPostComponent = () => {
-  const image = useSelector((state) => state.getProfile.fetchProfile.image);
+  const image = useSelector((state) => state.getProfile.fetchProfile);
 
   const [show, setShow] = useState(false);
 
@@ -22,7 +23,12 @@ const StartPostComponent = () => {
     <section className="mb-4">
       <div className="start-post-container">
         <div className="start-post-first-row">
-          <img src={image} alt="user profile" />
+          {image ? (
+            <img src={image.image} alt="user profile" />
+          ) : (
+            <img src={globalImage} alt="user profile" />
+          )}
+
           <div onClick={handleShow}>Start a post</div>
         </div>
         <ListGroup className="justify-content-between text-muted" horizontal>
