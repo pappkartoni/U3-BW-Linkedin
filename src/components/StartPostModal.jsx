@@ -37,16 +37,34 @@ const StartPostModal = ({ show, handleClose }) => {
         ></textarea>
       </Modal.Body>
 
-      <Modal.Footer>
-        <div className="d-flex">
-          <div>ICON PH</div>
-          <div>ICON PH</div>
-          <div>ICON PH</div>
-          <div>ICON PH</div>
-          <Button variant="primary" onClick={submitPost}>
-            Post
-          </Button>
+      <Modal.Footer className="start-post-modal-footer">
+        <div>
+          <i class="bi bi-image"></i>
         </div>
+        <div>
+          <i class="bi bi-play-btn-fill"></i>
+        </div>
+        <div>
+          <i class="bi bi-sticky-fill"></i>
+        </div>
+        <div>
+          <i class="bi bi-three-dots"></i>
+        </div>
+        <div className="modal-footer-breakline"></div>
+        <div className="start-post-modal-anyone-btn">
+          <i class="bi bi-chat-right-text"></i>
+          <span>Anyone</span>
+        </div>
+        <div>
+          <i class="bi bi-clock"></i>
+        </div>
+        <Button
+          variant={text.length == 0 ? "secondary" : "primary"}
+          disabled={text.length == 0}
+          onClick={submitPost}
+        >
+          Post (EDIT HOVER)
+        </Button>
       </Modal.Footer>
     </Modal>
   );

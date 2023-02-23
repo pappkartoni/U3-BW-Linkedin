@@ -405,3 +405,32 @@ export const changeBio = (bio) => {
     console.log(data);
   };
 };
+
+export const updatePostImage = (postId, data, handleClose) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "POST",
+          body: data,
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+            // "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        handleClose();
+        // dispatch({
+        //   type: UPDATE_POST,
+        //   payload: data,
+        // });
+        dispatch(getAllPosts());
+      }
+    } catch (error) {}
+  };
+};
