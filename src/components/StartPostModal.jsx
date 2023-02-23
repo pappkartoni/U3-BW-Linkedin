@@ -16,6 +16,7 @@ const StartPostModal = ({ show, handleClose }) => {
   const submitPost = () => {
     dispatch(createPost({ text }, handleClose));
     dispatch(getAllPosts());
+    setText("")
   };
   return (
     <Modal show={show} onHide={handleClose}>

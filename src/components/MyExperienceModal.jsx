@@ -77,7 +77,6 @@ const MyExperienceModal = (props) => {
           size="lg"
           show={props.show}
           onHide={props.handleClose}
-          backdrop="static"
           keyboard={false}
         >
           <Modal.Header closeButton>
