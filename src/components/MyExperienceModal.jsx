@@ -20,6 +20,8 @@ const MyExperienceModal = (props) => {
     area: "",
   });
 
+  const [image, setImage] = useState(null)
+
   useEffect(() => {
     console.log("update exptoedit", expToEdit)
     if (expToEdit !== null) {
@@ -40,6 +42,27 @@ const MyExperienceModal = (props) => {
 
     if (expToEdit) {
       dispatch(updateExperience(user._id, expToEdit._id, addExperience))
+
+      const formData = new FormData();
+      formData.append("experience", image);
+      console.log(formData.getAll("experience"))
+      try {
+        let res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${expToEdit._id}/picture`, {
+            method: "POST",
+            body: formData,
+            mode: "no-cors",
+            headers: {
+              Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+/*               "Content-Type": "multipart/form-data", */
+            },
+          }
+        );
+        if (res.ok) {
+          console.log("Image Uploaded Successfully");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       dispatch(createExperience(user._id, addExperience))
     }
@@ -48,13 +71,6 @@ const MyExperienceModal = (props) => {
     props.handleClose()
   };
 
-  //   const deleteExperience = async () => {
-  //     try {
-  //       // HERE DELETE METHOD EXPERIENCE
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
   return (
         <Modal
           size="lg"
@@ -147,6 +163,18 @@ const MyExperienceModal = (props) => {
                     setAddExperience({ ...addExperience, area: e.target.value })
                   }
                 />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Company Logo</Form.Label>
+                <Form.Control
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                  console.log(e);
+                  setImage(e.target.files[0]);
+                }}
+              />
               </Form.Group>
             </Form>
           </Modal.Body>
