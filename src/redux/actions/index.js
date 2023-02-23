@@ -110,7 +110,7 @@ export const changeTitle = (title) => {
 };
 export const updateOwnProfile = (content) => {
   return async (dispatch, getState) => {
-    dispatch({ type: UPDATE_PROFILE });
+    //dispatch({ type: UPDATE_PROFILE });
     try {
       let response = await fetch(updateProfileUrl, {
         method: "PUT",
@@ -123,12 +123,12 @@ export const updateOwnProfile = (content) => {
         },
       });
       if (response.ok) {
-        const MyData = await response.json();
-        // dispatch({
-        //   type: UPDATE_PROFILE,
-        //   payload: MyData,
-        // });
-        console.log("updatedDataaction", MyData);
+        const data = await response.json();
+        dispatch({
+          type: UPDATE_PROFILE,
+          payload: data,
+        });
+        console.log("updatedDataaction", data);
       } else {
         console.log("Error fetching Data!");
       }
