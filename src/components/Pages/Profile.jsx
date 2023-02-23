@@ -9,7 +9,7 @@ import Sidebar from "../Sidebar";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-const ProfilePage2 = () => {
+const Profile = () => {
   const user = useSelector(state => state.getProfile.fetchProfile)
   useEffect(() => {
     document.title = user.name + " " + user.surname + " | BlinkedIn"
@@ -35,4 +35,4 @@ const ProfilePage2 = () => {
   );
 };
 
-export default ProfilePage2;
+export default Profile;

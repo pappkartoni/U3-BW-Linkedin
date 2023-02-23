@@ -8,7 +8,7 @@ import PostComponent from "../PostComponent";
 import FollowContainer from "../FollowContainer";
 import SideBarFooter from "../SidebarFooter";
 
-const HomePage = () => {
+const Feed = () => {
   const user = useSelector((state) => state.getProfile.fetchProfile);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,4 +34,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Feed;
