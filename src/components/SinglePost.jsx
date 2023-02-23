@@ -7,6 +7,9 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../redux/actions";
+import { BsFillPencilFill } from "react-icons/bs";
+import EditPostModal from "./EditPostModal";
+import { useState } from "react";
 
 const SinglePost = (props) => {
   const profileDataID = useSelector(
@@ -19,6 +22,12 @@ const SinglePost = (props) => {
   const handleDelete = () => {
     dispatch(deletePost(props.post?._id));
   };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <section className="pt-3 pr-3 pb-1 pl-3" style={{ overflow: "visible" }}>
       <Row>
@@ -67,6 +76,12 @@ const SinglePost = (props) => {
                 <Dropdown.Item eventKey="4">Edit this post</Dropdown.Item>
               </DropdownButton>
             </div>
+            <BsFillPencilFill
+              // size={10}
+              className="icon-hover"
+              fill="rgba(0,0,0,0.6)"
+              onClick={handleShow}
+            />
             {props.post?.user?._id === profileDataID && (
               <div
                 className="icon-hover d-flex justify-content-center align-items-center"
@@ -81,6 +96,7 @@ const SinglePost = (props) => {
       <hr />
       <div>
         <p className="text-muted">{props.post?.text}</p>
+        {props.post?.image && <img className="w-100" src={props.post?.image} />}
       </div>
       <hr className="mb-1" />
       <ListGroup className="justify-content-between text-muted" horizontal>
@@ -105,6 +121,11 @@ const SinglePost = (props) => {
           <span className="ml-1">Send</span>
         </ListGroup.Item>
       </ListGroup>
+      <EditPostModal
+        show={show}
+        handleClose={handleClose}
+        postId={props.post?._id}
+      />
     </section>
   );
 };

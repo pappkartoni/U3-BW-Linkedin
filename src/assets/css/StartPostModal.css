@@ -20,3 +20,26 @@
   outline: none;
   resize: none;
 }
+
+.start-post-modal-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.modal-footer-breakline {
+  width: 1px;
+  height: 20px;
+  background-color: black;
+}
+
+.start-post-modal-anyone-btn {
+  display: flex;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.start-post-modal-anyone-btn:hover {
+  background-color: gray;
+}
