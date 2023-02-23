@@ -7,7 +7,7 @@ import NavbarButton from "./NavbarButton";
 const Navi = (props) => {
   const user = useSelector((state) => state.getProfile.fetchProfile);
   const [isVisible, setIsVisible] = useState(false);
-  const location = useLocation()
+  const location = useLocation();
 
   const [dropdownIsVisible, setDropdownIsVisible] = useState(false);
 
@@ -104,8 +104,8 @@ const Navi = (props) => {
               {dropdownIsVisible && (
                 <section className="user-dropdown">
                   <div className="d-flex">
-                    {user.length !== <img src={user.image} alt={user.name} />}
-                    {/* <img src={user.image} alt={user.name} /> */}
+                    {/* {user.length !== <img src={user.image} alt={user.name} />} */}
+                    <img src={user.image} alt={user.name} />
                     <div className="d-flex flex-column mb-3">
                       <h5>
                         {user.name} {user.surname}
@@ -181,26 +181,28 @@ const Navi = (props) => {
           </ul>
         </Container>
       </Navbar>
-      {location.pathname === "/profile" && <header className={isVisible ? "visible fixed-top" : "fixed-top"}>
-        <Container className="subnavi">
-          <img src={user?.image} alt="fetched profile pic here" />
-          <div className="d-flex flex-column mr-auto">
-            <h5>
-              {user?.name} {user?.surname}
-            </h5>
-            <span>{user?.title}</span>
-          </div>
-          <div className="subnavbuttons">
-            <Button className="mr-2" variant="outline-secondary">
-              More
-            </Button>
-            <Button className="mr-2" variant="outline-primary">
-              Add profile section
-            </Button>
-            <Button variant="primary">Open to</Button>
-          </div>
-        </Container>
-      </header>}
+      {location.pathname === "/profile" && (
+        <header className={isVisible ? "visible fixed-top" : "fixed-top"}>
+          <Container className="subnavi">
+            <img src={user?.image} alt="fetched profile pic here" />
+            <div className="d-flex flex-column mr-auto">
+              <h5>
+                {user?.name} {user?.surname}
+              </h5>
+              <span>{user?.title}</span>
+            </div>
+            <div className="subnavbuttons">
+              <Button className="mr-2" variant="outline-secondary">
+                More
+              </Button>
+              <Button className="mr-2" variant="outline-primary">
+                Add profile section
+              </Button>
+              <Button variant="primary">Open to</Button>
+            </div>
+          </Container>
+        </header>
+      )}
     </>
   );
 };

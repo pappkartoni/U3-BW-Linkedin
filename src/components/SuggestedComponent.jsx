@@ -51,7 +51,7 @@ const SuggestedComponent = () => {
               <div className="progress-bar">
                 <div></div>
               </div>
-              <span class="progress-bar-grade">5/7</span>
+              <span className="progress-bar-grade">5/7</span>
             </div>
           </div>
           <p className="suggested-card-title mt-0 pt-0">
