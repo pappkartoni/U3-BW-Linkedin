@@ -347,8 +347,8 @@ section h2 {
   top: 6%;
 }
 .profile-img-block {
-  max-width: 152px;
-  max-height: 152px;
+  width: 152px;
+  height: 152px;
   margin-top: -7.5em;
   z-index: 1;
 }
