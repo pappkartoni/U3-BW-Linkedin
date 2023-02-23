@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import "../assets/css/ActivityComponent.css";
+import SinglePost from "./SinglePost";
 import StartPostModal from "./StartPostModal";
 
 const ActivityComponent = () => {
@@ -9,6 +11,12 @@ const ActivityComponent = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const user = useSelector(state => state.getProfile.fetchProfile)
+  const allPosts = useSelector(state => state.posts.postList)
+  const ownPosts = allPosts.slice().reverse().slice(0,100).filter(p => p.user?._id === user._id)
+
+  console.log(ownPosts)
+  
   return (
     <section>
       <Container className="pb-3">
@@ -26,6 +34,9 @@ const ActivityComponent = () => {
           </Button>
         </div>
         <div>
+          {ownPosts.length > 0 && ownPosts.map(p => 
+            <SinglePost key={p._id} post={p} />
+            )}
           <p>
             N posts lately | you haven't posted latley (FETCH GET function?)
           </p>
