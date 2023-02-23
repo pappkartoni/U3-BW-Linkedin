@@ -6,8 +6,16 @@ import ResourcesComponent from "../ResourcesComponent";
 import ActivityComponent from "../ActivityComponent";
 import ExperiencesContainer from "../ExperiencesContainer";
 import Sidebar from "../Sidebar";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const ProfilePage2 = () => {
+  const user = useSelector(state => state.getProfile.fetchProfile)
+  useEffect(() => {
+    document.title = user.name + " " + user.surname + " | BlinkedIn"
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <Container>
       <Row>
