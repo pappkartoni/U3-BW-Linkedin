@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/ActivityComponent.css";
+import { getAllPosts } from "../redux/actions";
+import SinglePost from "./SinglePost";
 import StartPostModal from "./StartPostModal";
 
 const ActivityComponent = () => {
+  const dispatch = useDispatch();
+  
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const user = useSelector(state => state.getProfile.fetchProfile)
+  const allPosts = useSelector(state => state.posts.postList)
+  const ownPosts = allPosts.slice().reverse().slice(0,100).filter(p => p.user?._id === user._id)
+
+  useEffect(() => {
+    dispatch(getAllPosts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
   return (
     <section>
       <Container className="pb-3">
@@ -26,6 +40,9 @@ const ActivityComponent = () => {
           </Button>
         </div>
         <div>
+          {ownPosts.length > 0 && ownPosts.map(p => 
+            <SinglePost key={p._id} post={p} />
+            )}
           <p>
             N posts lately | you haven't posted latley (FETCH GET function?)
           </p>

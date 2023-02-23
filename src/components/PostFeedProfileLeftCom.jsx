@@ -2,6 +2,7 @@ import { Card } from "react-bootstrap";
 import profileBg from "../assets/profile2.jpg";
 import "../assets/css/style.css";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const PostFeedProfileLeftCom = ({ profileData }) => {
   return (
@@ -28,7 +29,9 @@ const PostFeedProfileLeftCom = ({ profileData }) => {
               {profileData && (
                 <>
                   <Card.Title className="h3 mb-1">
-                    {profileData.name} {profileData.surname}
+                    <Link to="/profile" style={{color: "rgba(0,0,0,0.9)"}}>
+                      {profileData.name} {profileData.surname}
+                    </Link>
                   </Card.Title>
                   <Card.Text className="mb-0 title-font text-wrap">
                     {profileData.title}

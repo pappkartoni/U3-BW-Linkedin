@@ -9,6 +9,7 @@ import ProfileEdit from "./ProfileEdit";
 
 const ProfileComponent = () => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
+  console.log(profileData);
   const dispatch = useDispatch();
 
   const [showImage, setShowImage] = useState(null);
@@ -26,26 +27,25 @@ const ProfileComponent = () => {
 
   const uploadImage = async (e) => {
     e.preventDefault();
-    //this is the state that handles the uploading of the image, the FormData method is used to handle image upload
-    //and append the image to the form
     const data = new FormData();
     data.append("profile", showImage);
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/63f33a3d8381fc0013fffad6/picture",
+        `https://striveschool-api.herokuapp.com/api/profile/${profileData._id}/picture`,
         {
           method: "POST",
-          body: JSON.stringify(data),
+          // mode: "no-cors",
+          body: data,
           headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
-            "Content-Type": "application/json",
           },
         }
       );
 
       if (response.ok) {
-        console.log("Image Uploaded Successfully");
+        dispatch(fetchOwnProfile());
+        // console.log("Image Uploaded Successfully");
       }
     } catch (error) {
       console.log(error);
@@ -69,7 +69,7 @@ const ProfileComponent = () => {
             <div className="d-flex justify-content-between align-items-center">
               <div className="profile-img-block">
                 <img
-                  className="w-100"
+                  className="w-100 h-100"
                   src={profileData?.image}
                   alt="profileImage"
                   onClick={handleShow2}
@@ -145,7 +145,7 @@ const ProfileComponent = () => {
               <input
                 type="file"
                 onChange={(e) => {
-                  console.log(e);
+                  // console.log(e);
                   setShowImage(e.target.files[0]);
                 }}
               />

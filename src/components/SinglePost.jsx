@@ -73,6 +73,7 @@ const SinglePost = (props) => {
                 <Dropdown.Item eventKey="1">Save Post</Dropdown.Item>
                 <Dropdown.Item eventKey="2">Copy link to post</Dropdown.Item>
                 <Dropdown.Item eventKey="3">Embed this post</Dropdown.Item>
+                <Dropdown.Item eventKey="4">Edit this post</Dropdown.Item>
               </DropdownButton>
             </div>
             <BsFillPencilFill

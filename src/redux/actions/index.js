@@ -110,11 +110,12 @@ export const changeTitle = (title) => {
 };
 export const updateOwnProfile = (content) => {
   return async (dispatch, getState) => {
-    dispatch({ type: UPDATE_PROFILE });
+    //dispatch({ type: UPDATE_PROFILE });
     try {
       let response = await fetch(updateProfileUrl, {
         method: "PUT",
         body: JSON.stringify(content),
+
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
@@ -122,12 +123,12 @@ export const updateOwnProfile = (content) => {
         },
       });
       if (response.ok) {
-        const MyData = await response.json();
+        const data = await response.json();
         dispatch({
           type: UPDATE_PROFILE,
-          payload: MyData,
+          payload: data,
         });
-        console.log("updatedDataaction", MyData);
+        console.log("updatedDataaction", data);
       } else {
         console.log("Error fetching Data!");
       }

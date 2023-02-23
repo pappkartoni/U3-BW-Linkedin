@@ -8,18 +8,19 @@ import PostComponent from "../PostComponent";
 import FollowContainer from "../FollowContainer";
 import SideBarFooter from "../SidebarFooter";
 
-const HomePage = () => {
-  const profileData = useSelector((state) => state.getProfile.fetchProfile);
+const Feed = () => {
+  const user = useSelector((state) => state.getProfile.fetchProfile);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchOwnProfile());
+    document.title = "Feed | BlinkedIn"
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Row>
       <Col xs={12} sm={3} md={3} lg={3}>
-        <PostFeedProfileLeftCom profileData={profileData} />
+        <PostFeedProfileLeftCom profileData={user} />
         <PostFeedLeftRecent />
       </Col>
       <Col xs={12} sm={6} md={6} lg={6} className="px-0">
@@ -33,4 +34,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Feed;
