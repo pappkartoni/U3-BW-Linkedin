@@ -1,11 +1,3 @@
-:root {
-  --corner-radius-medium: 0.4rem;
-  --main-background-color: #f3f2ef;
-  --main-blue-color: #0a66c2;
-  --main-blue-hover-color: #004182;
-  --text-black-light: rgba(0, 0, 0, 0.6);
-}
-
 .App {
   /* text-align: center; */
   background-color: var(--main-background-color);
