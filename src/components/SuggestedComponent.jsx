@@ -58,7 +58,7 @@ const SuggestedComponent = () => {
             Complete 2 steps to achieve{" "}
             <span
               className="profile-level-span"
-              style={{ color: "blue", fontWeight: "600", cursor: "pointer" }}
+              style={{ color: "#0a66c2", fontWeight: "600", cursor: "pointer" }}
             >
               All Star
             </span>

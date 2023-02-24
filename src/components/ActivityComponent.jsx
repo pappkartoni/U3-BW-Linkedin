@@ -8,15 +8,19 @@ import StartPostModal from "./StartPostModal";
 
 const ActivityComponent = () => {
   const dispatch = useDispatch();
- 
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const user = useSelector(state => state.getProfile.fetchProfile)
-  const allPosts = useSelector(state => state.posts.postList)
-  const ownPosts = allPosts.slice().reverse().slice(0,100).filter(p => p.user?._id === user._id)
+  const user = useSelector((state) => state.getProfile.fetchProfile);
+  const allPosts = useSelector((state) => state.posts.postList);
+  const ownPosts = allPosts
+    .slice()
+    .reverse()
+    .slice(0, 100)
+    .filter((p) => p.user?._id === user._id);
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -52,13 +56,12 @@ const ActivityComponent = () => {
           {/* <p>Recent post you share or comment on will be displayed here</p> */}
         </div>
         <hr className="activity-hr"></hr>
-
-        <div>
-          <p className="show-activity-btn">
-            Show all activity <i className="bi bi-arrow-right"></i>
-          </p>
-        </div>
       </Container>
+      <div>
+        <p className="show-activity-btn">
+          Show all activity <i className="bi bi-arrow-right"></i>
+        </p>
+      </div>
       <StartPostModal show={show} handleClose={handleClose} />
     </section>
   );
