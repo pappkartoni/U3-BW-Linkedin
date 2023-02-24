@@ -21,7 +21,6 @@ function App() {
           </Routes>
         </Container>
         <ChatWindow />
-        <Footer />
       </main>
     </BrowserRouter>
   );

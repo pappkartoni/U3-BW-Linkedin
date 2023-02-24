@@ -8,6 +8,7 @@ import ExperiencesContainer from "../ExperiencesContainer";
 import Sidebar from "../Sidebar";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import Footer from "../Footer";
 
 const Profile = () => {
   const user = useSelector(state => state.getProfile.fetchProfile)
@@ -31,6 +32,7 @@ const Profile = () => {
           <Sidebar />
         </Col>
       </Row>
+      <Footer />
     </Container>
   );
 };
