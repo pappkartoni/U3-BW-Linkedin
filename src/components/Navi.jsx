@@ -4,6 +4,7 @@ import { BsSearch } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import NavbarButton from "./NavbarButton";
+import SidebarModal from "./SidebarModal";
 
 const Navi = (props) => {
   const user = useSelector((state) => state.getProfile.fetchProfile);
@@ -11,6 +12,12 @@ const Navi = (props) => {
   const location = useLocation();
 
   const [dropdownIsVisible, setDropdownIsVisible] = useState(false);
+
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const setScrollBehaviour = () => {
     const offset = 210;
@@ -143,7 +150,7 @@ const Navi = (props) => {
             </li>
             <li className="navbutton">
               <Link
-                to="/"
+                onClick={handleShow}
                 className="d-flex flex-column align-items-center justify-content-center"
               >
                 <div>
@@ -210,6 +217,7 @@ const Navi = (props) => {
           </Container>
         </header>
       )}
+      <SidebarModal show={show} handleClose={handleClose} />
     </>
   );
 };
