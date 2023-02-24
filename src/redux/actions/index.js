@@ -308,7 +308,7 @@ export const getAllPosts = () => {
   };
 };
 
-export const createPost = (data, handleClose) => {
+export const createPost = (data, handleClose, postImage) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
@@ -325,6 +325,33 @@ export const createPost = (data, handleClose) => {
       );
       if (res.ok) {
         const data = await res.json();
+
+        if (postImage) {
+          const formData = new FormData();
+          formData.append("post", postImage);
+
+          try {
+            let response = await fetch(
+              `https://striveschool-api.herokuapp.com/api/posts/${data._id}`,
+              {
+                method: "POST",
+                // mode: "no-cors",
+                body: formData,
+                headers: {
+                  Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+                },
+              }
+            );
+
+            if (response.ok) {
+              dispatch(getAllPosts());
+              // console.log("Image Uploaded Successfully");
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
         // console.log("postdata", data);
         handleClose();
         // dispatch(getAllPosts());

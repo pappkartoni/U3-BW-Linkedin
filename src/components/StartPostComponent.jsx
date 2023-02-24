@@ -11,7 +11,7 @@ import {
 } from "react-icons/ri";
 import { FaVideo } from "react-icons/fa";
 
-const StartPostComponent = () => {
+const StartPostComponent = (props) => {
   const image = useSelector((state) => state.getProfile.fetchProfile);
 
   const [show, setShow] = useState(false);
@@ -53,7 +53,11 @@ const StartPostComponent = () => {
             <span className="ml-1 align-middle">Write article</span>
           </ListGroup.Item>
         </ListGroup>
-        <StartPostModal show={show} handleClose={handleClose} />
+        <StartPostModal
+          show={show}
+          handleClose={handleClose}
+          postId={props.postId}
+        />
       </div>
     </section>
   );

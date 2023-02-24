@@ -7,6 +7,7 @@ import StartPostComponent from "./StartPostComponent";
 
 const PostComponent = () => {
   const posts = useSelector((state) => state.posts.postList);
+  console.log("postimage", posts);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllPosts());

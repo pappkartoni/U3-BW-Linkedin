@@ -7,7 +7,6 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../redux/actions";
-import { BsFillPencilFill } from "react-icons/bs";
 import EditPostModal from "./EditPostModal";
 import { useState } from "react";
 
@@ -78,17 +77,8 @@ const SinglePost = (props) => {
                     Edit this post
                   </Dropdown.Item>
                 )}
-                {/* <Dropdown.Item eventKey="4" onClick={handleShow}>
-                  Edit this post
-                </Dropdown.Item> */}
               </DropdownButton>
             </div>
-            {/* <BsFillPencilFill
-              // size={10}
-              className="icon-hover"
-              fill="rgba(0,0,0,0.6)"
-              onClick={handleShow}
-            /> */}
             {props.post?.user?._id === profileDataID && (
               <div
                 className="icon-hover d-flex justify-content-center align-items-center"
@@ -103,7 +93,10 @@ const SinglePost = (props) => {
       <hr />
       <div>
         <p className="text-muted">{props.post?.text}</p>
-        {props.post?.image && <img className="w-100" src={props.post?.image} />}
+        {props.post?.image && (
+          // eslint-disable-next-line jsx-a11y/img-redundant-alt
+          <img className="w-100" src={props.post?.image} alt="image" />
+        )}
       </div>
       <hr className="mb-1" />
       <ListGroup className="justify-content-between text-muted" horizontal>
@@ -132,6 +125,7 @@ const SinglePost = (props) => {
         show={show}
         handleClose={handleClose}
         postId={props.post?._id}
+        postText={props.post}
       />
     </section>
   );
