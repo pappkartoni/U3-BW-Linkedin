@@ -20,7 +20,7 @@ const ChangeTitleForm = ({
   return (
     <Modal show={showTitleForm} onHide={handleCloseTitleForm}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>Where do you currently work?</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={changeTitleHandler}>
