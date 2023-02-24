@@ -38,6 +38,26 @@ const MyExperienceModal = (props) => {
     }
   }, [expToEdit]);
 
+  const postImage = async (image) => {
+    const formData = new FormData();
+    formData.append("experience", image);
+    try {
+      let res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${expToEdit._id}/picture`, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+          },
+        }
+      );
+      if (res.ok) {
+        console.log("Image Uploaded Successfully");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const submitExperience = async () => {
 
     if (expToEdit) {
@@ -45,23 +65,7 @@ const MyExperienceModal = (props) => {
 
 
       if (image) {
-        const formData = new FormData();
-        formData.append("experience", image);
-        try {
-          let res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${expToEdit._id}/picture`, {
-              method: "POST",
-              body: formData,
-              headers: {
-                Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
-              },
-            }
-          );
-          if (res.ok) {
-            console.log("Image Uploaded Successfully");
-          }
-        } catch (error) {
-          console.log(error);
-        }
+        postImage(image)
       }
 
     } else {

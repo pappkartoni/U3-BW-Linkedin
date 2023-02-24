@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navbar, Container, Form, Button } from "react-bootstrap";
+import { BsSearch } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import NavbarButton from "./NavbarButton";
@@ -50,6 +51,7 @@ const Navi = (props) => {
           </Navbar.Brand>
           <Form className="mr-auto">
             <Form.Control type="text" placeholder="Search" />
+            <BsSearch className="search-icon"/>
           </Form>
           <ul className="navbuttons">
             <NavbarButton
@@ -186,7 +188,10 @@ const Navi = (props) => {
       {location.pathname === "/profile" && (
         <header className={isVisible ? "visible fixed-top" : "fixed-top"}>
           <Container className="subnavi">
-            <img src={user?.image} alt="fetched profile pic here" />
+            <div className="img-wrapper">
+              <img src={user?.image} alt="fetched profile pic here" />
+              <div className="online-indicator" />
+            </div>
             <div className="d-flex flex-column mr-auto">
               <h5>
                 {user?.name} {user?.surname}

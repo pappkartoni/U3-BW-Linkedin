@@ -184,12 +184,13 @@ export const createExperience = (userId, data) => {
       );
 
       if (res.ok) {
-        const data = await res.json(); //is this actually an object?
+        const data = await res.json();
 
         dispatch({
           type: CREATE_EXPERIENCE,
           payload: data,
         });
+
       }
     } catch (error) {
       console.log(error);

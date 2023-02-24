@@ -7,6 +7,7 @@ import Navi from "./components/Navi";
 import Footer from "./components/Footer";
 import Feed from "./components/Pages/Feed.jsx";
 import Profile from "./components/Pages/Profile";
+import ChatWindow from "./components/ChatWindow";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </Container>
+        <ChatWindow />
         <Footer />
       </main>
     </BrowserRouter>
