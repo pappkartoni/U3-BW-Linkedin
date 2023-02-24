@@ -7,10 +7,13 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../redux/actions";
+import { AiFillLike } from "react-icons/ai";
 import EditPostModal from "./EditPostModal";
 import { useState } from "react";
 
 const SinglePost = (props) => {
+  const [isLiked, setIsLiked] = useState(false);
+  const [likes, setLikes] = useState(0);
   const profileDataID = useSelector(
     (state) => state.getProfile.fetchProfile._id
   );
@@ -27,6 +30,14 @@ const SinglePost = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleLike = () => {
+    if (isLiked) {
+      setLikes(likes - 1);
+    } else {
+      setLikes(likes + 1);
+    }
+    setIsLiked(!isLiked);
+  };
   return (
     <section className="pt-3 pr-3 pb-1 pl-3" style={{ overflow: "visible" }}>
       <Row>
@@ -100,10 +111,23 @@ const SinglePost = (props) => {
       </div>
       <hr className="mb-1" />
       <ListGroup className="justify-content-between text-muted" horizontal>
-        <ListGroup.Item className="hover-block  py-2 px-3">
+        <ListGroup.Item className="hover-block  py-2 px-3" onClick={handleLike}>
           {" "}
-          <BiLike size={18} />
-          <span className="ml-1">Like</span>
+          <span className="d-flex align-items-center">
+            {isLiked ? (
+              <>
+                <AiFillLike fill="#0a66c2" size={20} />
+                <span className="ml-1" style={{ color: "#0a66c2" }}>
+                  Like
+                </span>
+              </>
+            ) : (
+              <>
+                <BiLike size={20} />
+                <span className="ml-1">Like</span>
+              </>
+            )}
+          </span>
         </ListGroup.Item>
         <ListGroup.Item className="hover-block  py-2 px-3">
           {" "}

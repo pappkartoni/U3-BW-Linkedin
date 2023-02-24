@@ -189,7 +189,6 @@ export const createExperience = (userId, data) => {
           type: CREATE_EXPERIENCE,
           payload: data,
         });
-
       }
     } catch (error) {
       console.log(error);
