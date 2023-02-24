@@ -110,7 +110,6 @@ export const changeTitle = (title) => {
 };
 export const updateOwnProfile = (content) => {
   return async (dispatch, getState) => {
-    //dispatch({ type: UPDATE_PROFILE });
     try {
       let response = await fetch(updateProfileUrl, {
         method: "PUT",
@@ -452,7 +451,7 @@ export const updatePostImage = (postId, data, handleClose) => {
       );
       if (res.ok) {
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         handleClose();
         // dispatch({
         //   type: UPDATE_POST,

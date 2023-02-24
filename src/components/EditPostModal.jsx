@@ -37,7 +37,7 @@ const EditPostModal = ({ handleClose, show, postId, postText }) => {
         <input
           type="file"
           onChange={(e) => {
-            console.log(e.target.files[0]);
+            // console.log(e.target.files[0]);
             setContent({ ...content, image: e.target.files[0] });
           }}
         />

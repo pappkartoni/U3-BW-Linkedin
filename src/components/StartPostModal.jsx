@@ -8,9 +8,11 @@ import { RiGalleryFill, RiMoreFill } from "react-icons/ri";
 import { FaVideo } from "react-icons/fa";
 import { FaDochub } from "react-icons/fa";
 
-const StartPostModal = ({ show, handleClose, postID, image }) => {
+const StartPostModal = ({ show, handleClose, postID }) => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
   // const name = useSelector((state) => state.getProfile.fetchProfile);
+  const posts = useSelector((state) => state.posts.postList._id);
+  console.log("postId", posts);
   const [postImage, setImage] = useState(null);
   const dispatch = useDispatch();
   const [text, setText] = useState("");
@@ -20,15 +22,9 @@ const StartPostModal = ({ show, handleClose, postID, image }) => {
 
   const submitPost = () => {
     dispatch(createPost({ text }, handleClose, postImage));
-    //uploadImage();
     dispatch(getAllPosts());
     setText("");
   };
-  // const updatePostHandler = () => {
-  //   const formData = new FormData();
-  //   formData.append("post", image);
-  //   dispatch(createPost( formData, handleClose));
-  // };
   const uploadImage = async () => {
     const formData = new FormData();
     formData.append("post", postImage);
@@ -70,7 +66,6 @@ const StartPostModal = ({ show, handleClose, postID, image }) => {
               <img src={globalImage} alt="user profile" />
             )}
             {profileData ? <h5>{profileData.name}</h5> : <h5>Hardika</h5>}
-            {/* <h5>{name}</h5> */}
           </div>
 
           <textarea
@@ -79,17 +74,11 @@ const StartPostModal = ({ show, handleClose, postID, image }) => {
             value={text}
             onChange={(e) => setText(e.target.value)}
           ></textarea>
-          {/* <div>
-            {{ image } && (
-              // eslint-disable-next-line jsx-a11y/img-redundant-alt
-              <img className="w-100" src={image} alt="image" />
-            )}
-          </div> */}
           <div>
             <input
               type="file"
               onChange={(e) => {
-                console.log(e.target.files[0]);
+                // console.log(e.target.files[0]);
                 setImage(e.target.files[0]);
               }}
             />

@@ -14,10 +14,10 @@ const ExperiencesContainer = () => {
 
   const handleShow = (id = null) => {
     if (id) {
-      console.log("with id", id);
+      // console.log("with id", id);
       dispatch(getSingleExperience(user?._id, id));
     } else {
-      console.log("without id");
+      // console.log("without id");
       dispatch({ type: "GET_SINGLE_EXPERIENCE", payload: null });
     }
     setShow(true);

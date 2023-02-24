@@ -9,7 +9,7 @@ import ProfileEdit from "./ProfileEdit";
 
 const ProfileComponent = () => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
-  console.log(profileData);
+  // console.log(profileData);
   const dispatch = useDispatch();
 
   const [showImage, setShowImage] = useState(null);
@@ -79,11 +79,7 @@ const ProfileComponent = () => {
                 <BsFillPencilFill fill="rgba(0,0,0,0.6)" onClick={handleShow} />
               </div>
             </div>
-            <ProfileEdit
-              profileData={profileData}
-              show={show}
-              handleClose={handleClose}
-            />
+
             <div className="mt-3">
               {profileData && (
                 <>
@@ -132,9 +128,15 @@ const ProfileComponent = () => {
                 </>
               )}
             </div>
+            <ProfileEdit
+              profileDetails={profileData}
+              show={show}
+              handleClose={handleClose}
+            />
           </Card.Body>
         </Card>
       </div>
+
       <div>
         <Modal show={show2} onHide={handleClose2}>
           <Modal.Header closeButton>
@@ -149,11 +151,18 @@ const ProfileComponent = () => {
                   setShowImage(e.target.files[0]);
                 }}
               />
-              <Button variant="primary" onClick={handleClose2} type="submit">
-                Post Image
-              </Button>
             </form>
           </Modal.Body>
+          <Modal.Footer>
+            <Button
+              className="mt-2"
+              variant="primary"
+              onClick={handleClose2}
+              type="submit"
+            >
+              Post Image
+            </Button>
+          </Modal.Footer>
         </Modal>
       </div>
     </section>
