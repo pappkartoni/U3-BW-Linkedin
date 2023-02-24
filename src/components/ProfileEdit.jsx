@@ -14,14 +14,15 @@ const ProfileEdit = (props) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    setContent(props.profileData);
+    setContent(props.profileDetails);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.profileData]);
 
   const handleUpdateProfile = () => {
-    console.log("updatedProfileContent", content);
+    // console.log("updatedProfileContent", content);
     dispatch(updateOwnProfile(content));
   };
+
   return (
     <>
       <Modal
