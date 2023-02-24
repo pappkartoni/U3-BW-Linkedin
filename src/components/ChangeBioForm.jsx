@@ -20,7 +20,7 @@ const ChangeBioForm = ({
   return (
     <Modal show={showBioForm} onHide={handleCloseBioForm}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>Add summary</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={changeBioHandler}>
