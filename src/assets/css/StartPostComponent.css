@@ -1,0 +1,41 @@
+.start-post-container {
+  background-color: white;
+  padding-inline: 15px;
+  padding-block: 12px;
+  /* margin-bottom: 50px; */
+}
+
+.start-post-first-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.start-post-first-row > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.start-post-first-row > div {
+  background-color: white;
+  border: 1px solid darkgray;
+  flex-grow: 1;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.start-post-first-row > div:hover {
+  background-color: rgb(243, 242, 239);
+}
+
+.start-post-second-row {
+  margin-top: 30px;
+}
+
+.start-post-second-row > i {
+  font-size: 48px;
+}

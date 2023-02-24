@@ -1,0 +1,45 @@
+.start-post-modal-header {
+  gap: 10px;
+  align-items: center;
+}
+
+.start-post-modal-header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.start-post-modal-textarea {
+  width: 100%;
+  margin-top: 20px;
+  height: 150px;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.start-post-modal-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+.modal-footer > * {
+  margin: 0;
+}
+.modal-footer-breakline {
+  width: 1px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-left: 5px;
+}
+
+.start-post-modal-anyone-btn {
+  display: flex;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.start-post-modal-anyone-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}

@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/css/style.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import Navi from "./components/Navi";
+import Footer from "./components/Footer";
+import Feed from "./components/Pages/Feed.jsx";
+import Profile from "./components/Pages/Profile";
+import ChatWindow from "./components/ChatWindow";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navi />
+      <main>
+        <Container className="pl-0 pr-0">
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </Container>
+        <ChatWindow />
+      </main>
+    </BrowserRouter>
   );
 }
 
