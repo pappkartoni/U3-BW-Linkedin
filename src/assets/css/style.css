@@ -62,13 +62,14 @@ h4 {
   margin-right: 4px;
 }
 
-.navbar .form-control {
+.form-control {
   font-size: 14px;
   height: 34px;
   background-color: #eef3ef;
   border-radius: 4px;
   border: none;
   color: rgba(0, 0, 0, 0.9);
+  padding-left: 32px;
 }
 
 .navbuttons {
@@ -186,6 +187,8 @@ header.visible {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+}
+.subnavi .img-wrapper {
   margin-right: 12px;
 }
 
@@ -534,4 +537,96 @@ section h2 {
 }
 .bg-transparent-dropdown .btn-primary:not(:disabled):not(.disabled):active {
   color: rgba(0, 0, 0, 0.9);
+}
+
+.chat {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 20;
+  width: 288px;
+  margin: 0;
+}
+
+.chat .btn-fullwidth img {
+  border-radius: 50%;
+}
+
+.chat .img-wrapper {
+  margin-right: 8px;
+}
+
+.chat h4.mr-auto {
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.chat-body {
+  min-height: 660px;
+}
+
+.chat-padding {
+  padding-inline: 32px;
+}
+
+.chat-body img {
+  margin: 16px 82px 24px;
+}
+
+.chat-body h4 {
+  margin-block: 12px;
+}
+
+.chat-body a {
+  color: #0a66c2;
+  padding: 8px;
+  font-weight: 600;
+}
+
+form {
+  position: relative;
+}
+
+.chat-body form {
+  margin: 8px 12px;
+  height: 32px;
+}
+
+.chat-body .form-control {
+  padding-right: 28px;
+}
+
+form svg {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+form svg:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.search-icon {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+}
+.sort-icon {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+}
+
+.img-wrapper {
+  position: relative;
+}
+
+.online-indicator {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: #057642;
+  box-shadow: 0 0 0 2px white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
 }
