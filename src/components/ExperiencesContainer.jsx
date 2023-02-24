@@ -4,6 +4,7 @@ import MyExperienceModal from "./MyExperienceModal";
 import { BsPlus } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { getAllExperiences, getSingleExperience } from "../redux/actions";
+import { parseISO } from "date-fns";
 
 const ExperiencesContainer = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const ExperiencesContainer = () => {
         userId={user?._id}
       />
       {experiences.length > 0 &&
-        experiences.map((exp) => (
+        experiences.slice().sort((a,b) => (parseISO(b.startDate).getTime() - parseISO(a.startDate).getTime())).map((exp) => (
           <ExperienceTile
             key={exp._id}
             exp={exp}

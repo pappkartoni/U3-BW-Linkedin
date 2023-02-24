@@ -132,7 +132,7 @@ const MyExperienceModal = (props) => {
                 <Form.Label>End Date</Form.Label>
                 <Form.Control
                   type="date"
-                  value={addExperience.endDate !== "" ? format(parseISO(addExperience.endDate), "yyyy-MM-dd") : ""}
+                  value={addExperience.endDate ? format(parseISO(addExperience.endDate), "yyyy-MM-dd") : ""}
                   onChange={(e) =>
                     setAddExperience({
                       ...addExperience,

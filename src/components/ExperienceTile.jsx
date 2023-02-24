@@ -39,9 +39,8 @@ const ExperienceTile = (props) => {
         <h4>{props.exp.company}</h4>
         <span>
           {props.exp.startDate &&
-            format(parseISO(props.exp.startDate), "MMM yyyy")}{" "}
-          {props.exp.endDate &&
-            format(parseISO(props.exp.endDate), " - MMM yyyy")}
+            format(parseISO(props.exp.startDate), "MMM yyyy")}{" - "}
+          {props.exp.endDate ? format(parseISO(props.exp.endDate), "MMM yyyy") : "Now"}
         </span>
         <span>{props.exp.area}</span>
         <p>{props.exp.description}</p>
