@@ -1,39 +1,26 @@
 import "./App.css";
-import SuggestedComponent from "./components/SuggestedComponent";
-import AnalyticsComponent from "./components/AnalyticsComponent";
-import ResourcesComponent from "./components/ResourcesComponent";
-import ActivityComponent from "./components/ActivityComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/style.css";
-import { BrowserRouter } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import Navi from "./components/Navi";
 import Footer from "./components/Footer";
-import Sidebar from "./components/Sidebar";
-import ProfileComponent from "./components/ProfileComponent";
-import ExperiencesContainer from "./components/ExperiencesContainer";
+import Feed from "./components/Pages/Feed.jsx";
+import Profile from "./components/Pages/Profile";
+import ChatWindow from "./components/ChatWindow";
 
 function App() {
   return (
     <BrowserRouter>
       <Navi />
       <main>
-        <Container>
-          <Row>
-            <Col md={8}>
-              <ProfileComponent />
-              <SuggestedComponent />
-              <AnalyticsComponent />
-              <ResourcesComponent />
-              <ActivityComponent />
-              <ExperiencesContainer />
-            </Col>
-            <Col md={4}>
-              <Sidebar />
-            </Col>
-          </Row>
+        <Container className="pl-0 pr-0">
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
         </Container>
-        <Footer />
+        <ChatWindow />
       </main>
     </BrowserRouter>
   );

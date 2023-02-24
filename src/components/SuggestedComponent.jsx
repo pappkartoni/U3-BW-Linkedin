@@ -46,14 +46,14 @@ const SuggestedComponent = () => {
         </div>
         <div>
           <h4 className="suggested-title-level-title">Intermediate</h4>
-          <p className="mb-0">
+          <div className="mb-0">
             <div className="d-flex justify-content-center align-items-center">
               <div className="progress-bar">
                 <div></div>
               </div>
-              <span class="progress-bar-grade">5/7</span>
+              <span className="progress-bar-grade">5/7</span>
             </div>
-          </p>
+          </div>
           <p className="suggested-card-title mt-0 pt-0">
             Complete 2 steps to achieve{" "}
             <span
@@ -112,7 +112,7 @@ const SuggestedComponent = () => {
                         experience.
                       </span>
                     </Card.Title>
-                    <Card.Text classname="summary-work-box-text">
+                    <Card.Text className="summary-work-box-text">
                       Members who include a summary recieve up to 3.9 times as
                       many profile views.
                     </Card.Text>

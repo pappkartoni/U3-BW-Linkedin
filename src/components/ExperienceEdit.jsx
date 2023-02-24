@@ -11,6 +11,7 @@ const ExperienceEdit = (props) => {
     area: "",
   });
 
+  // eslint-disable-next-line no-unused-vars
   const [id, setId] = useState(null);
 
   const changeExperience = async (e) => {
@@ -56,7 +57,6 @@ const ExperienceEdit = (props) => {
         size="lg"
         show={props.show}
         onHide={props.handleClose}
-        backdrop="static"
         keyboard={false}
       >
         <Modal.Header closeButton>

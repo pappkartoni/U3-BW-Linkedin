@@ -19,6 +19,7 @@ export const GET_ALL_EXPERIENCES = "GET_ALL_EXPERIENCES";
 export const CREATE_EXPERIENCE = "CREATE_EXPERIENCE";
 export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
 export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
+export const GET_SINGLE_EXPERIENCE = "GET_SINGLE_EXPERIENCE";
 
 export const GET_ALL_POSTS = "GET_ALL_POSTS";
 export const CREATE_POST = "CREATE_POST";
@@ -109,11 +110,11 @@ export const changeTitle = (title) => {
 };
 export const updateOwnProfile = (content) => {
   return async (dispatch, getState) => {
-    dispatch({ type: UPDATE_PROFILE });
     try {
       let response = await fetch(updateProfileUrl, {
         method: "PUT",
         body: JSON.stringify(content),
+
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
@@ -121,12 +122,12 @@ export const updateOwnProfile = (content) => {
         },
       });
       if (response.ok) {
-        const MyData = await response.json();
+        const data = await response.json();
         dispatch({
           type: UPDATE_PROFILE,
-          payload: MyData,
+          payload: data,
         });
-        console.log("updatedDataaction", MyData);
+        console.log("updatedDataaction", data);
       } else {
         console.log("Error fetching Data!");
       }
@@ -182,12 +183,13 @@ export const createExperience = (userId, data) => {
       );
 
       if (res.ok) {
-        const data = await res.json(); //is this actually an object?
+        const data = await res.json();
 
         dispatch({
           type: CREATE_EXPERIENCE,
           payload: data,
         });
+
       }
     } catch (error) {
       console.log(error);
@@ -225,11 +227,40 @@ export const updateExperience = (userId, expId, data) => {
   };
 };
 
+export const getSingleExperience = (userId, expId) => {
+  console.log(userId, expId);
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+          },
+        }
+      );
+
+      if (res.ok) {
+        const data = await res.json(); //is this actually an object?
+
+        dispatch({
+          type: GET_SINGLE_EXPERIENCE,
+          payload: data,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const deleteExperience = (userId, expId) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`,
+        `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`,
         {
           method: "DELETE",
           headers: {
@@ -240,11 +271,9 @@ export const deleteExperience = (userId, expId) => {
       );
 
       if (res.ok) {
-        const data = await res.json(); //is this actually an object? what does delete return?
-
         dispatch({
           type: DELETE_EXPERIENCE,
-          payload: data,
+          payload: expId,
         });
       }
     } catch (error) {
@@ -267,6 +296,7 @@ export const getAllPosts = () => {
       );
       if (res.ok) {
         const data = await res.json();
+        // console.log("post", data);
         dispatch({
           type: GET_ALL_POSTS,
           payload: data,
@@ -278,7 +308,7 @@ export const getAllPosts = () => {
   };
 };
 
-export const createPost = (data) => {
+export const createPost = (data, handleClose, postImage) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
@@ -295,6 +325,36 @@ export const createPost = (data) => {
       );
       if (res.ok) {
         const data = await res.json();
+
+        if (postImage) {
+          const formData = new FormData();
+          formData.append("post", postImage);
+
+          try {
+            let response = await fetch(
+              `https://striveschool-api.herokuapp.com/api/posts/${data._id}`,
+              {
+                method: "POST",
+                // mode: "no-cors",
+                body: formData,
+                headers: {
+                  Authorization:
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+                },
+              }
+            );
+
+            if (response.ok) {
+              dispatch(getAllPosts());
+              // console.log("Image Uploaded Successfully");
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+        // console.log("postdata", data);
+        handleClose();
+        // dispatch(getAllPosts());
         dispatch({
           type: CREATE_POST,
           payload: data,
@@ -371,5 +431,34 @@ export const changeBio = (bio) => {
     );
     const data = await res.json();
     console.log(data);
+  };
+};
+
+export const updatePostImage = (postId, data, handleClose) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
+        {
+          method: "POST",
+          body: data,
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
+            // "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        // console.log(data);
+        handleClose();
+        // dispatch({
+        //   type: UPDATE_POST,
+        //   payload: data,
+        // });
+        dispatch(getAllPosts());
+      }
+    } catch (error) {}
   };
 };
