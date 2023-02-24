@@ -23,28 +23,35 @@ const ResourcesComponent = () => {
           <div>
             <div>
               <div className="d-flex">
-                <i className="bi bi-broadcast-pin"></i>
                 <div className="d-flex flex-column">
-                  <div className="creator-mode d-flex">
-                    <span>Creator Mode</span>
-                    <Button className="creator-btn" variant="secondary">
-                      ON
+                  <div className="creator-mode d-flex pl-3 align-items-center">
+                    <i class="bi bi-radioactive"></i>
+                    <div className="pr-1"></div>
+                    <span className="creator-mode-title pl-1">
+                      Creator Mode
+                    </span>
+                    <Button className="creator-btn" variant="light">
+                      OFF
                     </Button>
                   </div>
-                  <p>
-                    Get discovered, showcase content on your profile, and get
-                    access to creator tools
-                  </p>
+                  <div className="pl-4">
+                    <p className="creator-mode-para">
+                      Get discovered, showcase content on your profile, and get
+                      access to creator tools
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
             <hr></hr>
             <div>
-              <div>
+              <div className="my-network-div">
                 <i className="bi bi-people-fill"></i>
-                <span>My network</span>
+                <span className="my-network-title pl-2">My network</span>
               </div>
-              <p>See and manage your connections and interests.</p>
+              <p className="my-network-para">
+                See and manage your connections and interests.
+              </p>
             </div>
           </div>
           <hr className="resources-hr"></hr>

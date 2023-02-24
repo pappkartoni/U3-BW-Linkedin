@@ -90,9 +90,7 @@ const ProfileComponent = () => {
                   <Card.Title>
                     {profileData.name} {profileData.surname}
                   </Card.Title>
-                  <Card.Text className="mb-0">
-                    {profileData.title}
-                  </Card.Text>
+                  <Card.Text className="mb-0">{profileData.title}</Card.Text>
                   <div className=" d-flex align-items-center">
                     <Card.Text className="text-black-light d-inline-block mb-0">
                       {profileData.area}
@@ -103,8 +101,8 @@ const ProfileComponent = () => {
                       Contact info
                     </a>
                   </div>
-                  <a href="#contact-info" className="d-inline-block">
-                    87 connections
+                  <a href="#contact-info" className="d-inline-block links-blue">
+                    500+ connections
                   </a>
                   <div className="mt-2">
                     <Button

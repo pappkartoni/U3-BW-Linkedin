@@ -55,7 +55,13 @@ const SuggestedComponent = () => {
             </div>
           </p>
           <p className="suggested-card-title mt-0 pt-0">
-            Complete 2 steps to achieve <span>All Star(function?)</span>
+            Complete 2 steps to achieve{" "}
+            <span
+              className="profile-level-span"
+              style={{ color: "blue", fontWeight: "600", cursor: "pointer" }}
+            >
+              All Star
+            </span>
           </p>
         </div>
 
@@ -66,9 +72,14 @@ const SuggestedComponent = () => {
                 <Card style={{ width: "100%", height: "100%" }}>
                   <Card.Body className="internal-suggested-card-body">
                     <Card.Title className="suggested-work-box">
-                      <i className="bi bi-briefcase briefcase-icon"></i>
+                      <i
+                        className="bi bi-briefcase briefcase-icon"
+                        // style={{ color: "brown" }}
+                      ></i>
                       <span> </span>
-                      <span>Where do you currently work?</span>
+                      <span style={{ fontWeight: "700" }}>
+                        Where do you currently work?
+                      </span>
                     </Card.Title>
                     {/* add x to top right corner */}
                     <Card.Text className="suggested-work-box-text">
@@ -94,8 +105,9 @@ const SuggestedComponent = () => {
                   <Card.Body className="internal-summary-card-body">
                     <Card.Title className="summary-work-box">
                       <i className="bi bi-person-vcard contact-card-icon"></i>
+                      {/* <div className="ivm-view-attr__system-image ivm-view-attr__system-image--small ivm-view-attr__system-image--illustration-microspot ivm-view-attr__system-image--ui-feed-profile-small "></div> */}
                       <span> </span>
-                      <span>
+                      <span style={{ fontWeight: "700" }}>
                         Write a summary to highlight your personality or work
                         experience.
                       </span>
