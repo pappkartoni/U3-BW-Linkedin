@@ -16,7 +16,7 @@ const ProfileEdit = (props) => {
   useEffect(() => {
     setContent(props.profileData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props.profileData]);
 
   const handleUpdateProfile = () => {
     console.log("updatedProfileContent", content);

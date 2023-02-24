@@ -1,15 +1,14 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import localStorage from "redux-persist/lib/storage"; // default value: localStorage
-// import { encryptTransform } from "redux-persist-transform-encrypt";
 import fetchProfileReducer from "../reducers/fetchProfileReducer";
 import allProfilesReducer from "../reducers/allProfilesReducer";
 import experienceReducer from "../reducers/experienceReducer";
 import bioReducer from "../reducers/bioReducer";
 import postReducer from "../reducers/postReducer";
+import sessionStorage from "redux-persist/es/storage/session";
 
 const persistConfig = {
-  storage: localStorage,
+  storage: sessionStorage,
   key: "root", // this brings the whole redux store into persistency
   // transforms: [
   //   encryptTransform({
@@ -22,20 +21,17 @@ const combinedReducer = combineReducers({
   allProfiles: allProfilesReducer,
   exp: experienceReducer,
   posts: postReducer,
-  bioReducer,
+  bioReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, combinedReducer);
 
 const store = configureStore({
-  reducer: persistedReducer, // ...giving back to reducer a single function once again
-  // we're telling Redux which reducer function to use!
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
-      // immutableCheck: false,  //turn off the checks immutableCheck
-      immutableCheck: { warnAfter: 128 }, // checks immutableCheck increase the timeouts:
+      immutableCheck: { warnAfter: 128 },
       serializableCheck: false,
-      // this shuts off the checking of non-serializable values in actions
     });
   },
 });

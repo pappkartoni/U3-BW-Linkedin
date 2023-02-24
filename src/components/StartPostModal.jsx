@@ -7,13 +7,10 @@ import globalImage from "../assets/img/developer1.jfif";
 import { RiGalleryFill, RiMoreFill } from "react-icons/ri";
 import { FaVideo } from "react-icons/fa";
 import { FaDochub } from "react-icons/fa";
-import { updatePostImage } from "../redux/actions";
 
 const StartPostModal = ({ show, handleClose, postID, image }) => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
   // const name = useSelector((state) => state.getProfile.fetchProfile);
-  const posts = useSelector((state) => state.posts.postList._id);
-  console.log("postId", posts);
   const [postImage, setImage] = useState(null);
   const dispatch = useDispatch();
   const [text, setText] = useState("");
@@ -34,7 +31,6 @@ const StartPostModal = ({ show, handleClose, postID, image }) => {
   // };
   const uploadImage = async () => {
     const formData = new FormData();
-    console.log("formdata", formData);
     formData.append("post", postImage);
     try {
       let response = await fetch(

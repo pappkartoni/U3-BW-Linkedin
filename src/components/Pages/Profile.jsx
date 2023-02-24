@@ -14,7 +14,7 @@ const Profile = () => {
   useEffect(() => {
     document.title = user.name + " " + user.surname + " | BlinkedIn"
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  },[user])
 
   return (
     <Container>
