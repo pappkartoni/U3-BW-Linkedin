@@ -740,6 +740,10 @@ form svg:hover {
   margin: 0;
 }
 
+.service:hover p {
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .service {
   padding-block: 4px;
 }
