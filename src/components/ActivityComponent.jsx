@@ -8,7 +8,7 @@ import StartPostModal from "./StartPostModal";
 
 const ActivityComponent = () => {
   const dispatch = useDispatch();
-  
+ 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -22,14 +22,19 @@ const ActivityComponent = () => {
     dispatch(getAllPosts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   return (
     <section>
-      <Container className="pb-3">
+      <Container className="activity-container">
         <div className="d-flex justify-content-between align-items-center">
           <div>
             <h3 className="activity-title mt-4 mb-0">Activity</h3>
-            <p>n followers</p>
+            <p
+              className="activity-follower-number"
+              style={{ color: "rgb(10,102,194)", fontWeight: "500" }}
+            >
+              1,005 followers
+            </p>
           </div>
           <Button
             onClick={handleShow}
@@ -40,20 +45,17 @@ const ActivityComponent = () => {
           </Button>
         </div>
         <div>
-          {ownPosts.length > 0 && ownPosts.map(p => 
-            <SinglePost key={p._id} post={p} />
-            )}
-          <p>
-            N posts lately | you haven't posted latley (FETCH GET function?)
-          </p>
-          <p>Recent post you share or comment on will be displayed here</p>
+          {ownPosts.length > 0 &&
+            ownPosts.map((p) => <SinglePost key={p._id} post={p} />)}
+          <p className="post-number-title">{ownPosts.length} recent posts</p>
+          {/* <p>You haven't posted lately</p> */}
+          {/* <p>Recent post you share or comment on will be displayed here</p> */}
         </div>
+        <hr className="activity-hr"></hr>
 
-        <hr></hr>
         <div>
-          <p>
-            Show all n resources <i className="bi bi-arrow-right"></i>{" "}
-            (function?)
+          <p className="show-activity-btn">
+            Show all activity <i className="bi bi-arrow-right"></i>
           </p>
         </div>
       </Container>

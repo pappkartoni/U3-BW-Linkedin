@@ -23,14 +23,13 @@ const AnalyticsComponent = () => {
           <Row>
             <Col xs={5}>
               <div className="d-flex align-items-start">
-                <i
-                  className="bi bi-people-fill analytics-people-fill"
-                  size={"4rem"}
-                ></i>
+                <i className="bi bi-people-fill analytics-people-fill"></i>
                 <div className="d-flex">
                   <div className="analytics-profile-views pl-2">
-                    <span>10 profile views</span>
-                    <p>Discover who's viewed your profile.</p>
+                    <span className="profile-views-title">
+                      11 profile views
+                    </span>
+                    <p className="pl-1">Discover who's viewed your profile.</p>
                   </div>
                 </div>
               </div>
@@ -40,8 +39,12 @@ const AnalyticsComponent = () => {
                 <i className="bi bi-search"></i>
                 <div className="d-flex">
                   <div className="analytics-search-appearances pl-2">
-                    <span>25 search appearances</span>
-                    <p>See how ofter you appear in search results.</p>
+                    <span className="search-appearances-title">
+                      37 search appearances
+                    </span>
+                    <p className="pl-1">
+                      See how often you appear in search results.
+                    </p>
                   </div>
                 </div>
               </div>

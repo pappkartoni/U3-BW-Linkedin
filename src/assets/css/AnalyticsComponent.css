@@ -23,21 +23,32 @@
 }
 
 .analytics-people-fill {
-  font-size: 40px;
-  margin-top: -10px;
+  font-size: 20px;
+  margin-top: -2px;
 }
 
-.analytics-profile-views span {
-  font-weight: 500;
+.analytics-people-fill:hover,
+.bi.bi-search:hover {
+  cursor: pointer;
+}
+
+.bi.bi-search {
+  font-size: 18px;
+}
+
+.profile-views-title,
+.search-appearances-title {
+  font-weight: 700;
   font-size: 0.95rem;
+}
+
+.profile-views-title:hover,
+.search-appearances-title:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .analytics-profile-views p {
-  font-size: 0.95rem;
-}
-
-.analytics-search-appearances span {
-  font-weight: 500;
   font-size: 0.95rem;
 }
 
