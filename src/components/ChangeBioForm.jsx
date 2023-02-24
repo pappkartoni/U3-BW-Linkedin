@@ -35,7 +35,7 @@ const ChangeBioForm = ({
               }}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button onClick={handleCloseBioForm} variant="primary" type="submit">
             Submit
           </Button>
         </Form>

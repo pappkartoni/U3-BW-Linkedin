@@ -35,7 +35,11 @@ const ChangeTitleForm = ({
               }}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button
+            onClick={handleCloseTitleForm}
+            variant="primary"
+            type="submit"
+          >
             Submit
           </Button>
         </Form>
