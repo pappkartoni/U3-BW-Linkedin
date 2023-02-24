@@ -37,7 +37,7 @@ const SideBarFooter = () => {
                 </Link>
             </div>
             <div className="copyright">
-                <img src={Logo} alt="logo" className="logo" style={{height: 14}}/>
+                <img src={Logo} alt="logo" className="logo" style={{height: 14, marginRight: 4}}/>
                 LinkedIn Corporation © 2023
             </div>
         </footer>

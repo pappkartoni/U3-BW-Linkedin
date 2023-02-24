@@ -59,6 +59,7 @@ const MyExperienceModal = (props) => {
       );
       if (res.ok) {
         console.log("Image Uploaded Successfully");
+        dispatch(getAllExperiences(user._id));
       }
     } catch (error) {
       console.log(error);

@@ -151,17 +151,17 @@ const ProfileComponent = () => {
                   setShowImage(e.target.files[0]);
                 }}
               />
+              <Button
+                className="mt-2"
+                variant="primary"
+                onClick={handleClose2}
+                type="submit"
+              >
+                Post Image
+              </Button>
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button
-              className="mt-2"
-              variant="primary"
-              onClick={handleClose2}
-              type="submit"
-            >
-              Post Image
-            </Button>
           </Modal.Footer>
         </Modal>
       </div>
