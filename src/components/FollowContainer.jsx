@@ -34,12 +34,12 @@ const FollowContainer = () => {
           forperson={true}
           image={profiles[profiles.length - 2].image}
           />
-        <FollowPersonTile
+{/*         <FollowPersonTile
             title={profiles[profiles.length - 3].name + " " + profiles[profiles.length - 3].surname}
             subtitle={profiles[profiles.length - 3].title}
             forperson={true}
             image={profiles[profiles.length - 3].image}
-            />
+            /> */}
       </>}
 
       <button className="btn-fullwidth">

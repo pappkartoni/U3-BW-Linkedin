@@ -10,7 +10,6 @@ import { FaDochub } from "react-icons/fa";
 
 const StartPostModal = ({ show, handleClose, postID }) => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
-  // const name = useSelector((state) => state.getProfile.fetchProfile);
   const posts = useSelector((state) => state.posts.postList._id);
   console.log("postId", posts);
   const [postImage, setImage] = useState(null);
@@ -27,24 +26,18 @@ const StartPostModal = ({ show, handleClose, postID }) => {
   };
   const uploadImage = async () => {
     const formData = new FormData();
-    formData.append("post", postImage);
+    formData.append("image", postImage);
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/posts/${postID}`,
+        `${process.env.REACT_APP_BE_URL}/posts/${postID}/image`,
         {
           method: "POST",
-          // mode: "no-cors",
           body: formData,
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
-          },
         }
       );
 
       if (response.ok) {
         dispatch(getAllPosts());
-        // console.log("Image Uploaded Successfully");
       }
     } catch (error) {
       console.log(error);
