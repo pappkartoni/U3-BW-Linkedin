@@ -20,7 +20,7 @@ const StartPostModal = ({ show, handleClose, postID }) => {
   const handleShow2 = () => setShow2(true);
 
   const submitPost = () => {
-    dispatch(createPost({ text }, handleClose, postImage));
+    dispatch(createPost({ text: text, user: profileData._id }, handleClose, postImage));
     dispatch(getAllPosts());
     setText("");
   };

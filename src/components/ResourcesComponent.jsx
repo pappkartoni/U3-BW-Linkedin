@@ -25,7 +25,7 @@ const ResourcesComponent = () => {
               <div className="d-flex">
                 <div className="d-flex flex-column">
                   <div className="creator-mode d-flex pl-3 align-items-center">
-                    <i class="bi bi-radioactive"></i>
+                    <i className="bi bi-radioactive"></i>
                     <div className="pr-1"></div>
                     <span className="creator-mode-title pl-1">
                       Creator Mode

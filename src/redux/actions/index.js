@@ -261,7 +261,7 @@ export const getAllPosts = () => {
         // console.log("post", data);
         dispatch({
           type: GET_ALL_POSTS,
-          payload: data,
+          payload: data.posts,
         });
       }
     } catch (error) {
@@ -277,7 +277,8 @@ export const createPost = (data, handleClose, postImage) => {
         `${process.env.REACT_APP_BE_URL}/posts`,
         {
           method: "POST",
-          body: JSON.stringify(data)
+          body: JSON.stringify(data),
+          headers: {"Content-Type": "application/json"}
         }
       );
       if (res.ok) {

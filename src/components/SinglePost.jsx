@@ -18,9 +18,10 @@ const SinglePost = (props) => {
     (state) => state.getProfile.fetchProfile._id
   );
   const dispatch = useDispatch();
-  const daysAgo = formatDistanceToNow(new Date(props.post?.createdAt), {
+  console.log(props.post)
+/*   const daysAgo = formatDistanceToNow(new Date(props.post?.createdAt), {
     addSuffix: true,
-  });
+  }); */
   const handleDelete = () => {
     dispatch(deletePost(props.post?._id));
   };
@@ -47,7 +48,7 @@ const SinglePost = (props) => {
               <div className="post-profile-img">
                 <img
                   className="w-100"
-                  src={props.post?.user?.image}
+                  src={props.post?.user[0]?.image}
                   alt="userProfilePhoto"
                 />
               </div>
@@ -56,14 +57,14 @@ const SinglePost = (props) => {
               <div className="post-profile-name">
                 <h6 className="mb-0">
                   <Link className="text-dark">
-                    {props.post?.user?.name} {props.post?.user?.surname}
+                    {props.post?.user[0]?.name} {props.post?.user[0]?.surname}
                   </Link>
                 </h6>
                 <p className="post-profile-title text-truncate mb-0 text-muted">
-                  {props.post?.user?.title}
+                  {props.post?.user[0]?.title}
                 </p>
                 <span className="posted-date text-muted">
-                  {daysAgo}
+                  {props.post?.createdAt}
                   {/* {props.post?.createdAt &&
                     format(parseISO(props.post?.createdAt), "dd MMM yyyy")}{" "} */}
                 </span>
