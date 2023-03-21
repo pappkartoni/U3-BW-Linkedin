@@ -6,7 +6,7 @@ import { BiComment, BiLike, BiSend, BiShuffle } from "react-icons/bi";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost } from "../redux/actions";
+import { deletePost, getAllPosts } from "../redux/actions";
 import { AiFillLike } from "react-icons/ai";
 import EditPostModal from "./EditPostModal";
 import { useState } from "react";
@@ -42,6 +42,7 @@ const SinglePost = (props) => {
         console.log(data)
         setIsLiked(data.isLiked)
         setLikes(data.totalLikes)
+        dispatch(getAllPosts())
       }
     } catch (error) {
       console.log(error)

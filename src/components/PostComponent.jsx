@@ -7,9 +7,9 @@ import StartPostComponent from "./StartPostComponent";
 
 const PostComponent = () => {
   const posts = useSelector((state) => state.posts.postList);
-  console.log("all posts", posts)
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log("all posts", posts)
     dispatch(getAllPosts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
