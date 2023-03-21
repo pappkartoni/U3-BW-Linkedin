@@ -12,15 +12,12 @@ import EditPostModal from "./EditPostModal";
 import { useState } from "react";
 
 const SinglePost = (props) => {
-  const [isLiked, setIsLiked] = useState(false);
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(props.post.likes.length);
   const profileDataID = useSelector(
     (state) => state.getProfile.fetchProfile._id
-  );
-  console.log("we are", profileDataID)
+    );
+  const [isLiked, setIsLiked] = useState(props.post.likes.includes(profileDataID));
   const dispatch = useDispatch();
-  console.log("the post is", props.post)
-  console.log("the post author is", props.post.user?._id)
   const daysAgo = formatDistanceToNow(new Date(props.post?.createdAt), {
     addSuffix: true,
   });
@@ -33,14 +30,24 @@ const SinglePost = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleLike = () => {
-    if (isLiked) {
-      setLikes(likes - 1);
-    } else {
-      setLikes(likes + 1);
+  const handleLike = async () => {
+    try {
+      const res = await fetch(`${process.env.REACT_APP_BE_URL}/posts/${props.post?._id}/like`, {
+        method: "PUT",
+        body: JSON.stringify({_id: profileDataID}),
+        headers: {"Content-Type": "application/json"}
+      })
+      if (res.ok) {
+        const data = await res.json()
+        console.log(data)
+        setIsLiked(data.isLiked)
+        setLikes(data.totalLikes)
+      }
+    } catch (error) {
+      console.log(error)
     }
-    setIsLiked(!isLiked);
   };
+
   return (
     <section className="pt-3 pr-3 pb-1 pl-3" style={{ overflow: "visible" }}>
       <Row>
@@ -119,13 +126,13 @@ const SinglePost = (props) => {
               <>
                 <AiFillLike fill="#0a66c2" size={20} />
                 <span className="ml-1" style={{ color: "#0a66c2" }}>
-                  Like
+                  Like ({likes})
                 </span>
               </>
             ) : (
               <>
                 <BiLike size={20} />
-                <span className="ml-1">Like</span>
+                <span className="ml-1">Like ({likes})</span>
               </>
             )}
           </span>
