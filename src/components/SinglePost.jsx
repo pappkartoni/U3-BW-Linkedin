@@ -17,11 +17,13 @@ const SinglePost = (props) => {
   const profileDataID = useSelector(
     (state) => state.getProfile.fetchProfile._id
   );
+  console.log("we are", profileDataID)
   const dispatch = useDispatch();
-  console.log(props.post)
-/*   const daysAgo = formatDistanceToNow(new Date(props.post?.createdAt), {
+  console.log("the post is", props.post)
+  console.log("the post author is", props.post.user?._id)
+  const daysAgo = formatDistanceToNow(new Date(props.post?.createdAt), {
     addSuffix: true,
-  }); */
+  });
   const handleDelete = () => {
     dispatch(deletePost(props.post?._id));
   };
@@ -48,7 +50,7 @@ const SinglePost = (props) => {
               <div className="post-profile-img">
                 <img
                   className="w-100"
-                  src={props.post?.user[0]?.image}
+                  src={props.post?.user?.image}
                   alt="userProfilePhoto"
                 />
               </div>
@@ -57,16 +59,14 @@ const SinglePost = (props) => {
               <div className="post-profile-name">
                 <h6 className="mb-0">
                   <Link className="text-dark">
-                    {props.post?.user[0]?.name} {props.post?.user[0]?.surname}
+                    {props.post?.user?.name} {props.post?.user?.surname}
                   </Link>
                 </h6>
                 <p className="post-profile-title text-truncate mb-0 text-muted">
-                  {props.post?.user[0]?.title}
+                  {props.post?.user?.title}
                 </p>
                 <span className="posted-date text-muted">
-                  {props.post?.createdAt}
-                  {/* {props.post?.createdAt &&
-                    format(parseISO(props.post?.createdAt), "dd MMM yyyy")}{" "} */}
+                  {daysAgo}
                 </span>
               </div>
             </Col>
@@ -84,7 +84,7 @@ const SinglePost = (props) => {
                 <Dropdown.Item eventKey="1">Save Post</Dropdown.Item>
                 <Dropdown.Item eventKey="2">Copy link to post</Dropdown.Item>
                 <Dropdown.Item eventKey="3">Embed this post</Dropdown.Item>
-                {props.post?.user?._id === profileDataID && (
+                {props.post?.user?._id?.toString() === profileDataID.toString() && (
                   <Dropdown.Item eventKey="4" onClick={handleShow}>
                     Edit this post
                   </Dropdown.Item>

@@ -10,8 +10,6 @@ import { FaDochub } from "react-icons/fa";
 
 const StartPostModal = ({ show, handleClose, postID }) => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
-  const posts = useSelector((state) => state.posts.postList._id);
-  console.log("postId", posts);
   const [postImage, setImage] = useState(null);
   const dispatch = useDispatch();
   const [text, setText] = useState("");
@@ -71,7 +69,7 @@ const StartPostModal = ({ show, handleClose, postID }) => {
             <input
               type="file"
               onChange={(e) => {
-                // console.log(e.target.files[0]);
+                console.log(e.target.files[0]);
                 setImage(e.target.files[0]);
               }}
             />

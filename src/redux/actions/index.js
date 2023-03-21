@@ -1,13 +1,3 @@
-const profileUrl = "https://striveschool-api.herokuapp.com/api/profile/me";
-const updateProfileUrl = "https://striveschool-api.herokuapp.com/api/profile/";
-const options1 = {
-  method: "GET",
-  headers: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
-  },
-};
-
 export const FETCH_PROFILE = "GET_PROFILE";
 export const FETCH_PROFILE_LOADING = "FETCH_PROFILE_LOADING";
 export const FETCH_PROFILE_ERROR = "FETCH_PROFILE_ERROR";
@@ -108,9 +98,11 @@ export const changeTitle = (userId, title) => {
 export const updateOwnProfile = (userId, content) => {
   return async (dispatch, getState) => {
     try {
+      console.log("now we updating", content)
       let response = await fetch(`${process.env.REACT_APP_BE_URL}/users/${userId}`, {
         method: "PUT",
         body: JSON.stringify(content),
+        headers: {"Content-Type": "application/json"}
       });
       if (response.ok) {
         const data = await response.json();
@@ -254,11 +246,12 @@ export const deleteExperience = (userId, expId) => {
 
 export const getAllPosts = () => {
   return async (dispatch) => {
+
     try {
       const res = await fetch(`${process.env.REACT_APP_BE_URL}/posts`);
       if (res.ok) {
         const data = await res.json();
-        // console.log("post", data);
+        console.log("post", data);
         dispatch({
           type: GET_ALL_POSTS,
           payload: data.posts,
@@ -286,7 +279,7 @@ export const createPost = (data, handleClose, postImage) => {
 
         if (postImage) {
           const formData = new FormData();
-          formData.append("post", postImage);
+          formData.append("image", postImage);
 
           try {
             let response = await fetch(
@@ -376,9 +369,10 @@ export const changeBio = (userId, bio) => {
 
 export const updatePostImage = (postId, data, handleClose) => {
   return async (dispatch) => {
+    console.log("what the fuck is happening here", data)
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BE_URL}/posts/${postId}`,
+        `${process.env.REACT_APP_BE_URL}/posts/${postId}/image`,
         {
           method: "POST",
           body: data,

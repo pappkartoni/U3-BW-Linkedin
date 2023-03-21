@@ -16,7 +16,7 @@ const EditPostModal = ({ handleClose, show, postId, postText }) => {
   const updatePostHandler = () => {
     if (content.image) {
       const formData = new FormData();
-      formData.append("post", content.image);
+      formData.append("image", content.image);
       dispatch(updatePostImage(postId, formData, handleClose));
     }
     dispatch(updatePost(postId, { text: content.text }));

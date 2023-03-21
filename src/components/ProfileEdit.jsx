@@ -20,7 +20,7 @@ const ProfileEdit = (props) => {
   }, [props.profileData]);
 
   const handleUpdateProfile = () => {
-    // console.log("updatedProfileContent", content);
+    console.log("updatedProfileContent", content);
     dispatch(updateOwnProfile(user._id, content));
   };
 
