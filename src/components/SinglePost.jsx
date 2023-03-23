@@ -10,6 +10,8 @@ import { deletePost, getAllPosts } from "../redux/actions";
 import { AiFillLike } from "react-icons/ai";
 import EditPostModal from "./EditPostModal";
 import { useState } from "react";
+import CommentList from "./CommentList";
+import CommentPost from "./CommentPost";
 
 const SinglePost = (props) => {
   const [likes, setLikes] = useState(props.post.likes.length);
@@ -26,6 +28,8 @@ const SinglePost = (props) => {
   };
 
   const [show, setShow] = useState(false);
+  const [expandedComment, setExpandedComment] = useState(false)
+  const [expandedList, setExpandedList] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -48,7 +52,6 @@ const SinglePost = (props) => {
       console.log(error)
     }
   };
-
   return (
     <section className="pt-3 pr-3 pb-1 pl-3" style={{ overflow: "visible" }}>
       <Row>
@@ -118,6 +121,15 @@ const SinglePost = (props) => {
           <img className="w-100" src={props.post?.image} alt="image" />
         )}
       </div>
+      <div className="d-flex justify-content-between">
+        <span className="likes-counter d-flex align-items-center">
+          <img src="https://static.licdn.com/sc/h/8ekq8gho1ruaf8i7f86vd1ftt" alt="..." />
+          <img src="https://static.licdn.com/sc/h/b1dl5jk88euc7e9ri50xy5qo8" alt="..." style={{marginLeft: -4}}/>
+          <img src="https://static.licdn.com/sc/h/cpho5fghnpme8epox8rdcds22" alt="..." style={{marginLeft: -4, marginRight: 2}}/>
+          {likes}
+        </span>
+        <span className="comments-count" onClick={() => {setExpandedComment(true); setExpandedList(true)}}>{props.post?.comments?.length} comment{props.post?.comments?.length !== 1 ? "s" : ""}</span>
+      </div>
       <hr className="mb-1" />
       <ListGroup className="justify-content-between text-muted" horizontal>
         <ListGroup.Item className="hover-block  py-2 px-3" onClick={handleLike}>
@@ -127,18 +139,18 @@ const SinglePost = (props) => {
               <>
                 <AiFillLike fill="#0a66c2" size={20} />
                 <span className="ml-1" style={{ color: "#0a66c2" }}>
-                  Like ({likes})
+                  Like
                 </span>
               </>
             ) : (
               <>
                 <BiLike size={20} />
-                <span className="ml-1">Like ({likes})</span>
+                <span className="ml-1">Like</span>
               </>
             )}
           </span>
         </ListGroup.Item>
-        <ListGroup.Item className="hover-block  py-2 px-3">
+        <ListGroup.Item className="hover-block  py-2 px-3" onClick={() => setExpandedComment(true)}>
           {" "}
           <BiComment size={18} />
           <span className="ml-1">Comment</span>
@@ -154,6 +166,12 @@ const SinglePost = (props) => {
           <span className="ml-1">Send</span>
         </ListGroup.Item>
       </ListGroup>
+      {expandedComment &&
+          <CommentPost postId={props.post._id}/>
+      }
+      {expandedList && 
+          <CommentList postId={props.post._id} comments={props.post.comments} />
+      }
       <EditPostModal
         show={show}
         handleClose={handleClose}
