@@ -161,6 +161,7 @@ export const createExperience = (userId, data) => {
           type: CREATE_EXPERIENCE,
           payload: data,
         });
+        dispatch(getAllExperiences(userId))
       }
     } catch (error) {
       console.log(error);
@@ -171,7 +172,6 @@ export const createExperience = (userId, data) => {
 export const updateExperience = (userId, expId, data) => {
   return async (dispatch) => {
     try {
-      console.log("update exp")
       const res = await fetch(
         `${process.env.REACT_APP_BE_URL}/users/${userId}/experiences/${expId}`,
         {
@@ -188,6 +188,7 @@ export const updateExperience = (userId, expId, data) => {
           type: UPDATE_EXPERIENCE,
           payload: data,
         });
+        dispatch(getAllExperiences(userId))
       }
     } catch (error) {
       console.log(error);

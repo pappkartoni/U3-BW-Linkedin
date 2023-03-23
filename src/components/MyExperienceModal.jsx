@@ -65,14 +65,14 @@ const MyExperienceModal = (props) => {
     if (expToEdit) {
       console.log("update experience")
       dispatch(updateExperience(user._id, expToEdit._id, addExperience));
-
+      dispatch(getAllExperiences(user._id));
       if (image) {
         postImage(image);
       }
     } else {
       dispatch(createExperience(user._id, addExperience));
+      dispatch(getAllExperiences(user._id));
     }
-    console.log("refetch now")
     dispatch(getAllExperiences(user._id));
     props.handleClose();
   };
