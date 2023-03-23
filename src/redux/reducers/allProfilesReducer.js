@@ -9,7 +9,7 @@ const allProfilesReducer = (state = initialState, action) => {
         case GET_ALL_PROFILES:
             return {
                 ...state,
-                profiles: [...state.profiles, ...action.payload]
+                profiles: [...action.payload]
             }
 
         default:

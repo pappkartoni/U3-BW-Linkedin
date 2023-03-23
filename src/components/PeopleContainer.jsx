@@ -10,16 +10,12 @@ const PeopleContainer = () => {
 
   useEffect(() => {
     dispatch(getAllProfiles());
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleExpand = () => {
     setExpanded(!expanded);
   };
-
-
-
   return (
     <section>
       <h2>People you may know</h2>
@@ -31,12 +27,14 @@ const PeopleContainer = () => {
           subtitle={profiles[profiles.length - 1].title}
           forperson={true}
           image={profiles[profiles.length - 1].image}
+          id={profiles[profiles.length - 1]._id}
           />
         <GroupPersonTile
           title={profiles[profiles.length - 2].name + " " + profiles[profiles.length - 2].surname}
           subtitle={profiles[profiles.length - 2].title}
           forperson={true}
           image={profiles[profiles.length - 2].image}
+          id={profiles[profiles.length - 2]._id}
           />
       </>}
 
@@ -47,18 +45,21 @@ const PeopleContainer = () => {
             subtitle={profiles[profiles.length - 3].title}
             forperson={true}
             image={profiles[profiles.length - 3].image}
+            id={profiles[profiles.length - 3]._id}
           />
           <GroupPersonTile
             title={profiles[profiles.length - 4].name + " " + profiles[profiles.length - 4].surname}
             subtitle={profiles[profiles.length - 4].title}
             forperson={true}
             image={profiles[profiles.length - 4].image}
+            id={profiles[profiles.length - 4]._id}
           />        
           <GroupPersonTile
             title={profiles[profiles.length - 5].name + " " + profiles[profiles.length - 5].surname}
             subtitle={profiles[profiles.length - 5].title}
             forperson={true}
             image={profiles[profiles.length - 5].image}
+            id={profiles[profiles.length - 5]._id}
           />
         </>
       )}
