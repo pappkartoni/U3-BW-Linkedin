@@ -5,7 +5,6 @@ import { BsPlus } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { getAllExperiences, getSingleExperience } from "../redux/actions";
 import { parseISO } from "date-fns";
-import { Button } from "react-bootstrap";
 
 const ExperiencesContainer = () => {
   const dispatch = useDispatch();

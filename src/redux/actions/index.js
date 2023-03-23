@@ -126,14 +126,7 @@ export const getAllExperiences = (userId) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BE_URL}/users/${userId}/experiences`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
-          },
-        }
-      );
+        `${process.env.REACT_APP_BE_URL}/users/${userId}/experiences`);
 
       if (res.ok) {
         const data = await res.json();
@@ -379,7 +372,6 @@ export const updatePostImage = (postId, data, handleClose) => {
         }
       );
       if (res.ok) {
-        const data = await res.json();
         handleClose();
         dispatch(getAllPosts());
       }

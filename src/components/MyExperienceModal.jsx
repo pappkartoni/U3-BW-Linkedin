@@ -27,7 +27,6 @@ const MyExperienceModal = (props) => {
   const [image, setImage] = useState(null);
 
   useEffect(() => {
-    // console.log("update exptoedit", expToEdit)
     if (expToEdit !== null) {
       setAddExperience(expToEdit);
     } else {
@@ -73,7 +72,7 @@ const MyExperienceModal = (props) => {
     } else {
       dispatch(createExperience(user._id, addExperience));
     }
-
+    console.log("refetch now")
     dispatch(getAllExperiences(user._id));
     props.handleClose();
   };
