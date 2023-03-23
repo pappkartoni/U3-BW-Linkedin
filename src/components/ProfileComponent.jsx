@@ -28,24 +28,18 @@ const ProfileComponent = () => {
   const uploadImage = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("profile", showImage);
+    data.append("image", showImage);
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${profileData._id}/picture`,
+        `${process.env.REACT_APP_BE_URL}/users/${profileData._id}/image`,
         {
           method: "POST",
-          // mode: "no-cors",
           body: data,
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
-          },
         }
       );
 
       if (response.ok) {
         dispatch(fetchOwnProfile());
-        // console.log("Image Uploaded Successfully");
       }
     } catch (error) {
       console.log(error);

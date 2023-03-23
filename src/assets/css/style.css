@@ -522,6 +522,69 @@ section h2 {
 .post-profile-img img {
   border-radius: 50%;
   height: 100%;
+  width: 100%;
+}
+.comments-count {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  padding-top: 4px;
+}
+.likes-counter {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6)
+}
+.comments-count:hover {
+  color:#0a66c2;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.comment-row {
+  padding-top: 12px;
+  padding-bottom: 4px;
+}
+.comment-profile-img {
+  width: 40px;
+  height: 40px;
+  margin-inline: auto;
+  margin-right: 4px;
+}
+.comment-profile-img img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+.comment-body {
+  background-color: #f2f2f2;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.9);
+  flex-grow: 1!important;
+  max-width: calc(100%-44px);
+}
+.comment-body p {
+  margin: 0;
+}
+.comment-body h4 {
+  color: rgba(0, 0, 0, 0.9);
+}
+.comment-body .comment-smaller {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6)
+}
+.comment-text-field {
+  max-width: calc(100%-44px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 9.5px;
+  flex-grow: 1!important;
+  border-radius: 25px;
+}
+.comment-delete {
+  cursor: pointer;
+  margin-left: 4px;
+}
+.comment-delete:hover {
+  background-color: #fff;
+  border-radius: 50%;
 }
 .post-profile-name {
   /* max-width: 75%; */

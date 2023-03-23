@@ -14,9 +14,10 @@ const EditPostModal = ({ handleClose, show, postId, postText }) => {
   // const [text, setText] = useState("");
   const dispatch = useDispatch();
   const updatePostHandler = () => {
-    if (content.image) {
+    console.log("updating with", content)
+    if (typeof content.image === "object") {
       const formData = new FormData();
-      formData.append("post", content.image);
+      formData.append("image", content.image);
       dispatch(updatePostImage(postId, formData, handleClose));
     }
     dispatch(updatePost(postId, { text: content.text }));
@@ -39,6 +40,7 @@ const EditPostModal = ({ handleClose, show, postId, postText }) => {
           onChange={(e) => {
             // console.log(e.target.files[0]);
             setContent({ ...content, image: e.target.files[0] });
+            console.log(content.image, typeof e.target.files[0])
           }}
         />
         <textarea

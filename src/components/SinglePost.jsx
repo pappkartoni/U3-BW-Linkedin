@@ -6,17 +6,19 @@ import { BiComment, BiLike, BiSend, BiShuffle } from "react-icons/bi";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost } from "../redux/actions";
+import { deletePost, getAllPosts } from "../redux/actions";
 import { AiFillLike } from "react-icons/ai";
 import EditPostModal from "./EditPostModal";
 import { useState } from "react";
+import CommentList from "./CommentList";
+import CommentPost from "./CommentPost";
 
 const SinglePost = (props) => {
-  const [isLiked, setIsLiked] = useState(false);
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(props.post.likes.length);
   const profileDataID = useSelector(
     (state) => state.getProfile.fetchProfile._id
-  );
+    );
+  const [isLiked, setIsLiked] = useState(props.post.likes.includes(profileDataID));
   const dispatch = useDispatch();
   const daysAgo = formatDistanceToNow(new Date(props.post?.createdAt), {
     addSuffix: true,
@@ -26,17 +28,29 @@ const SinglePost = (props) => {
   };
 
   const [show, setShow] = useState(false);
+  const [expandedComment, setExpandedComment] = useState(false)
+  const [expandedList, setExpandedList] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleLike = () => {
-    if (isLiked) {
-      setLikes(likes - 1);
-    } else {
-      setLikes(likes + 1);
+  const handleLike = async () => {
+    try {
+      const res = await fetch(`${process.env.REACT_APP_BE_URL}/posts/${props.post?._id}/like`, {
+        method: "PUT",
+        body: JSON.stringify({_id: profileDataID}),
+        headers: {"Content-Type": "application/json"}
+      })
+      if (res.ok) {
+        const data = await res.json()
+        console.log(data)
+        setIsLiked(data.isLiked)
+        setLikes(data.totalLikes)
+        dispatch(getAllPosts())
+      }
+    } catch (error) {
+      console.log(error)
     }
-    setIsLiked(!isLiked);
   };
   return (
     <section className="pt-3 pr-3 pb-1 pl-3" style={{ overflow: "visible" }}>
@@ -64,8 +78,6 @@ const SinglePost = (props) => {
                 </p>
                 <span className="posted-date text-muted">
                   {daysAgo}
-                  {/* {props.post?.createdAt &&
-                    format(parseISO(props.post?.createdAt), "dd MMM yyyy")}{" "} */}
                 </span>
               </div>
             </Col>
@@ -83,7 +95,7 @@ const SinglePost = (props) => {
                 <Dropdown.Item eventKey="1">Save Post</Dropdown.Item>
                 <Dropdown.Item eventKey="2">Copy link to post</Dropdown.Item>
                 <Dropdown.Item eventKey="3">Embed this post</Dropdown.Item>
-                {props.post?.user?._id === profileDataID && (
+                {props.post?.user?._id?.toString() === profileDataID.toString() && (
                   <Dropdown.Item eventKey="4" onClick={handleShow}>
                     Edit this post
                   </Dropdown.Item>
@@ -109,6 +121,15 @@ const SinglePost = (props) => {
           <img className="w-100" src={props.post?.image} alt="image" />
         )}
       </div>
+      <div className="d-flex justify-content-between">
+        <span className="likes-counter d-flex align-items-center">
+          <img src="https://static.licdn.com/sc/h/8ekq8gho1ruaf8i7f86vd1ftt" alt="..." />
+          <img src="https://static.licdn.com/sc/h/b1dl5jk88euc7e9ri50xy5qo8" alt="..." style={{marginLeft: -4}}/>
+          <img src="https://static.licdn.com/sc/h/cpho5fghnpme8epox8rdcds22" alt="..." style={{marginLeft: -4, marginRight: 2}}/>
+          {likes}
+        </span>
+        <span className="comments-count" onClick={() => {setExpandedComment(true); setExpandedList(true)}}>{props.post?.comments?.length} comment{props.post?.comments?.length !== 1 ? "s" : ""}</span>
+      </div>
       <hr className="mb-1" />
       <ListGroup className="justify-content-between text-muted" horizontal>
         <ListGroup.Item className="hover-block  py-2 px-3" onClick={handleLike}>
@@ -129,7 +150,7 @@ const SinglePost = (props) => {
             )}
           </span>
         </ListGroup.Item>
-        <ListGroup.Item className="hover-block  py-2 px-3">
+        <ListGroup.Item className="hover-block  py-2 px-3" onClick={() => setExpandedComment(true)}>
           {" "}
           <BiComment size={18} />
           <span className="ml-1">Comment</span>
@@ -145,6 +166,12 @@ const SinglePost = (props) => {
           <span className="ml-1">Send</span>
         </ListGroup.Item>
       </ListGroup>
+      {expandedComment &&
+          <CommentPost postId={props.post._id}/>
+      }
+      {expandedList && 
+          <CommentList postId={props.post._id} comments={props.post.comments} />
+      }
       <EditPostModal
         show={show}
         handleClose={handleClose}

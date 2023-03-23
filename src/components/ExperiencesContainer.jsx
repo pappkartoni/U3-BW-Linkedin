@@ -5,6 +5,7 @@ import { BsPlus } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { getAllExperiences, getSingleExperience } from "../redux/actions";
 import { parseISO } from "date-fns";
+import { Button } from "react-bootstrap";
 
 const ExperiencesContainer = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,18 @@ const ExperiencesContainer = () => {
     dispatch(getAllExperiences(user._id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const getCSV = async () => {
+    try {
+      const res = await fetch(`${process.env.REACT_APP_BE_URL}/users/${user._id}/experiences/csv/download`)
+      if (res.ok) {
+        /* const data = await res.json() */
+        window.location = res.url
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <section>
@@ -56,8 +69,9 @@ const ExperiencesContainer = () => {
             handleShow={() => handleShow(exp._id)}
           />
         ))}
+        <button className="btn-fullwidth" onClick={getCSV} >Download</button>
     </section>
   );
 };
 
-export default ExperiencesContainer;
+export default ExperiencesContainer

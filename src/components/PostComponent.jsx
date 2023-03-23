@@ -9,6 +9,7 @@ const PostComponent = () => {
   const posts = useSelector((state) => state.posts.postList);
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log("all posts", posts)
     dispatch(getAllPosts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

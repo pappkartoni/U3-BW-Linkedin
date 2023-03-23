@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Modal } from "react-bootstrap";
 import { updateOwnProfile } from "../redux/actions";
 
 const ProfileEdit = (props) => {
+  const user = useSelector((state) => state.getProfile.fetchProfile);
   const [content, setContent] = useState({
     name: "",
     surname: "",
@@ -19,8 +20,8 @@ const ProfileEdit = (props) => {
   }, [props.profileData]);
 
   const handleUpdateProfile = () => {
-    // console.log("updatedProfileContent", content);
-    dispatch(updateOwnProfile(content));
+    console.log("updatedProfileContent", content);
+    dispatch(updateOwnProfile(user._id, content));
   };
 
   return (
