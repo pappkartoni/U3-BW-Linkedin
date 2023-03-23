@@ -379,7 +379,6 @@ export const updatePostImage = (postId, data, handleClose) => {
         }
       );
       if (res.ok) {
-        const data = await res.json();
         handleClose();
         dispatch(getAllPosts());
       }
