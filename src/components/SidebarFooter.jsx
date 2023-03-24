@@ -29,11 +29,11 @@ const SideBarFooter = () => {
                 <Link to="/">
                     <span>Business Services</span>
                 </Link>
-                <Link to="/">
-                    <span>Get the LinkedIn app</span>
+                <Link to="https://github.com/pappkartoni/U3-BW-Linkedin">
+                    <span>Frontend</span>
                 </Link>
-                <Link to="/">
-                    <span>More</span>
+                <Link to="https://github.com/FarhanaRafi/linkedIn-BE">
+                    <span>Backend</span>
                 </Link>
             </div>
             <div className="copyright">
