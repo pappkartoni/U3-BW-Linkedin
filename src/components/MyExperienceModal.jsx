@@ -68,6 +68,7 @@ const MyExperienceModal = (props) => {
 
   const submitExperience = async () => {
     if (expToEdit) {
+      console.log("update experience");
       dispatch(updateExperience(user._id, expToEdit._id, addExperience));
 
       if (image) {
@@ -142,7 +143,11 @@ const MyExperienceModal = (props) => {
             <Form.Label>End Date</Form.Label>
             <Form.Control
               type="date"
-              value={addExperience.endDate ? format(parseISO(addExperience.endDate), "yyyy-MM-dd") : ""}
+              value={
+                addExperience.endDate
+                  ? format(parseISO(addExperience.endDate), "yyyy-MM-dd")
+                  : ""
+              }
               onChange={(e) =>
                 setAddExperience({
                   ...addExperience,

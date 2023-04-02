@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchOwnProfile } from "../redux/actions";
 import { BsFillPencilFill } from "react-icons/bs";
 import ProfileEdit from "./ProfileEdit";
+import myImage from "../assets/img/myImage.png";
 
 const ProfileComponent = () => {
   const profileData = useSelector((state) => state.getProfile.fetchProfile);
@@ -28,24 +29,18 @@ const ProfileComponent = () => {
   const uploadImage = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("profile", showImage);
+    data.append("image", showImage);
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${profileData._id}/picture`,
+        `${process.env.REACT_APP_BE_URL}/users/${profileData._id}/image`,
         {
           method: "POST",
-          // mode: "no-cors",
           body: data,
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzM2EzZDgzODFmYzAwMTNmZmZhZDYiLCJpYXQiOjE2NzY4ODQ1NDIsImV4cCI6MTY3ODA5NDE0Mn0.yy7dqsjX4YYSOfQOfYOZsSdFYZqn9oQ_CAzHWsa775s",
-          },
         }
       );
 
       if (response.ok) {
         dispatch(fetchOwnProfile());
-        // console.log("Image Uploaded Successfully");
       }
     } catch (error) {
       console.log(error);
@@ -68,12 +63,21 @@ const ProfileComponent = () => {
           <Card.Body>
             <div className="d-flex justify-content-between align-items-center">
               <div className="profile-img-block">
-                <img
-                  className="w-100 h-100"
-                  src={profileData?.image}
-                  alt="profileImage"
-                  onClick={handleShow2}
-                />
+                {profileData?.image ? (
+                  <img
+                    className="w-100 h-100"
+                    src={profileData?.image}
+                    alt="profileImage"
+                    onClick={handleShow2}
+                  />
+                ) : (
+                  <img
+                    className="w-100 h-100"
+                    src={myImage}
+                    alt="profileImage"
+                    onClick={handleShow2}
+                  />
+                )}
               </div>
               <div className="icon-hover d-flex justify-content-center align-items-center">
                 <BsFillPencilFill fill="rgba(0,0,0,0.6)" onClick={handleShow} />
@@ -161,8 +165,7 @@ const ProfileComponent = () => {
               </Button>
             </form>
           </Modal.Body>
-          <Modal.Footer>
-          </Modal.Footer>
+          <Modal.Footer></Modal.Footer>
         </Modal>
       </div>
     </section>
